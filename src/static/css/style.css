@@ -1,0 +1,75 @@
+@import url(selecao.css);
+:root {
+  --azul-base: #393f50;
+  --off-white: #f2eee7;
+  --off-white-cinza: #c2bfbb;
+  --font-principal: "Rowdies";
+  --border-radius: 25px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-principal), monospace;
+}
+
+body {
+  background-color: #f8f9fa;
+}
+h2 {
+  color: #007bff;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--azul-base);
+}
+
+.blur {
+  filter: blur(4px);
+}
+
+.noClick {
+  pointer-events: none;
+}
+
+.botao {
+  display: inline-block;
+  width: 30%;
+  height: 100%;
+
+  font: normal 900 2.5rem var(--font-principal), monospace;
+  text-align: center;
+  text-decoration: underline;
+
+  border: none;
+  border-radius: var(--border-radius);
+
+  color: var(--azul-base);
+  background-color: var(--off-white);
+}
+
+.botao:hover {
+  background-color: var(--off-white-cinza);
+}
+
+input {
+  background-color: var(--off-white);
+  border: none;
+  border-radius: calc(var(--border-radius) - 5px);
+}
+
+input:hover {
+  background-color: var(--off-white-cinza);
+}
+
+.close_button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  width: 30px;
+  height: 30px;
+}

@@ -4,12 +4,16 @@ from datetime import datetime
 i = 0
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'
-UPLOAD_FOLDER = 'static/uploads'
+UPLOAD_FOLDER = 'src/static/uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html"), 200
+
+@app.route('/envio')
+def envio():
+    return render_template('formAtestado.html')
 
 @app.route('/scrum')
 def scr():

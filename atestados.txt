@@ -1,54 +1,45 @@
-Nome: Gustavo Zago de Lima
-RA do aluno: 12
+Nome: Rafael Costa 12
+RA do aluno: 123
 Data Inicial: 2025-03-11
-Data Final: 2025-03-14
-Validade: 3 dias
-Motivo: saudade da ex
-Arquivo: static/uploads\POSTAGEM 2.pdf
+Data Final 2025-03-19
+Validade: 8 dias
+Motivo: dwdwd
+Arquivo: src/static/uploads\Scrum Avaliação Aberta.png
 Status: Pendente
 
-Nome: Aline Regina Zago de Lima de Lima
-RA do aluno: 12
+Nome: Ruan Carvalho
+RA do aluno: 213
 Data Inicial: 2025-03-11
-Data Final: 2025-03-15
-Validade: 4 dias
-Motivo: saudade da ex
-Arquivo: static/uploads\propostatcc.pdf
+Data Final 2025-03-27
+Validade: 16 dias
+Motivo: dwdw
+Arquivo: src/static/uploads\Scrum Avaliação Aberta.png
 Status: Pendente
 
-Nome: Maria 
-RA do aluno: 12
-Data Inicial: 2025-03-19
-Data Final: 2025-03-28
-Validade: 9 dias
-Motivo: saudade da ex
-Arquivo: static/uploads\POSTAGEM 2.pdf
-Status: Pendente
-
-Nome: João Silva
-RA do aluno: 12
+Nome: Ruan Carvalho123123
+RA do aluno: 213
 Data Inicial: 2025-03-11
-Data Final 2025-03-20
-Validade: 9 dias
-Motivo: saudade da ex
-Arquivo: static/uploads\propostatcc.pdf
+Data Final 2025-03-27
+Validade: 16 dias
+Motivo: dwdw
+Arquivo: src/static/uploads\close.png
 Status: Pendente
 
-Nome: aaaaaaaaaaaaa
-RA do aluno: 1
-Data Inicial: 2025-03-12
-Data Final 2025-03-15
-Validade: 3 dias
-Motivo: saudade da ex
-Arquivo: static/uploads\propostatcc.pdf
+Nome: Ruan Carvalho123123
+RA do aluno: 213
+Data Inicial: 2025-03-11
+Data Final 2025-03-27
+Validade: 16 dias
+Motivo: dwdw
+Arquivo: src/static/uploads\close.png
 Status: Pendente
 
-Nome: Gustavo Zago de Lima
-RA do aluno: 1243
-Data Inicial: 2025-03-26
-Data Final 2025-03-29
-Validade: 3 dias
-Motivo: 12333
-Arquivo: static/uploads\propostatcc.pdf
+Nome: Ruan Carvalho123123
+RA do aluno: 213
+Data Inicial: 2025-03-11
+Data Final 2025-03-27
+Validade: 16 dias
+Motivo: dwdw
+Arquivo: src/static/uploads\close.png
 Status: Pendente
 

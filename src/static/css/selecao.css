@@ -1,0 +1,51 @@
+.selecao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  width: 100%;
+  height: 100%;
+}
+
+.selecao > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  height: 30%;
+}
+
+#modal {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+
+  width: 25%;
+  height: 15%;
+  padding: 5px 15px;
+
+  background-color: var(--azul-base);
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-indent: 10px;
+  color: var(--off-white);
+  border: none;
+  border-radius: calc(var(--border-radius) - 10px);
+
+  -webkit-box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.75);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#modal > input {
+  height: 35%;
+}

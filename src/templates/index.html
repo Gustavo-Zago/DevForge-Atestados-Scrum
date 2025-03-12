@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <title>DevForge</title>
+  </head>
+  <body>
+    <main>
+      <section class="selecao">
+        <div>
+          <button type="button" class="botao">Enviar Atestados</button>
+
+          <button type="button" id="btn_gestao" class="botao">
+            Gestão de Atestados
+          </button>
+        </div>
+        <div>
+          <button type="button" class="botao">Equipe Scrum</button>
+
+          <button type="button" id="btn_adm" class="botao">
+            Administrador Scrum
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="modal">
+      <img
+        class="close_button"
+        id="close_modal"
+        src="../static/assets/close.png"
+        alt="Botão Fechar"
+      />
+      <label for="inp_senha">Digite a Senha</label>
+      <input type="password" id="inp_senha" />
+    </dialog>
+  </body>
+
+  <script src="../static/scripts/modal.js"></script>
+</html>
