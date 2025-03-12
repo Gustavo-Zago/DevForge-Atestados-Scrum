@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibição do Arquivo</title>
+</head>
+<body>
+    <h1>Lista de Atestados</h1>
+
+    {% for atestado in atestados %}
+        <hr>
+        <p><strong>Nome:</strong> {{ atestado['Nome'] }}</p>
+        <p><strong>RA do aluno:</strong> {{ atestado['RA do aluno'] }}</p>
+        <p><strong>Data Inicial:</strong> {{ atestado['Data Inicial'] }}</p>
+        <p><strong>Data Final:</strong> {{ atestado['Data Final'] }}</p>
+        <p><strong>Validade:</strong> {{ atestado['Validade'] }}</p>
+        <p><strong>Motivo:</strong> {{ atestado['Motivo'] }}</p>
+        <p><strong>Arquivo:</strong> <a href="{{ atestado['Arquivo'] }}" target="_blank">Atestado</a></p>
+        <p><strong>Status:</strong> {{ atestado['Status'] }}</p>
+    {% endfor %}
+
+</body>
+</html>
