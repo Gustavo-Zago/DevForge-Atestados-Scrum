@@ -84,6 +84,10 @@ def ler_txt():
 
     except FileNotFoundError:
         return render_template('Espera.html', atestados= 'Ih deu ruim')
+    
+@app.route("/header")
+def header():
+    return render_template('header.html')
         
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=True)

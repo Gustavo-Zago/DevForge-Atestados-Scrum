@@ -14,6 +14,31 @@
   font-family: var(--font-principal), monospace;
 }
 
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 8%;
+  padding: 10px;
+
+  background-color: var(--azul-base);
+}
+
+header > img{
+  width: 55px;
+ height: 55px 
+}
+
+.links_header{
+  margin: auto;
+}
+
+.links_header a{
+  color: var(--off-white);
+}
+
 main {
   width: 100%;
   height: 100vh;
