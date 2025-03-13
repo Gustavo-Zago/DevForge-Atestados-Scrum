@@ -11,7 +11,7 @@ atestadoButton.addEventListener("click", function () {
 });
 
 equipeButton.addEventListener("click", function () {
-  redirecionar("/");
+  redirecionar("/scrum");
 });
 
 gestaoButton.addEventListener("click", function () {
