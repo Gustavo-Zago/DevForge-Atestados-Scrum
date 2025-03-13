@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import os
 from datetime import datetime
-i = 0
+import uuid  # Para garantir nomes únicos de arquivos
+
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'
 UPLOAD_FOLDER = 'src/static/uploads'
@@ -33,18 +34,19 @@ def enviar():
         flash('Envie um arquivo válido!')
         return redirect(url_for('index'))
     
-    #Calcula dias afastado
+    # Calcula dias afastado
     def calcula_validade_atestado(data_i, data_f):
-        data1 = datetime.strptime(data_i, "%Y-%m-%d")   
-        data2 = datetime.strptime(data_f, "%Y-%m-%d")
+        data1 = datetime.strptime(data_i, "%d-%m-%Y")   
+        data2 = datetime.strptime(data_f, "%d-%m-%Y")
     
         diferenca = abs(data2 - data1)
     
         return diferenca.days
     
-    #validade = calcula_validade_atestado(data_i, data_f)
-
-    caminho_arquivo = os.path.join(UPLOAD_FOLDER, arquivo.filename)
+    # Salvar o arquivo com um nome único para evitar sobrescrita
+    file_ext = os.path.splitext(arquivo.filename)[1]  # Extrair a extensão do arquivo
+    novo_nome = f"{RA}_{datetime.now().strftime('%Y%m%d%H%M%S')}{file_ext}"  # Novo nome com RA e timestamp
+    caminho_arquivo = os.path.join(UPLOAD_FOLDER, novo_nome)
     arquivo.save(caminho_arquivo)
 
     # Salvar os dados em um arquivo de texto
@@ -59,16 +61,16 @@ def ler_txt():
     try:
         with open('atestados.txt', 'r', encoding='utf-8') as f:
             linhas = f.readlines()
-        #aqui começa a transoformar em um dicionario pra tratar melhor os dados tropa
+        # aqui começa a transformar em um dicionário pra tratar melhor os dados
         atestados = []
         atestado_atual = {}
 
         for linha in linhas:
             linha = linha.strip()
             
-            if not linha:  # verifica linha vazia q mostra separação de registros
+            if not linha:  # verifica linha vazia que mostra separação de registros
                 if atestado_atual:  
-                    atestados.append(atestado_atual)  # add o atestado na lista
+                    atestados.append(atestado_atual)  # adiciona o atestado na lista
                     atestado_atual = {}  # zera para o próximo
                 continue  
             
