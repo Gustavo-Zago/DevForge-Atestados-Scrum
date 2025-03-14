@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 '''from pyscript import Element'''
 import os
 from datetime import datetime
+import uuid  # Para garantir nomes únicos de arquivos
 i = 0
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'
@@ -45,7 +46,10 @@ def enviar():
     
     #validade = calcula_validade_atestado(data_i, data_f)
 
-    caminho_arquivo = os.path.join(UPLOAD_FOLDER, arquivo.filename)
+    # Salvar o arquivo com um nome único para evitar sobrescrita
+    file_ext = os.path.splitext(arquivo.filename)[1]  # Extrair a extensão do arquivo
+    novo_nome = f"{RA}_{datetime.now().strftime('%Y%m%d%H%M%S')}{file_ext}"  # Novo nome com RA e timestamp
+    caminho_arquivo = os.path.join(UPLOAD_FOLDER, novo_nome)
     arquivo.save(caminho_arquivo)
 
     # Salvar os dados em um arquivo de texto
