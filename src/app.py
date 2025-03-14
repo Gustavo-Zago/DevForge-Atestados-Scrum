@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 '''from pyscript import Element'''
 import os
 from datetime import datetime
-i = 0
+i,x = 0,1
+escolha = []
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'
 UPLOAD_FOLDER = 'src/static/uploads'
@@ -18,7 +19,8 @@ def envio():
 
 @app.route('/scrum')
 def scr():
-    return render_template('scrum.html')
+    return render_template("scrum.html")
+
 
 @app.route('/enviar', methods=['POST'])
 def enviar():
@@ -90,17 +92,16 @@ def ler_txt():
 def header():
     return render_template('header.html')
 
-@app.route("/scrum", methods=["POST"])
+@app.route("/scrum", methods=["GET", "POST"])
 def submit():
-    x = 0
-    lista_temporaia = []
-    x += 1
-    #pega o radio selecionado
-    lista_temporaia.append(request.form.get('options'))
-    if lista_temporaia:
-        return f'Você selecionou a opção {lista_temporaia}'
-    else:
-        return 'Nenhuma opção selecionada'
+    media = 0 
+    x = len(escolha)
+    if request.method == "POST":
+        if x < 5:  # Permite no máximo five escolhas
+            escolha.append(request.form.get("options"))
+        else:
+            media = sum(int(i) for i in escolha) / len(escolha)
+    return render_template("scrum.html", escolha=escolha, x=x, media=media)
 
 def header():
     return render_template('header.html')

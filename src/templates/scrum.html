@@ -1,63 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- Bootstrap core CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Material Design Bootstrap -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/css/mdb.min.css" rel="stylesheet">
-        <style>
-        .row, .d-flex{
-            display: flex;
-            justify-content: center;
-        }
-        @media only screen and (max-width: 566px) {
-            .d-flex{
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex">
-                    <div class="ml-3">
-                        <form action="/scrum" method="POST">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="defaultInline1" name="options" value="0">
-                                <label class="custom-control-label" for="defaultInline1"></label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="defaultInline2" name="options" value="1">
-                                <label class="custom-control-label" for="defaultInline2"></label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="defaultInline3" name="options" value="2">
-                                <label class="custom-control-label" for="defaultInline3"></label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="defaultInline4" name="options" value="3">
-                                <label class="custom-control-label" for="defaultInline4"></label>
-                            </div>
-                            <button type="submit" class="btn btn-dark mt-3">Enviar</button>
-                        </form>
-                    </div>
-                </div>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha Scrum</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.13/css/mdb.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mt-4">Avaliação</h2>
+
+
+    {% if x != 5 %}
+        <form action="/scrum" method="POST">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="defaultInline1" name="options" value="0">
+                <label class="custom-control-label" for="defaultInline1">Opção 1</label>
             </div>
-        </div>
-        {%for x in range(0,5)  %}
-            {%if x == 5%}
-                <p><strong>Lista:</strong> {{lista}}</p> 
-            {%endif%}
-        {% endfor %}
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js"></script>
-    </body>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="defaultInline2" name="options" value="1">
+                <label class="custom-control-label" for="defaultInline2">Opção 2</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="defaultInline3" name="options" value="2">
+                <label class="custom-control-label" for="defaultInline3">Opção 3</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="defaultInline4" name="options" value="3">
+                <label class="custom-control-label" for="defaultInline4">Opção 4</label>
+            </div>
+            <button type="submit" class="btn btn-dark mt-3">Enviar</button>
+        </form>
+        {%endif%}
+        {%if x == 5:%}
+                <p><strong>Media:</strong> {{ media }}</p>
+        {%endif%}
+    
+        <p><strong>Escolhas feitas:</strong> {{ escolha }}</p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js"></script>
+
+</body>
 </html>
