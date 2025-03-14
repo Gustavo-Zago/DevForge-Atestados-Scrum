@@ -52,3 +52,12 @@ Motivo: vwwnvwre ren
 Arquivo: src/static/uploads\24354363653_20250313095319.pdf
 Status: Pendente
 
+Nome: Gusttavo Lima e você
+RA do aluno: 22123456789
+Data Inicial: 2025-03-12
+Data Final 2025-03-14
+Validade: 2 dias
+Motivo: Doente de amor (amo o Masanori)
+Arquivo: src/static/uploads\22123456789_20250314074501.pdf
+Status: Pendente
+
