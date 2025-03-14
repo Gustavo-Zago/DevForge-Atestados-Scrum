@@ -3,6 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 import os
 from datetime import datetime
 import uuid  # Para garantir nomes únicos de arquivos
+from static.python.funcAtestado import *
+
+teste()
+
 i = 0
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'
@@ -37,18 +41,14 @@ def enviar():
     
     #Calcula dias afastado
     def calcula_validade_atestado(data_i, data_f):
-        data1 = datetime.strptime(data_i, "%Y-%m-%d")   
-        data2 = datetime.strptime(data_f, "%Y-%m-%d")
     
-        diferenca = abs(data2 - data1)
+        diferenca = abs(datetime.strptime(data_f, "%Y-%m-%d") - datetime.strptime(data_i, "%Y-%m-%d"))
     
         return diferenca.days
     
-    #validade = calcula_validade_atestado(data_i, data_f)
-
     # Salvar o arquivo com um nome único para evitar sobrescrita
     file_ext = os.path.splitext(arquivo.filename)[1]  # Extrair a extensão do arquivo
-    novo_nome = f"{RA}_{datetime.now().strftime('%Y%m%d%H%M%S')}{file_ext}"  # Novo nome com RA e timestamp
+    novo_nome = f"{RA}_{datetime.now().strftime('%d%m%Y%H%M%S')}{file_ext}"  # Novo nome com RA e timestamp
     caminho_arquivo = os.path.join(UPLOAD_FOLDER, novo_nome)
     arquivo.save(caminho_arquivo)
 
