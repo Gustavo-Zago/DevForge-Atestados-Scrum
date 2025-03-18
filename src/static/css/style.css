@@ -3,7 +3,7 @@
   --azul-base: #393f50;
   --off-white: #f2eee7;
   --off-white-cinza: #c2bfbb;
-  --font-principal: "Rowdies";
+  --font-principal: "Rowdies", monospace;
   --border-radius: 25px;
 }
 
@@ -14,7 +14,7 @@
   font-family: var(--font-principal), monospace;
 }
 
-header{
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,16 +26,16 @@ header{
   background-color: var(--azul-base);
 }
 
-header > img{
+header > img {
   width: 55px;
- height: 55px 
+  height: 55px;
 }
 
-.links_header{
+.links_header {
   margin: auto;
 }
 
-.links_header a{
+.links_header a {
   color: var(--off-white);
 }
 
