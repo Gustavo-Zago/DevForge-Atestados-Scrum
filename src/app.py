@@ -2,10 +2,17 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 '''from pyscript import Element'''
 import os
 from datetime import datetime
+i,x = 0,1
+escolha = []
+import uuid  # Para garantir nomes únicos de arquivos
+from static.python.funcAtestado import *
+
+teste()
+
 i = 0
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'
-UPLOAD_FOLDER = 'src/static/uploads'
+UPLOAD_FOLDER = 'src/static/uploads/atestados'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/")
@@ -18,7 +25,8 @@ def envio():
 
 @app.route('/scrum')
 def scr():
-    return render_template('scrum.html')
+    return render_template("scrum.html")
+
 
 @app.route('/enviar', methods=['POST'])
 def enviar():
@@ -36,20 +44,19 @@ def enviar():
     
     #Calcula dias afastado
     def calcula_validade_atestado(data_i, data_f):
-        data1 = datetime.strptime(data_i, "%Y-%m-%d")   
-        data2 = datetime.strptime(data_f, "%Y-%m-%d")
     
-        diferenca = abs(data2 - data1)
+        diferenca = abs(datetime.strptime(data_f, "%Y-%m-%d") - datetime.strptime(data_i, "%Y-%m-%d"))
     
         return diferenca.days
     
-    #validade = calcula_validade_atestado(data_i, data_f)
-
-    caminho_arquivo = os.path.join(UPLOAD_FOLDER, arquivo.filename)
+    # Salvar o arquivo com um nome único para evitar sobrescrita
+    file_ext = os.path.splitext(arquivo.filename)[1]  # Extrair a extensão do arquivo
+    novo_nome = f"{RA}_{datetime.now().strftime('%d%m%Y%H%M%S')}{file_ext}"  # Novo nome com RA e timestamp
+    caminho_arquivo = os.path.join(UPLOAD_FOLDER, novo_nome)
     arquivo.save(caminho_arquivo)
 
     # Salvar os dados em um arquivo de texto
-    with open('atestados.txt', 'a', encoding='utf-8') as f:
+    with open('./src/static/uploads/atestados.txt', 'a', encoding='utf-8') as f:
         f.write(f"Nome: {nome}\nRA do aluno: {RA}\nData Inicial: {data_i}\nData Final {data_f}\nValidade: {calcula_validade_atestado(data_i, data_f)} dias\nMotivo: {motivo}\nArquivo: {caminho_arquivo}\nStatus: {status}\n\n")
 
     flash('Atestado enviado com sucesso!')
@@ -58,7 +65,7 @@ def enviar():
 @app.route('/espera', methods=['GET'])
 def ler_txt():
     try:
-        with open('atestados.txt', 'r', encoding='utf-8') as f:
+        with open('./src/static/uploads/atestados.txt', 'r', encoding='utf-8') as f:
             linhas = f.readlines()
         #aqui começa a transoformar em um dicionario pra tratar melhor os dados tropa
         atestados = []
@@ -90,17 +97,16 @@ def ler_txt():
 def header():
     return render_template('header.html')
 
-@app.route("/scrum", methods=["POST"])
+@app.route("/scrum", methods=["GET", "POST"])
 def submit():
-    x = 0
-    lista_temporaia = []
-    x += 1
-    #pega o radio selecionado
-    lista_temporaia.append(request.form.get('options'))
-    if lista_temporaia:
-        return f'Você selecionou a opção {lista_temporaia}'
-    else:
-        return 'Nenhuma opção selecionada'
+    media = 0 
+    x = len(escolha)
+    if request.method == "POST":
+        if x < 5:  # Permite no máximo five escolhas
+            escolha.append(request.form.get("options"))
+        else:
+            media = sum(int(i) for i in escolha) / len(escolha)
+    return render_template("scrum.html", escolha=escolha, x=x, media=media)
 
 def header():
     return render_template('header.html')
