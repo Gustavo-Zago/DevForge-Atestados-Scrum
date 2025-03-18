@@ -56,7 +56,7 @@ def enviar():
     arquivo.save(caminho_arquivo)
 
     # Salvar os dados em um arquivo de texto
-    with open('atestados.txt', 'a', encoding='utf-8') as f:
+    with open('./src/static/uploads/atestados.txt', 'a', encoding='utf-8') as f:
         f.write(f"Nome: {nome}\nRA do aluno: {RA}\nData Inicial: {data_i}\nData Final {data_f}\nValidade: {calcula_validade_atestado(data_i, data_f)} dias\nMotivo: {motivo}\nArquivo: {caminho_arquivo}\nStatus: {status}\n\n")
 
     flash('Atestado enviado com sucesso!')
@@ -65,7 +65,7 @@ def enviar():
 @app.route('/espera', methods=['GET'])
 def ler_txt():
     try:
-        with open('atestados.txt', 'r', encoding='utf-8') as f:
+        with open('./src/static/uploads/atestados.txt', 'r', encoding='utf-8') as f:
             linhas = f.readlines()
         #aqui começa a transoformar em um dicionario pra tratar melhor os dados tropa
         atestados = []
