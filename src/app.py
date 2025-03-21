@@ -24,9 +24,16 @@ def envio():
     return render_template('formAtestado.html')
 
 @app.route('/scrum')
-def scr():
+def scrum():
     return render_template("scrum.html")
 
+@app.route('/adminatestado')
+def adminatestado():
+    return render_template("adminAtestado.html")
+
+@app.route('/adminscrum')
+def adminscrum():
+    return render_template("adminScrum.html")
 
 @app.route('/enviar', methods=['POST'])
 def enviar():
@@ -88,10 +95,10 @@ def ler_txt():
         if atestado_atual:  # Garante que o último atestado seja salvo
             atestados.append(atestado_atual)
 
-        return render_template('Espera.html', atestados=atestados)
+        return render_template('espera.html', atestados=atestados)
 
     except FileNotFoundError:
-        return render_template('Espera.html', atestados= 'Ih deu ruim')
+        return render_template('espera.html', atestados= 'Ih deu ruim')
     
 @app.route("/header")
 def header():

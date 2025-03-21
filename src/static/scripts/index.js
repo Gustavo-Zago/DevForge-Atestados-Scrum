@@ -29,6 +29,7 @@ gestaoButton.addEventListener("click", function () {
     console.log(input_senha)
     if (input_senha == adm_password){
       alert("Hello World!");
+      redirecionar("/adminatestado");
     }
   });
   // if (senha correta){
