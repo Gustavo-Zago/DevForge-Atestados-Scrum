@@ -26,22 +26,29 @@ gestaoButton.addEventListener("click", function () {
     //alert("1")
     let input_senha = document.querySelector("#inp_senha").value;
     alert(input_senha)
-    console.log(input_senha)
     if (input_senha == adm_password){
       alert("Hello World!");
       redirecionar("/adminatestado");
+      return
     }
   });
-  // if (senha correta){
-  //  redirecionar("/");
-  // }
+
 });
 
 admButton.addEventListener("click", function () {
   modalAction("open");
-  // if (senha correta) {
-  //   redirecionar("/")
-  // }
+
+  adm_btn_senha.addEventListener("click", function (e) {
+    e.preventDefault();
+    //alert("1")
+    let input_senha = document.querySelector("#inp_senha").value;
+    alert(input_senha)
+    if (input_senha == adm_password){
+      alert("Hello World!");
+      redirecionar("/adminscrum");
+      return
+    }
+  });
 });
 
 closeButton.addEventListener("click", () => {
