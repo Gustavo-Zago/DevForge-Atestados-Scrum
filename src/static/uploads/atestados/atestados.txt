@@ -70,3 +70,21 @@ Motivo: oi
 Arquivo: src/static/uploads\123_18032025095539.PDF
 Status: Pendente
 
+Nome: oi
+RA do aluno: 123
+Data Inicial: 2000-02-01
+Data Final 2000-03-01
+Validade: 29 dias
+Motivo: oi
+Arquivo: .//static/uploads/atestados/123_21032025093946.pdf
+Status: Pendente
+
+Nome: Emmanuel
+RA do aluno: 12345
+Data Inicial: 2000-05-01
+Data Final 2000-06-01
+Validade: 31 dias
+Motivo: wswsws
+Arquivo: .//static/uploads/atestados/12345_21032025094126.pdf
+Status: Pendente
+
