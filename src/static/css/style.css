@@ -1,8 +1,11 @@
 @import url(selecao.css);
+@import url(espera.css);
+
 :root {
   --azul-base: #393f50;
   --off-white: #f2eee7;
   --off-white-cinza: #c2bfbb;
+  --laranja-queimado: #e07a5f;
   --font-principal: "Rowdies", monospace;
   --border-radius: 25px;
 }

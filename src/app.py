@@ -64,7 +64,7 @@ def enviar():
 
     # Salvar os dados em um arquivo de texto
     with open('./src/static/uploads/atestados.txt', 'a', encoding='utf-8') as f:
-        f.write(f"Nome: {nome}\nRA do aluno: {RA}\nData Inicial: {data_i}\nData Final {data_f}\nValidade: {calcula_validade_atestado(data_i, data_f)} dias\nMotivo: {motivo}\nArquivo: {caminho_arquivo}\nStatus: {status}\n\n")
+        f.write(f"Nome: {nome}\nRA do aluno: {RA}\nData Inicial: {data_i}\nData Final: {data_f}\nValidade: {calcula_validade_atestado(data_i, data_f)} dias\nMotivo: {motivo}\nArquivo: {caminho_arquivo}\nStatus: {status}\n\n")
 
     flash('Atestado enviado com sucesso!')
     return redirect(url_for('ler_txt'))
