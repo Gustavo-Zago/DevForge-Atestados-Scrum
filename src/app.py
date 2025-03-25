@@ -12,7 +12,7 @@ teste()
 i = 0
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'
-UPLOAD_FOLDER = 'src/static/uploads/atestados'
+UPLOAD_FOLDER = './static/uploads/atestados/'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/")
@@ -24,9 +24,16 @@ def envio():
     return render_template('formAtestado.html')
 
 @app.route('/scrum')
-def scr():
+def scrum():
     return render_template("scrum.html")
 
+@app.route('/adminatestado')
+def adminatestado():
+    return render_template("adminAtestado.html")
+
+@app.route('/adminscrum')
+def adminscrum():
+    return render_template("adminScrum.html")
 
 @app.route('/enviar', methods=['POST'])
 def enviar():
@@ -56,8 +63,8 @@ def enviar():
     arquivo.save(caminho_arquivo)
 
     # Salvar os dados em um arquivo de texto
-    with open('./src/static/uploads/atestados.txt', 'a', encoding='utf-8') as f:
-        f.write(f"Nome: {nome}\nRA do aluno: {RA}\nData Inicial: {data_i}\nData Final {data_f}\nValidade: {calcula_validade_atestado(data_i, data_f)} dias\nMotivo: {motivo}\nArquivo: {caminho_arquivo}\nStatus: {status}\n\n")
+    with open(UPLOAD_FOLDER+'atestados.txt', 'a', encoding='utf-8') as f:
+        f.write(f"Nome: {nome}\nRA do aluno: {RA}\nData Inicial: {data_i}\nData Final: {data_f}\nValidade: {calcula_validade_atestado(data_i, data_f)} dias\nMotivo: {motivo}\nArquivo: {caminho_arquivo}\nStatus: {status}\n\n")
 
     flash('Atestado enviado com sucesso!')
     return redirect(url_for('ler_txt'))
@@ -65,7 +72,7 @@ def enviar():
 @app.route('/espera', methods=['GET'])
 def ler_txt():
     try:
-        with open('./src/static/uploads/atestados.txt', 'r', encoding='utf-8') as f:
+        with open('./static/uploads/atestados.txt', 'r', encoding='utf-8') as f:
             linhas = f.readlines()
         #aqui começa a transoformar em um dicionario pra tratar melhor os dados tropa
         atestados = []
@@ -88,10 +95,10 @@ def ler_txt():
         if atestado_atual:  # Garante que o último atestado seja salvo
             atestados.append(atestado_atual)
 
-        return render_template('Espera.html', atestados=atestados)
+        return render_template('espera.html', atestados=atestados)
 
     except FileNotFoundError:
-        return render_template('Espera.html', atestados= 'Ih deu ruim')
+        return render_template('espera.html', atestados= 'Ih deu ruim')
     
 @app.route("/header")
 def header():

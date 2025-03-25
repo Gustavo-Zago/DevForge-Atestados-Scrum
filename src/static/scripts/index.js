@@ -4,33 +4,70 @@ atestadoButton = document.getElementById("btn_atestado");
 gestaoButton = document.getElementById("btn_gestao");
 equipeButton = document.getElementById("btn_equipe");
 admButton = document.getElementById("btn_adm");
+enviarButton = document.getElementById("btn_enviar")
 closeButton = document.getElementById("close_modal");
+adm_btn_senha = document.querySelector("#adm_btn_senha");
+buscarButton = document.getElementById("btn_buscar");
+const adm_password = "admin";
 
-atestadoButton.addEventListener("click", function () {
-  redirecionar("/envio");
-});
+// Verifica se o botão "atestadoButton" existe no DOM
+if (atestadoButton) {
+  atestadoButton.addEventListener("click", function () {
+    redirecionar("/envio");
+  });
+}
 
-equipeButton.addEventListener("click", function () {
-  redirecionar("/scrum");
-});
+if (equipeButton) {
+  equipeButton.addEventListener("click", function () {
+    redirecionar("/scrum");
+  });
+}
 
-gestaoButton.addEventListener("click", function () {
-  modalAction("open");
-  // if (senha correta){
-  //  redirecionar("/");
-  // }
-});
+if (gestaoButton) {
+  gestaoButton.addEventListener("click", function () {
+    modalAction("open");
 
-admButton.addEventListener("click", function () {
-  modalAction("open");
-  // if (senha correta) {
-  //   redirecionar("/")
-  // }
-});
+    adm_btn_senha.addEventListener("click", function (e) {
+      e.preventDefault();
+      let input_senha = document.querySelector("#inp_senha").value;
+      alert(input_senha);
+      if (input_senha == adm_password) {
+        alert("Hello World!");
+        redirecionar("/adminatestado");
+        return;
+      }
+    });
+  });
+}
 
-closeButton.addEventListener("click", () => {
-  modalAction("close");
-});
+if (admButton) {
+  admButton.addEventListener("click", function () {
+    modalAction("open");
+
+    adm_btn_senha.addEventListener("click", function (e) {
+      e.preventDefault();
+      let input_senha = document.querySelector("#inp_senha").value;
+      alert(input_senha);
+      if (input_senha == adm_password) {
+        alert("Hello World!");
+        redirecionar("/adminscrum");
+        return;
+      }
+    });
+  });
+}
+if(buscarButton)
+{
+  buscarButton.addEventListener("click", function () {
+    modalAction("open")
+  });
+}
+
+if (closeButton) {
+  closeButton.addEventListener("click", () => {
+    modalAction("close");
+  });
+}
 
 function redirecionar(url) {
   window.location.href = url;

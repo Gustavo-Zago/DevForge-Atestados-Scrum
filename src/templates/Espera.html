@@ -3,22 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
     <title>Exibição do Arquivo</title>
 </head>
 <body>
-    <h1>Lista de Atestados</h1>
+    <header>
+        <img src="../static/assets/Home.png">
+        <div class="links_header">
+            <a href="#">Enviar Atestado</a>
+            <a href="#">Procurar Atestado</a>
+        </div>
+    </header>
+    <nav>
+        <h1>Histórico de Atestados</h1>
+        <button id="btn_enviar">Enviar Atestado</button>
+    </nav>
+    
+    <section class="informacoes">
+        <p>Validade</p>
+        <p>Nome do Aluno</p>
+        <p>Status</p>
+    </section>
 
     {% for atestado in atestados %}
-        <hr>
-        <p><strong>Nome:</strong> {{ atestado['Nome'] }}</p>
-        <p><strong>RA do aluno:</strong> {{ atestado['RA do aluno'] }}</p>
-        <p><strong>Data Inicial:</strong> {{ atestado['Data Inicial'] }}</p>
-        <p><strong>Data Final:</strong> {{ atestado['Data Final'] }}</p>
-        <p><strong>Validade:</strong> {{ atestado['Validade'] }}</p>
-        <p><strong>Motivo:</strong> {{ atestado['Motivo'] }}</p>
-        <p><strong>Arquivo:</strong> <a href="{{ atestado['Arquivo'] }}" target="_blank">Atestado</a></p>
-        <p><strong>Status:</strong> {{ atestado['Status'] }}</p>
+        <section class="dados_aluno">
+            <p>{{ atestado['Data Final'] }}</p>
+            <p>{{ atestado['Nome'] }}</p>
+            <p>{{ atestado['Status'] }}</p>
+        </section>
+
+
+        <!-- <p><strong>RA do aluno:</strong> {{ atestado['RA do aluno'] }}</p> -->
+        <!-- <p><strong>Data Inicial:</strong> {{ atestado['Data Inicial'] }}</p> -->
+        <!-- <p><strong>Motivo:</strong> {{ atestado['Motivo'] }}</p> -->
+        <!-- <p><strong>Arquivo:</strong> <a href="{{ atestado['Arquivo'] }}" target="_blank">Atestado</a></p> -->
     {% endfor %}
 
+    <dialog id="modal">
+        <img
+          class="close_button"
+          id="close_modal"
+          src="../static/assets/close.png"
+          alt="Botão Fechar"
+        />
+    </dialog>
+
+    <script src="../static/scripts/index.js"></script>
 </body>
 </html>
