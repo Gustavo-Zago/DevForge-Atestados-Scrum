@@ -1,0 +1,32 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 8%;
+  padding: 10px;
+
+  background-color: var(--azul-base);
+}
+
+header > img {
+  width: 55px;
+  height: 55px;
+}
+
+.links_header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: auto;
+}
+
+.links_header a {
+  font: normal 900 1.3rem var(--font-principal);
+  color: var(--off-white);
+}
+
+.links_header a:hover {
+  color: var(--off-white-cinza);
+}

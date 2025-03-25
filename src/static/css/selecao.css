@@ -25,9 +25,11 @@
   gap: 5px;
 
   width: 20%;
-  height: 15%;
-  padding: 5px 15px;
-  padding-bottom: 0;
+  height: 18%;
+  min-width: 285px;
+  min-height: 135px;
+  padding: 15px;
+  padding-bottom: 5px;
 
   background-color: var(--azul-base);
   color: var(--off-white);
