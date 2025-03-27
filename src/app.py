@@ -115,9 +115,6 @@ def submit():
             media = sum(int(i) for i in escolha) / len(escolha)
     return render_template("scrum.html", escolha=escolha, x=x, media=media)
 
-def header():
-    return render_template('header.html')
-
 @app.route("/gestaoat", methods=["GET"])
 def gestao():
     try:
