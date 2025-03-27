@@ -1,6 +1,7 @@
 @import url(selecao.css);
 @import url(header.css);
 @import url(espera.css);
+@import url(gestãodeatestados.css);
 
 :root {
   --azul-base: #393f50;

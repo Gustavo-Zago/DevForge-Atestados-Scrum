@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Gestão de Atestados</title>
-    <link rel="stylesheet" href="../static/css/gestãodeatestados.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
     <header>
-        <img src="../static/assets/Home.png" alt="Logo">
-        <div class="links_header">
-            <a href="/">Gestão de Atestados</a>
-        </div>
+      <img src="../static/assets/Home.png" />
+      <div class="links_header">
+        <a href="#">Gestão de Atestados</a>
+      </div>
     </header>
 
     <h2>Histórico de Atestados</h2>
 
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Validade</th>
-                    <th>Nome do Aluno</th>
-                    <th>Status</th>
-                    <th>Arquivo</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for atestado in atestados %}
-                <tr>
-                    <td>{{ atestado['Data Final'] }}</td>
-                    <td>{{ atestado['Nome'] }}</td>
-                    <td>{{ atestado['Status'] }}</td>
-                    <td><button>Visualizar {{atestado['Arquivo'] }}</button></td> <!-- Coloquei o "{{atestado['Arquivo'] }}" para mostrar a rota do arquivo respectivo, favor tirar e deixar só o "Vizualizar""-->
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <main class="gestao-main">
+      <table>
+        <thead>
+          <tr>
+            <th>Validade</th>
+            <th>Nome do Aluno</th>
+            <th>Status</th>
+            <th>Arquivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for atestado in atestados %}
+          <tr>
+            <td>{{ atestado['Data Final'] }}</td>
+            <td>{{ atestado['Nome'] }}</td>
+            <td>{{ atestado['Status'] }}</td>
+            <td>
+              <button>
+                Visualizar
+                <!--{{atestado['Arquivo'] }} -->
+              </button>
+            </td>
+            <!-- Coloquei o "{{atestado['Arquivo'] }}" para mostrar a rota do arquivo respectivo, favor tirar e deixar só o "Vizualizar""-->
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </main>
-</body>
+  </body>
 </html>
