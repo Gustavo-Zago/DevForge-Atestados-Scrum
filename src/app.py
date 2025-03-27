@@ -12,7 +12,7 @@ teste()
 i = 0
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'
-UPLOAD_FOLDER = './static/uploads/atestados/'
+UPLOAD_FOLDER = './src/static/uploads/atestados/'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/")
@@ -72,7 +72,7 @@ def enviar():
 @app.route('/espera', methods=['GET'])
 def ler_txt():
     try:
-        with open('./static/uploads/atestados/atestados.txt', 'r', encoding='utf-8') as f:
+        with open(UPLOAD_FOLDER+'atestados.txt', 'r', encoding='utf-8') as f:
             linhas = f.readlines()
         #aqui começa a transoformar em um dicionario pra tratar melhor os dados tropa
         atestados = []
@@ -121,7 +121,7 @@ def header():
 @app.route("/gestaoat", methods=["GET"])
 def gestao():
     try:
-        with open('./static/uploads/atestados/atestados.txt', 'r', encoding='utf-8') as f:
+        with open(UPLOAD_FOLDER+'atestados.txt', 'r', encoding='utf-8') as f:
             linhas = f.readlines()
         #aqui começa a transoformar em um dicionario pra tratar melhor os dados tropa
         atestados = []
