@@ -7,7 +7,7 @@ header {
   height: 8%;
   padding: 10px;
 
-  border-bottom: solid 5px var(--laranja-queimado);
+  border-bottom: solid var(--borda-laranja) var(--laranja-queimado);
   background-color: var(--azul-base);
 }
 

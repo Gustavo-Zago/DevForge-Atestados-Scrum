@@ -10,6 +10,7 @@
   --laranja-queimado: #e07a5f;
   --font-principal: "Rowdies", monospace;
   --border-radius: 25px;
+  --borda-laranja: 5px;
 }
 
 * {

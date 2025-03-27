@@ -6,7 +6,6 @@ nav {
   justify-content: space-between;
   align-items: center;
 
-  border-top: solid 8px var(--laranja-queimado);
   background-color: var(--azul-base);
 
   padding: 20px;
