@@ -23,11 +23,16 @@ header {
   margin: auto;
 }
 
-.links_header a {
+.links_header a,
+.links_header button {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
   font: normal 900 1.3rem var(--font-principal);
   color: var(--off-white);
 }
 
-.links_header a:hover {
+.links_header a:hover,
+.links_header button:hover {
   color: var(--off-white-cinza);
 }

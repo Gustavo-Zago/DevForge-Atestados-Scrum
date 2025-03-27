@@ -7,19 +7,19 @@
     <title>Exibição do Arquivo</title>
   </head>
   <body>
-    <header>
+    <header id="header-espera">
       <a class="link-home" href="/"><img src="../static/assets/Home.png" /></a>
       <div class="links_header">
         <a href="#">Enviar Atestado</a>
-        <a href="#">Procurar Atestado</a>
+        <button id="btn_buscar">Procurar Atestado</button>
       </div>
     </header>
-    <nav>
-      <h1>Histórico de Atestados</h1>
-      <button id="btn_enviar">Enviar Atestado</button>
-    </nav>
 
     <main class="main-espera">
+      <nav>
+        <h1>Histórico de Atestados</h1>
+        <button id="btn_enviar">Enviar Atestado</button>
+      </nav>
       <section class="informacoes">
         <p>Validade</p>
         <p>Nome do Aluno</p>
@@ -38,13 +38,50 @@
       <!-- <p><strong>Arquivo:</strong> <a href="{{ atestado['Arquivo'] }}" target="_blank">Atestado</a></p> -->
       {% endfor %}
     </main>
-    <dialog id="modal">
+
+    <dialog id="modal" style="height: 120px; width: 400px">
       <img
         class="close_button"
         id="close_modal"
         src="../static/assets/close.png"
         alt="Botão Fechar"
       />
+      <div style="position: relative; display: flex; align-items: center">
+        <label style="margin-left: 40px">RA:</label>
+        <label style="margin-left: 110px">Status: </label>
+      </div>
+      <form
+        style="
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+        "
+      >
+        <div style="position: relative; display: flex; align-items: center">
+          <input
+            type="text"
+            id="inp_RA"
+            style="padding-right: 30px; width: 150px"
+          />
+          <img
+            src="../static/assets/icone-loupe-gris.png"
+            style="
+              position: absolute;
+              right: 10px;
+              height: 15px;
+              width: 15px;
+              cursor: pointer;
+            "
+          />
+        </div>
+        <input
+          type="text"
+          id="inp_Status"
+          style="width: 140px; height: 35px"
+          disabled="true"
+        />
+      </form>
     </dialog>
 
     <script src="../static/scripts/index.js"></script>

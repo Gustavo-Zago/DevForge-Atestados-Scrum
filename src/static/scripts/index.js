@@ -1,15 +1,31 @@
+//Geral
 main = document.querySelector("main");
+header = document.querySelector("header");
 modal = document.getElementById("modal");
+closeButton = document.getElementById("close_modal");
+
+//Index
 atestadoButton = document.getElementById("btn_atestado");
 gestaoButton = document.getElementById("btn_gestao");
 equipeButton = document.getElementById("btn_equipe");
 admButton = document.getElementById("btn_adm");
 enviarButton = document.getElementById("btn_enviar");
-closeButton = document.getElementById("close_modal");
 adm_btn_senha = document.querySelector("#adm_btn_senha");
+
+//Espera
 buscarButton = document.getElementById("btn_buscar");
+
 const adm_password = "admin";
 
+//Geral
+
+if (closeButton) {
+  closeButton.addEventListener("click", () => {
+    modalAction("close");
+  });
+}
+
+//Index
 // Verifica se o botão "atestadoButton" existe no DOM
 if (atestadoButton) {
   atestadoButton.addEventListener("click", function () {
@@ -56,15 +72,12 @@ if (admButton) {
     });
   });
 }
+
+//Histórico Atestado
+
 if (buscarButton) {
   buscarButton.addEventListener("click", function () {
     modalAction("open");
-  });
-}
-
-if (closeButton) {
-  closeButton.addEventListener("click", () => {
-    modalAction("close");
   });
 }
 
@@ -74,7 +87,15 @@ function redirecionar(url) {
 
 function modalAction(action) {
   modal.style.display = action == "open" ? "flex" : "none";
-  main.classList.toggle("blur");
+  if (main) {
+    main.classList.toggle("blur");
+    main.classList.toggle("noClick");
+  }
+
+  if (header) {
+    header.classList.toggle("blur");
+    header.classList.toggle("noClick");
+  }
 
   listaBotao = document.querySelectorAll(".botao");
   listaBotao.forEach((botao) => {
