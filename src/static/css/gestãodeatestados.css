@@ -4,7 +4,6 @@ body {
 
 h2 {
   background-color: hsl(224, 17%, 27%);
-  border-top: solid 5px var(--laranja-queimado);
   color: white;
   padding: 20px;
   font-size: 25px;
@@ -34,7 +33,7 @@ th {
   font-weight: bold;
 }
 
-button {
+.visualizar-button {
   background: none;
   border: none;
   color: var(--azul-base);
@@ -45,6 +44,6 @@ button {
   border: 2px solid var(--azul-base);
 }
 
-button:hover {
+.visualizar-button:hover {
   background-color: var(--off-white-cinza);
 }

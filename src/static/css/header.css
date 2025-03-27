@@ -7,10 +7,11 @@ header {
   height: 8%;
   padding: 10px;
 
+  border-bottom: solid 5px var(--laranja-queimado);
   background-color: var(--azul-base);
 }
 
-header > img {
+.link-home > img {
   width: 55px;
   height: 55px;
 }

@@ -4,7 +4,7 @@ atestadoButton = document.getElementById("btn_atestado");
 gestaoButton = document.getElementById("btn_gestao");
 equipeButton = document.getElementById("btn_equipe");
 admButton = document.getElementById("btn_adm");
-enviarButton = document.getElementById("btn_enviar")
+enviarButton = document.getElementById("btn_enviar");
 closeButton = document.getElementById("close_modal");
 adm_btn_senha = document.querySelector("#adm_btn_senha");
 buscarButton = document.getElementById("btn_buscar");
@@ -13,7 +13,7 @@ const adm_password = "admin";
 // Verifica se o botão "atestadoButton" existe no DOM
 if (atestadoButton) {
   atestadoButton.addEventListener("click", function () {
-    redirecionar("/envio");
+    redirecionar("/espera");
   });
 }
 
@@ -56,10 +56,9 @@ if (admButton) {
     });
   });
 }
-if(buscarButton)
-{
+if (buscarButton) {
   buscarButton.addEventListener("click", function () {
-    modalAction("open")
+    modalAction("open");
   });
 }
 
