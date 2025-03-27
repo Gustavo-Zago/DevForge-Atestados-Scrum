@@ -45,13 +45,7 @@ if (gestaoButton) {
 
     adm_btn_senha.addEventListener("click", function (e) {
       e.preventDefault();
-      let input_senha = document.querySelector("#inp_senha").value;
-      alert(input_senha);
-      if (input_senha == adm_password) {
-        alert("Hello World!");
-        redirecionar("/adminatestado");
-        return;
-      }
+      verificaSenha("/gestaoat");
     });
   });
 }
@@ -62,13 +56,7 @@ if (admButton) {
 
     adm_btn_senha.addEventListener("click", function (e) {
       e.preventDefault();
-      let input_senha = document.querySelector("#inp_senha").value;
-      alert(input_senha);
-      if (input_senha == adm_password) {
-        alert("Hello World!");
-        redirecionar("/adminscrum");
-        return;
-      }
+      verificaSenha("/adminscrum");
     });
   });
 }
@@ -101,4 +89,13 @@ function modalAction(action) {
   listaBotao.forEach((botao) => {
     botao.classList.toggle("noClick");
   });
+}
+
+function verificaSenha(url) {
+  let input_senha = document.querySelector("#inp_senha").value;
+  if (input_senha == adm_password) {
+    input_senha.value = "";
+    redirecionar(url);
+    return;
+  }
 }
