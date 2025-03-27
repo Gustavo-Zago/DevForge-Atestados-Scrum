@@ -1,0 +1,27 @@
+Nome: Gustavo Zago de Lima
+RA do aluno: 1
+Data Inicial: 2025-03-27
+Data Final: 2025-03-30
+Validade: 3 dias
+Motivo: sdd da ex
+Arquivo: ./static/uploads/atestados/1_26032025232537.pdf
+Status: Pendente
+
+Nome: a
+RA do aluno: 1
+Data Inicial: 2025-03-27
+Data Final: 2025-03-29
+Validade: 2 dias
+Motivo: sdd da eex
+Arquivo: ./static/uploads/atestados/1_26032025232730.pdf
+Status: Pendente
+
+Nome: b
+RA do aluno: 1
+Data Inicial: 2025-03-27
+Data Final: 2025-03-29
+Validade: 2 dias
+Motivo: sdd da eex
+Arquivo: ./static/uploads/atestados/1_26032025232730.pdf
+Status: Aprovado
+

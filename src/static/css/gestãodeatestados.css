@@ -1,258 +1,96 @@
- /* Meu css para tela administração de atestados */
-body{ background-color:white}
-
-div {
-  
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  justify-content: space-around;
-  font-size: 25px;
-  font-weight: bold;
-  font-family: var(--font-principal);
-  padding:20px;
-  font-style: var(--font-principal);
-
-}
-
-
-
-
- .button  {
-
-  display: flex;
-  align-items: end;
-  flex-direction: column;
-  font-style: var(--font-principal);
-  background-color: white;
-  margin-right: 80px;
-
-
-}
-
-
-  button {
-
-    width: 100%;
-    height: 100%;
-    font-family: var(--font-principal);
-    text-align: center;
-    text-decoration: none;
-    font-size: 25px;
-    color: #393f50;
-    border: none;
-    border-radius: var(--border-radius);
-    color: var(--azul-base);
-    cursor: pointer ;
-  
-  }
-  
-
-
-
-  button:hover {
-    background-color: var(--off-white-cinza);
-    transform: scale(1,1.2);
-
-  }
-  
-  input {
-    background-color: var(--off-white);
-    border: none;
-    border-radius: calc(var(--border-radius) - 5px);
-  }
-  
-  input:hover {
-    background-color: var(--off-white-cinza);
-  }
-  
-  .close_button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-  
-    width: 30px;
-    height: 30px;
-  }
-
-
-
-h2 { text-align: left;
-color: #f2eee7
-;font-family: var(--font-principal);
-background-color:hsl(224, 17%, 27%);
-padding: 20px;
-font-size: 25px;
-
-
-}
-
 :root {
   --azul-base: #393f50;
   --off-white: #f2eee7;
   --off-white-cinza: #c2bfbb;
-  --font-principal: "Rowdies", monospace;
+  --font-principal: "Rowdies", sans-serif;
   --border-radius: 25px;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
-  font-family: var(--font-principal), monospace;
-}
-
-header {
-  color: #f2eee7  ;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0;
   font-family: var(--font-principal);
-  font-size: 50px;
-
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-
-  background-color: var(--azul-base);
-  border-bottom: solid tomato;
-  font-weight: 500px;
-
 }
 
-header > img {
-  width: 55px;
-  height: 55px;
+body {
+  background-color: white;
 }
-
-.links_header {
-  margin-bottom: auto;
-}
-
-.links_header a {
-  color: var(--off-white);
-}
-
-main {
-  width: 100%;
-  height: 100vh;
-  background-color: var(--azul-base);
-}
-
-.blur {
-  filter: blur(4px);
-}
-
-.noClick {
-  pointer-events: none;
-}
-
-.close_button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-
-  width: 30px;
-  height: 30px;
-}
-
-/* Estilização do header da página de Gestão  de Atestados  */
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  width: 100%;
-  height: 8%;
   padding: 10px;
-  font-family: fon;
-
   background-color: var(--azul-base);
+  color: var(--off-white);
+  border-bottom: 2px solid tomato;
 }
 
-header > img {
+header img {
   width: 100px;
   height: 55px;
 }
 
 .links_header {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 20px;
-  margin: auto;
+  width: 100%; 
 }
 
-.links_header a {
-  font: normal 900 1.3rem var(--font-principal);
-  text-decoration: none;
+.links_header a{
+  font-size: 1.3rem;
+  font-weight: 900;
   color: var(--off-white);
+  text-decoration: none;
 }
 
 .links_header a:hover {
   color: var(--off-white-cinza);
 }
 
-/* Estilização da seleção de nosso css */
-
-.selecao {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-
-  width: 100%;
-  height: 100%;
+h2 {
+  background-color: hsl(224, 17%, 27%);
+  color: white;
+  padding: 20px;
+  font-size: 25px;
 }
 
-.selecao > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  width: 100%;
-  height: 30%;
+main {
+  padding: 20px;
 }
 
-#modal {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 25px;
+  text-align: center;
+}
 
-  width: 25%;
-  height: 15%;
-  padding: 5px 15px;
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid var(--azul-base);
+}
 
+th {
   background-color: var(--azul-base);
-  font-size: 1.5rem;
-  font-weight: 900;
-  text-indent: 10px;
   color: var(--off-white);
+  font-weight: bold;
+}
+
+button {
+  background: none;
   border: none;
-  border-radius: calc(var(--border-radius) - 10px);
-
-  -webkit-box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.75);
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  color: var(--azul-base);
+  font-size: 25px;
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--azul-base);
 }
 
-#modal > input {
-  padding: 10px;
-  height: 35%;
-}
-
-.close_button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-
-  width: 30px;
-  height: 30px;
+button:hover {
+  background-color: var(--off-white-cinza);
 }

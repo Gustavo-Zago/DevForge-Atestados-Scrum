@@ -72,7 +72,7 @@ def enviar():
 @app.route('/espera', methods=['GET'])
 def ler_txt():
     try:
-        with open('./static/uploads/atestados.txt', 'r', encoding='utf-8') as f:
+        with open('./static/uploads/atestados/atestados.txt', 'r', encoding='utf-8') as f:
             linhas = f.readlines()
         #aqui começa a transoformar em um dicionario pra tratar melhor os dados tropa
         atestados = []
@@ -117,6 +117,37 @@ def submit():
 
 def header():
     return render_template('header.html')
+
+@app.route("/gestaoat", methods=["GET"])
+def gestao():
+    try:
+        with open('./static/uploads/atestados/atestados.txt', 'r', encoding='utf-8') as f:
+            linhas = f.readlines()
+        #aqui começa a transoformar em um dicionario pra tratar melhor os dados tropa
+        atestados = []
+        atestado_atual = {}
+        for linha in linhas:
+            
+            linha = linha.strip()
+            
+            if not linha:  # verifica linha vazia q mostra separação de registros
+                if atestado_atual and atestado_atual['Status'] == 'Pendente': # aqui ele vê se for Pendente, se for ele mostra, senão zera
+                    atestados.append(atestado_atual)  # add o atestado na lista
+                atestado_atual = {}  # zera para o próximo
+                continue  
+            
+            chave_valor = linha.split(":", 1)  # Divide na primeira ocorrência de ":"
+            if len(chave_valor) == 2:
+                chave, valor = chave_valor
+                atestado_atual[chave.strip()] = valor.strip()  # Remove espaços extras
+
+        if atestado_atual:# Garante que o último atestado seja salvo
+            atestados.append(atestado_atual)
         
+        return render_template('GestãoDeAtestados.html', atestados=atestados)
+
+    except FileNotFoundError:
+        return render_template('GestãoDeAtestados.html', atestados= 'Ih deu ruim')
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
