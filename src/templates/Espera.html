@@ -19,25 +19,25 @@
       <button id="btn_enviar">Enviar Atestado</button>
     </nav>
 
-    <section class="informacoes">
-      <p>Validade</p>
-      <p>Nome do Aluno</p>
-      <p>Status</p>
-    </section>
+    <main class="main-espera">
+      <section class="informacoes">
+        <p>Validade</p>
+        <p>Nome do Aluno</p>
+        <p>Status</p>
+      </section>
+      {% for atestado in atestados %}
+      <section class="dados_aluno">
+        <p>{{ atestado['Data Final'] }}</p>
+        <p>{{ atestado['Nome'] }}</p>
+        <p>{{ atestado['Status'] }}</p>
+      </section>
 
-    {% for atestado in atestados %}
-    <section class="dados_aluno">
-      <p>{{ atestado['Data Final'] }}</p>
-      <p>{{ atestado['Nome'] }}</p>
-      <p>{{ atestado['Status'] }}</p>
-    </section>
-
-    <!-- <p><strong>RA do aluno:</strong> {{ atestado['RA do aluno'] }}</p> -->
-    <!-- <p><strong>Data Inicial:</strong> {{ atestado['Data Inicial'] }}</p> -->
-    <!-- <p><strong>Motivo:</strong> {{ atestado['Motivo'] }}</p> -->
-    <!-- <p><strong>Arquivo:</strong> <a href="{{ atestado['Arquivo'] }}" target="_blank">Atestado</a></p> -->
-    {% endfor %}
-
+      <!-- <p><strong>RA do aluno:</strong> {{ atestado['RA do aluno'] }}</p> -->
+      <!-- <p><strong>Data Inicial:</strong> {{ atestado['Data Inicial'] }}</p> -->
+      <!-- <p><strong>Motivo:</strong> {{ atestado['Motivo'] }}</p> -->
+      <!-- <p><strong>Arquivo:</strong> <a href="{{ atestado['Arquivo'] }}" target="_blank">Atestado</a></p> -->
+      {% endfor %}
+    </main>
     <dialog id="modal">
       <img
         class="close_button"
