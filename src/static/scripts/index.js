@@ -22,6 +22,10 @@ const adm_password = "admin";
 if (closeButton) {
   closeButton.addEventListener("click", () => {
     modalAction("close");
+    listaInputs = document.querySelectorAll("dialog input");
+    listaInputs.forEach((input) => {
+      input.value = "";
+    });
   });
 }
 
