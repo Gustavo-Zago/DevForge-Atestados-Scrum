@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/css/style.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/DevForgePNG.ico">
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../static/assets/DevForgePNG.ico"
+    />
     <title>Exibição do Arquivo</title>
   </head>
   <body>
@@ -66,6 +70,7 @@
             style="padding-right: 30px; width: 150px"
           />
           <img
+            id="search-atestado"
             src="../static/assets/icone-loupe-gris.png"
             style="
               position: absolute;
@@ -86,5 +91,19 @@
     </dialog>
 
     <script src="../static/scripts/index.js"></script>
+    <script>
+      document
+        .getElementById("search-atestado")
+        .addEventListener("click", () => {
+          RA = document.getElementById("inp_RA").value;
+          if (RA != "") {
+            fetch(`/buscar-atestado?RA=${encodeURIComponent(RA)}`)
+              .then((response) => response.json())
+              .then((data) => {
+                document.getElementById("inp_Status").value = data.status;
+              });
+          }
+        });
+    </script>
   </body>
 </html>

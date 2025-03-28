@@ -115,6 +115,32 @@ def submit():
             media = sum(int(i) for i in escolha) / len(escolha)
     return render_template("scrum.html", escolha=escolha, x=x, media=media)
 
+@app.route("/buscar-atestado")
+def buscar():
+    try:
+        with open(UPLOAD_FOLDER + 'atestados.txt', 'r', encoding='utf-8') as file:
+            atestados = file.readlines()
+            statusLista = []
+            RA = request.args.get("RA")
+            for i, linha in  enumerate(atestados):
+                if linha.startswith("RA do aluno:"):
+                    raLinha = linha.split(":")[1].strip()
+                
+                    if (RA == raLinha):
+                        statusLinha = atestados[i+6]
+                        if (statusLinha.startswith('Status:')):
+                            status = statusLinha.split(":")[1].strip()
+                            statusLista.append(status)
+            if statusLista:
+                print(statusLista)
+                return jsonify({"status": statusLista[-1]})
+                
+            return jsonify({"status": "Não Encontrado"})
+    except FileNotFoundError:
+        return render_template('Espera.html')
+          
+           
+
 @app.route("/gestaoat", methods=["GET"])
 def gestao():
     try:
