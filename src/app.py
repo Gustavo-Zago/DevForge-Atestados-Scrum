@@ -10,7 +10,7 @@ from static.python.funcAtestado import *
 teste()
 
 i = 0
-app = Flask(__name__)
+app = Flask(__name__, static_folder='')
 app.secret_key = 'chave-secreta'
 UPLOAD_FOLDER = './src/static/uploads/atestados/'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -172,5 +172,86 @@ def gestao():
     except FileNotFoundError:
         return render_template('GestãoDeAtestados.html', atestados= 'Ih deu ruim')
 
+@app.route("/view/<ra>", methods=['GET'])
+def visualizar_ra(ra):
+    arquivos = os.listdir(UPLOAD_FOLDER)
+    for arquivo in arquivos:
+        if arquivo.startswith(ra):  # Verifica se o nome começa com o RA
+            caminho_arquivo = os.path.join('atestados', arquivo)
+            caminho_arquivo = "/static/uploads\\"+ caminho_arquivo
+            print(f"Arquivo encontrado: {caminho_arquivo}")
+            return render_template('view.html', caminho_arquivo=caminho_arquivo.replace('\\', '/'))
+            # return send_from_directory(caminho_arquivo)
+    
+    return "Arquivo não encontrado", 404
+
+@app.route("/aprovar", methods=["POST"])
+def aprovar():
+    # Pegando dados do formulário
+    ra = request.form['ra']
+    novo_status = "Aprovado"
+    index = int(request.form['index'])  # Pega o índice enviado pelo formulário
+
+    atestados_dir = os.path.join(UPLOAD_FOLDER, "atestados.txt")
+
+    # Lê todas as linhas do arquivo de atestados
+    with open(atestados_dir, "r", encoding="utf-8") as f:
+        linhas = f.readlines()
+
+    contador = -1
+    i = 0
+
+    while i < len(linhas):
+        if f"RA do aluno: {ra}" in linhas[i]:
+            contador += 1
+            if contador == index:  # Encontra o índice correto
+                while i < len(linhas):
+                    if "Status:" in linhas[i]:
+                        linhas[i] = f"Status: {novo_status}\n"  # Altera o status
+                        break
+                    i += 1
+        i += 1
+
+    # Salva as alterações no arquivo
+    with open(atestados_dir, "w", encoding="utf-8") as f:
+        f.writelines(linhas)
+
+    return jsonify({"mensagem": f"Atestado do RA {ra} foi aprovado com sucesso!"})
+
+@app.route("/reprovar", methods=["POST"])
+def reprovar():
+    # Verifica se 'index' foi enviado corretamente no formulário
+    try:
+        ra = request.form['ra']
+        novo_status = "Reprovado"
+        index = int(request.form['index'])  # Pegando o índice do formulário
+
+        atestados_dir = os.path.join(UPLOAD_FOLDER, "atestados.txt")
+
+        with open(atestados_dir, "r", encoding="utf-8") as f:
+            linhas = f.readlines()
+
+        contador = -1
+        i = 0
+
+        while i < len(linhas):
+            if f"RA do aluno: {ra}" in linhas[i]:
+                contador += 1
+                if contador == index:
+                    while i < len(linhas):
+                        if "Status:" in linhas[i]:
+                            linhas[i] = f"Status: {novo_status}\n"
+                            break
+                        i += 1
+            i += 1
+
+        with open(atestados_dir, "w", encoding="utf-8") as f:
+            f.writelines(linhas)
+
+        return jsonify({"mensagem": f"Atestado do RA {ra} foi reprovado com sucesso!"})
+
+    except KeyError as e:
+        return jsonify({"erro": f"Chave não encontrada: {str(e)}"}), 400
+    
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <iframe src="{{ caminho_arquivo }}" width="100%" height="600px"></iframe>
+    <form id="aprovar-form" action="/aprovar" method="POST">
+      <input type="hidden" name="ra" id="ra-aprovar" />
+      <input type="hidden" name="index" id="index-aprovar" />  
+      <button type="submit">Aprovar</button>
+    </form>
+    
+    <form id="reprovar-form" action="/reprovar" method="POST">
+      <input type="hidden" name="ra" id="ra-reprovar" />
+      <input type="hidden" name="index" id="index-reprovar" />  
+      <button type="submit">Reprovar</button>
+    </form>
+    
+    <script src="../static/scripts/index.js"></script>
+  </body>
+</html>

@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <title>Gestão de Atestados</title>
     <link rel="stylesheet" href="../static/css/style.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/DevForgePNG.ico">
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../static/assets/DevForgePNG.ico"
+    />
   </head>
   <body>
     <header>
@@ -33,9 +37,11 @@
             <td>{{ atestado['Nome'] }}</td>
             <td>{{ atestado['Status'] }}</td>
             <td>
-              <button class="visualizar-button">
+              <button
+                onClick="openModal('{{ url_for('visualizar_ra', ra=atestado['RA do aluno'])}}', {{loop.index0}})"
+                class="visualizar-button"
+                id="{{loop.index0}}">
                 Visualizar
-                <!--{{atestado['Arquivo'] }} -->
               </button>
             </td>
             <!-- Coloquei o "{{atestado['Arquivo'] }}" para mostrar a rota do arquivo respectivo, favor tirar e deixar só o "Vizualizar""-->
@@ -43,6 +49,21 @@
           {% endfor %}
         </tbody>
       </table>
+      <section
+        id="modal"
+        style="z-index: 1000; position: absolute; display: none"
+      >
+        <iframe
+          id="iframe-pdf"
+          width="100%"
+          height="600px"
+          src=""
+          frameborder="0"
+        ></iframe>
+        <button onclick="closeModal()">Fechar</button>
+      </section>
     </main>
+
+    <script src="../static/scripts/index.js"></script>
   </body>
 </html>

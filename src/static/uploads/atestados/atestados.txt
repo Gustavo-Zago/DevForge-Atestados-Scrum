@@ -5,7 +5,7 @@ Data Final: 2025-03-19
 Validade: 8 dias
 Motivo: dwdwd
 Arquivo: src/static/uploads\Scrum Avaliação Aberta.png
-Status: Pendente
+Status: Aprovado
 
 Nome: Ruan Carvalho
 RA do aluno: 213
@@ -14,7 +14,7 @@ Data Final: 2025-03-27
 Validade: 16 dias
 Motivo: dwdw
 Arquivo: src/static/uploads\Scrum Avaliação Aberta.png
-Status: Pendente
+Status: Aprovado
 
 Nome: Ruan Carvalho123123
 RA do aluno: 213
@@ -23,7 +23,7 @@ Data Final: 2025-03-27
 Validade: 16 dias
 Motivo: dwdw
 Arquivo: src/static/uploads\close.png
-Status: Pendente
+Status: Aprovado
 
 Nome: Ruan Carvalho123123
 RA do aluno: 213
@@ -32,7 +32,7 @@ Data Final: 2025-03-27
 Validade: 16 dias
 Motivo: dwdw
 Arquivo: src/static/uploads\close.png
-Status: Pendente
+Status: Aprovado
 
 Nome: Ruan Carvalho123123
 RA do aluno: 213
@@ -41,7 +41,7 @@ Data Final: 2025-03-27
 Validade: 16 dias
 Motivo: dwdw
 Arquivo: src/static/uploads\close.png
-Status: Pendente
+Status: Aprovado
 
 Nome: Olá
 RA do aluno: 24354363653
@@ -50,7 +50,7 @@ Data Final: 2000-02-03
 Validade: 2 dias
 Motivo: vwwnvwre ren
 Arquivo: src/static/uploads\24354363653_20250313095319.pdf
-Status: Pendente
+Status: Aprovado
 
 Nome: Gusttavo Lima e você
 RA do aluno: 22123456789
@@ -59,7 +59,7 @@ Data Final: 2025-03-14
 Validade: 2 dias
 Motivo: Doente de amor (amo o Masanori)
 Arquivo: src/static/uploads\22123456789_20250314074501.pdf
-Status: Pendente
+Status: Aprovado
 
 Nome: Emmanuel
 RA do aluno: 123
@@ -68,7 +68,7 @@ Data Final: 2000-02-05
 Validade: 4 dias
 Motivo: oi
 Arquivo: src/static/uploads\123_18032025095539.PDF
-Status: Pendente
+Status: Aprovado
 
 Nome: oi
 RA do aluno: 123
@@ -77,7 +77,7 @@ Data Final 2000-03-01
 Validade: 29 dias
 Motivo: oi
 Arquivo: .//static/uploads/atestados/123_21032025093946.pdf
-Status: Pendente
+Status: Aprovado
 
 Nome: Emmanuel
 RA do aluno: 12345
@@ -86,7 +86,7 @@ Data Final 2000-06-01
 Validade: 31 dias
 Motivo: wswsws
 Arquivo: .//static/uploads/atestados/12345_21032025094126.pdf
-Status: Pendente
+Status: Aprovado
 
 Nome: Teste5
 RA do aluno: 5
@@ -95,7 +95,7 @@ Data Final: 2000-02-02
 Validade: 1 dias
 Motivo: ...
 Arquivo: ./static/uploads/atestados/5_25032025095317.pdf
-Status: Pendente
+Status: Aprovado
 
 Nome: Gustavo Zago de Lima
 RA do aluno: 1
@@ -104,5 +104,5 @@ Data Final: 2025-03-29
 Validade: 1 dias
 Motivo: sdd da ex
 Arquivo: ./src/static/uploads/atestados/1_27032025184735.pdf
-Status: Pendente
+Status: Aprovado
 
