@@ -27,7 +27,7 @@ Para instituições e equipes scrum nosso produto é uma plataforma integrada qu
 
 ## 🏆MVP
 
-![SprintMVP](https://github.com/user-attachments/assets/dfafc290-04f8-45d0-8d70-264c1b6ef5a2)
+<img width="700px" src="https://github.com/user-attachments/assets/7a5aba8d-b1ca-48b9-8fc1-9628fc6dfe87">
 
 1. WireFrame: [Protótipo](https://www.figma.com/proto/s6hzmDP4S3F1vdxE5RuYn0/DevForge--?node-id=125-234&p=f&t=jU1ZbfaKHQJBEYUv-1&scaling=contain&content-scaling=fixed&page-id=125%3A16&starting-point-node-id=125%3A234)
 
