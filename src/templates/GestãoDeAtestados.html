@@ -37,11 +37,7 @@
             <td>{{ atestado['Nome'] }}</td>
             <td>{{ atestado['Status'] }}</td>
             <td>
-              <button
-                onClick="openModal('{{ url_for('visualizar_ra', ra=atestado['RA do aluno'])}}', {{loop.index0}})" class="visualizar-button"
-                id="{{loop.index0}}">
-                Visualizar
-              </button>
+              <button class="visualizar-button" id="{{atestado['Arquivo']}}"> Visualizar </button>
             </td>
             <!-- Coloquei o "{{atestado['Arquivo'] }}" para mostrar a rota do arquivo respectivo, favor tirar e deixar só o "Vizualizar""-->
           </tr>
@@ -59,6 +55,8 @@
           src=""
           frameborder="0"
         ></iframe>
+        <button type="button" class="status-button" id="Aprovado"> Aprovar </button>
+        <button type="button" class="status-button" id="Reprovado"> Reprovar </button>
         <button onclick="closeModal()">Fechar</button>
       </section>
     </main>

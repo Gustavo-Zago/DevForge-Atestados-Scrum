@@ -107,9 +107,35 @@ function ModalAtestado(url) {
   console.log(url);
 }
 
+listaBtnArquivo = document.querySelectorAll(".visualizar-button")
+listaBtnStatus = document.querySelectorAll(".status-button")
+urlArquivo = ''
+if (listaBtnArquivo){
+  listaBtnArquivo.forEach(botao => {
+    botao.addEventListener("click", () => {
+      url = botao.getAttribute('id')
+      openModal(url)
+    })
+  });
+}
+
+if (listaBtnStatus){
+  listaBtnStatus.forEach(botao => {
+    botao.addEventListener("click", () => {
+      statusLinha = botao.getAttribute('id')
+      fetch(`/alterarStatus?URL=${encodeURIComponent(urlArquivo)}&status=${encodeURIComponent(statusLinha)}`)
+      .catch(error => console.error('Erro: ', error))
+    })
+  })
+}
 
 // Função para abrir o PDF no iframe dentro do modal
 function openModal(url) {
+  url = url.split("/")
+  nomeArquivo = url[url.length -1]
+  url.splice(0,1)
+  url = url.join("/")
+  urlArquivo = nomeArquivo
     document.getElementById('iframe-pdf').src = url;
     document.getElementById('modal').style.display = 'block';
 }

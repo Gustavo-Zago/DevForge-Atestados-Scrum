@@ -172,18 +172,45 @@ def gestao():
     except FileNotFoundError:
         return render_template('GestãoDeAtestados.html', atestados= 'Ih deu ruim')
 
-@app.route("/view/<ra>", methods=['GET'])
-def visualizar_ra(ra):
-    arquivos = os.listdir(UPLOAD_FOLDER)
-    for arquivo in arquivos:
-        if arquivo.startswith(ra):  # Verifica se o nome começa com o RA
-            caminho_arquivo = os.path.join('atestados', arquivo)
-            caminho_arquivo = "/static/uploads\\"+ caminho_arquivo
-            print(f"Arquivo encontrado: {caminho_arquivo}")
-            return render_template('view.html', caminho_arquivo=caminho_arquivo.replace('\\', '/'))
-            # return send_from_directory(caminho_arquivo)
+# @app.route("/view/<ra>", methods=['GET'])
+# def visualizar_ra(ra):
+#     arquivos = os.listdir(UPLOAD_FOLDER)
+#     ra = ra.split("/")
+#     print(ra)
+#     for arquivo in arquivos:
+#         if arquivo.startswith(ra):  # Verifica se o nome começa com o RA
+#             caminho_arquivo = os.path.join('atestados', arquivo)
+#             caminho_arquivo = "/static/uploads\\"+ caminho_arquivo
+#             print(f"Arquivo encontrado: {caminho_arquivo}")
+#             return render_template('view.html', caminho_arquivo=caminho_arquivo.replace('\\', '/'))
+#             # return send_from_directory(caminho_arquivo)
     
-    return "Arquivo não encontrado", 404
+#     return "Arquivo não encontrado", 404
+
+@app.route("/alterarStatus")
+def alterarStatus():
+    url = request.args.get("URL")
+    status = request.args.get("status")
+    try:
+        with open(UPLOAD_FOLDER + 'atestados.txt', 'r', encoding='utf-8') as file:
+            atestados = file.readlines()
+
+        indexLinhaStatus = 0
+        for i, linha in enumerate(atestados):
+            if url in linha:
+                indexLinhaStatus = i+1
+                break
+        
+        atestados.pop(indexLinhaStatus)
+        atestados.insert(indexLinhaStatus, "Status: "+status+"\n")
+
+        with open(UPLOAD_FOLDER + 'atestados.txt', 'w', encoding='utf-8') as fileW:
+                fileW.writelines(atestados)
+
+        return 'Linha atualizada com sucesso!'
+
+    except Exception as e:
+        return f'Erro ao atualizar o status: {str(e)}', 500  
 
 @app.route("/aprovar", methods=["POST"])
 def aprovar():
