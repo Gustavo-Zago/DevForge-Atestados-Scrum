@@ -38,8 +38,7 @@
             <td>{{ atestado['Status'] }}</td>
             <td>
               <button
-                onClick="openModal('{{ url_for('visualizar_ra', ra=atestado['RA do aluno'])}}', {{loop.index0}})"
-                class="visualizar-button"
+                onClick="openModal('{{ url_for('visualizar_ra', ra=atestado['RA do aluno'])}}', {{loop.index0}})" class="visualizar-button"
                 id="{{loop.index0}}">
                 Visualizar
               </button>

@@ -103,26 +103,19 @@ function verificaSenha(url) {
     return;
   }
 }
-  // Função para abrir o modal e exibir o PDF
-  function openModal(url, index) {
-    // Define o 'src' do iframe com a URL do arquivo PDF
+function ModalAtestado(url) {
+  console.log(url);
+}
+
+
+// Função para abrir o PDF no iframe dentro do modal
+function openModal(url) {
     document.getElementById('iframe-pdf').src = url;
-
-    // Defina o RA nos formulários de Aprovar e Reprovar
-    var ra = '{{ atestados[index]["RA do aluno"] }}'; // Captura o RA com base no índice
-
-    document.getElementById('ra-aprovar').value = ra;
-    document.getElementById('ra-reprovar').value = ra;
-
-    // Exibe o modal
     document.getElementById('modal').style.display = 'block';
-  }
+}
 
-  // Função para fechar o modal
-  function closeModal() {
-    // Fecha o modal
+// Função para fechar o modal
+function closeModal() {
     document.getElementById('modal').style.display = 'none';
-
-    // Limpa o conteúdo do iframe
-    document.getElementById('iframe-pdf').src = '';
-  }   
+    document.getElementById('iframe-pdf').src = ""; // Limpar o iframe
+}
