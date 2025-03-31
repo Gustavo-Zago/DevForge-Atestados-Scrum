@@ -4,7 +4,7 @@ Data Inicial: 2025-03-11
 Data Final: 2025-03-19
 Validade: 8 dias
 Motivo: dwdwd
-Arquivo: src/static/uploads\Scrum Avaliação Aberta.png
+Arquivo: src/static/uploads/atestados/22123456789_20250314074501.pdf
 Status: Aprovado
 
 Nome: Ruan Carvalho
@@ -13,7 +13,7 @@ Data Inicial: 2025-03-11
 Data Final: 2025-03-27
 Validade: 16 dias
 Motivo: dwdw
-Arquivo: src/static/uploads\Scrum Avaliação Aberta.png
+Arquivo: src/static/uploads/atestados/22123456789_20250314074501.pdf
 Status: Aprovado
 
 Nome: Ruan Carvalho123123
@@ -95,7 +95,7 @@ Data Final: 2000-02-02
 Validade: 1 dias
 Motivo: ...
 Arquivo: ./static/uploads/atestados/5_25032025095317.pdf
-Status: Aprovado
+Status: Pendente
 
 Nome: Gustavo Zago de Lima
 RA do aluno: 1
@@ -103,6 +103,33 @@ Data Inicial: 2025-03-28
 Data Final: 2025-03-29
 Validade: 1 dias
 Motivo: sdd da ex
-Arquivo: ./src/static/uploads/atestados/1_27032025184735.pdf
-Status: Aprovado
+Arquivo: src/static/uploads/atestados/1_27032025184735.pdf
+Status: Pendente
+
+Nome: Zago
+RA do aluno: 1
+Data Inicial: 2025-03-30
+Data Final: 2025-04-02
+Validade: 3 dias
+Motivo: sdd da ex
+Arquivo: src/static/uploads/atestados/1_30032025221744.pdf
+Status: Pendente
+
+Nome: Aline Regina Zago de Lima de Lima
+RA do aluno: 3
+Data Inicial: 2025-04-04
+Data Final: 2025-04-05
+Validade: 1 dias
+Motivo: ssdd
+Arquivo: src/static/uploads/atestados/3_30032025223037.pdf
+Status: Pendente
+
+Nome: Maria 
+RA do aluno: 1
+Data Inicial: 2025-03-30
+Data Final: 2025-04-05
+Validade: 6 dias
+Motivo: 1
+Arquivo: src/static/uploads/atestados\1_30032025223537.pdf
+Status: Pendente
 
