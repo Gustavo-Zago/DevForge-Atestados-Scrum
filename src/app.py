@@ -164,7 +164,7 @@ def gestao():
                 chave, valor = chave_valor
                 atestado_atual[chave.strip()] = valor.strip()  # Remove espaços extras
 
-        if atestado_atual:# Garante que o último atestado seja salvo
+        if atestado_atual and atestado_atual['Status'] == 'Pendente':# Garante que o último atestado seja salvo
             atestados.append(atestado_atual)
         
         return render_template('GestãoDeAtestados.html', atestados=atestados)
