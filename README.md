@@ -37,7 +37,7 @@ Para instituições e equipes scrum nosso produto é uma plataforma integrada qu
 
 ## 📅Sprints
 
-### Sprint - 1️⃣ ([Acesse](/documents/sprints/Sprint1/README.md)): Em Andamento 🟨
+### Sprint - 1️⃣ ([Acesse](/documents/sprints/Sprint1/README.md)): Concluida 🟩
 
 ### Sprint - 2️⃣ ([Acesse](/documents/sprints/Sprint2/README.md)): Não Iniciado 🟥
 
@@ -55,8 +55,8 @@ Para instituições e equipes scrum nosso produto é uma plataforma integrada qu
 | #06  |    BackEnd: Envio de Atestado    |                            "Como aluno, quero que o sistema tenha uma tela de envio de atestados para que seja possível, da minha casa poder enviar um atestado"                            |    ALTA    |   120min   |   🟩   |      10/03      |   1    |
 | #07  |   FronEnd: Gestão de Atestados   |                         "Como funcionário, quero que o sistema tenha uma tela de gestão de atestados para que seja possível aprovar e recusar um atestado enviado"                          |    ALTA    |   90min    |   🟩   |      25/03      |   1    |
 | #08  |   BackEnd: Gestão de Atestados   |                            "Como funcionário, quero que o sistema tenha uma tela de gestão de atestados para que seja possível ver todos os atestados pendentes"                            |    ALTA    |   240min   |   🟩   |      27/03      |   1    |
-| #09  |  FrontEnd: Visualizar Atestado   |        "Como funcionário, quero que cada atestado enviado, antes da aprovação ou rejeição deve ser possível visualizar ou baixar o arquivo para uma melhor avaliação dos atestados"         |    ALTA    |   60min    |   🟨   |       ---       |   1    |
-| #10  |   BackEnd: Visualizar Atestado   |        "Como funcionário, quero que cada atestado enviado, antes da aprovação ou rejeição deve ser possível visualizar ou baixar o arquivo para uma melhor avaliação dos atestados"         |    ALTA    |    ---     |   🟨   |       ---       |   1    |
+| #09  |  FrontEnd: Visualizar Atestado   |        "Como funcionário, quero que cada atestado enviado, antes da aprovação ou rejeição deve ser possível visualizar ou baixar o arquivo para uma melhor avaliação dos atestados"         |    ALTA    |   60min    |   🟩   |      30/03      |   1    |
+| #10  |   BackEnd: Visualizar Atestado   |        "Como funcionário, quero que cada atestado enviado, antes da aprovação ou rejeição deve ser possível visualizar ou baixar o arquivo para uma melhor avaliação dos atestados"         |    ALTA    |    ---     |   🟩   |      30/03      |   1    |
 | #11  |   FrontEnd: Procurar Atestado    |                            "Como aluno, quero seja possível pesquisar o ultimo atestado enviado por mim para que seja mais fácil encontrar o status do atestado"                            |    ALTA    |   60min    |   🟩   |      21/03      |   1    |
 | #12  |    BackEnd: Procurar Atestado    |                            "Como aluno, quero seja possível pesquisar o ultimo atestado enviado por mim para que seja mais fácil encontrar o status do atestado"                            |    ALTA    |   60min    |   🟩   |      28/03      |   1    |
 | #13  |  FrontEnd: Administrador Scrum   | "Como administrador de equipes scrum, quero uma tela simples de equipes scrum para ver todas as equipes com funcionários, iniciar avaliações scrum e um botão para adicionar novas equipes" |   MÉDIA    |   120min   |   🟥   |       ---       |   2    |
