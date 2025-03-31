@@ -145,3 +145,28 @@ function closeModal() {
     document.getElementById('modal').style.display = 'none';
     document.getElementById('iframe-pdf').src = ""; // Limpar o iframe
 }
+
+// Função para fechar o modal
+function closeModal() {
+  const modal = document.getElementById('modal');
+  const iframe = document.getElementById('iframe-pdf');
+  
+  iframe.src = "";
+  modal.style.display = 'none';
+  document.body.classList.remove('no-scroll');
+}
+
+// Fechar modal ao clicar fora do conteúdo
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeModal();
+  }
+});
+
+// Atualize os listeners dos botões de visualização
+document.querySelectorAll('.visualizar-button').forEach(button => {
+  button.addEventListener('click', function() {
+    const pdfPath = this.getAttribute('id');
+    openModal(pdfPath);
+  });
+});

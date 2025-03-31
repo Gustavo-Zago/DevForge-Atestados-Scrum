@@ -44,20 +44,22 @@
           {% endfor %}
         </tbody>
       </table>
-      <section
-        id="modal"
-        style="z-index: 1000; position: absolute; display: none"
-      >
-        <iframe
-          id="iframe-pdf"
-          width="100%"
-          height="600px"
-          src=""
-          frameborder="0"
-        ></iframe>
-        <button type="button" class="status-button" id="Aprovado"> Aprovar </button>
-        <button type="button" class="status-button" id="Reprovado"> Reprovar </button>
-        <button onclick="closeModal()">Fechar</button>
+      <section id="modal" class="pdf-modal">
+        <img
+        onclick="closeModal()"
+        class="close_button"
+        src="../static/assets/close.png"
+        alt="Botão Fechar"
+        />
+        <div class="modal-content">
+          <div class="pdf-container">
+            <iframe id="iframe-pdf" class="pdf-viewer" src="" title="Visualizador de PDF"></iframe>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="status-button" id="Aprovado"> Aprovar </button>
+            <button type="button" class="status-button" id="Reprovado"> Reprovar </button>
+          </div>
+        </div>
       </section>
     </main>
 
