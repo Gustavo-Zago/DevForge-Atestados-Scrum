@@ -40,7 +40,7 @@ if (atestadoButton) {
 if (enviarButton) {
   enviarButton.addEventListener("click", function () {
     redirecionar("/formAtestado");
-    console.log("teste")
+    console.log("teste");
   });
 }
 
@@ -114,66 +114,76 @@ function ModalAtestado(url) {
   console.log(url);
 }
 
-listaBtnArquivo = document.querySelectorAll(".visualizar-button")
-listaBtnStatus = document.querySelectorAll(".status-button")
-urlArquivo = ''
-if (listaBtnArquivo){
-  listaBtnArquivo.forEach(botao => {
+listaBtnArquivo = document.querySelectorAll(".visualizar-button");
+listaBtnStatus = document.querySelectorAll(".status-button");
+urlArquivo = "";
+if (listaBtnArquivo) {
+  listaBtnArquivo.forEach((botao) => {
     botao.addEventListener("click", () => {
-      url = botao.getAttribute('id')
-      openModal(url)
-    })
+      url = botao.getAttribute("id");
+      openModal(url);
+    });
   });
 }
 
-if (listaBtnStatus){
-  listaBtnStatus.forEach(botao => {
+if (listaBtnStatus) {
+  listaBtnStatus.forEach((botao) => {
     botao.addEventListener("click", () => {
-      statusLinha = botao.getAttribute('id')
-      fetch(`/alterarStatus?URL=${encodeURIComponent(urlArquivo)}&status=${encodeURIComponent(statusLinha)}`)
-      .catch(error => console.error('Erro: ', error))
-    })
-  })
+      statusLinha = botao.getAttribute("id");
+      fetch(
+        `/alterarStatus?URL=${encodeURIComponent(
+          urlArquivo
+        )}&status=${encodeURIComponent(statusLinha)}`
+      )
+        .then((response) => {
+          if (response.status == 200) {
+            closeModal();
+            window.location.reload();
+          }
+        })
+        .catch((error) => console.error("Erro: ", error));
+    });
+  });
 }
 
 // Função para abrir o PDF no iframe dentro do modal
 function openModal(url) {
-  url = url.split("/")
-  nomeArquivo = url[url.length -1]
-  url.splice(0,1)
-  url = url.join("/")
-  urlArquivo = nomeArquivo
-    document.getElementById('iframe-pdf').src = url;
-    document.getElementById('modal').style.display = 'block';
+  url = url.split("/");
+  nomeArquivo = url[url.length - 1];
+  url.splice(0, 1);
+  url = url.join("/");
+  urlArquivo = nomeArquivo;
+  document.getElementById("iframe-pdf").src = url;
+  document.getElementById("modal").style.display = "block";
 }
 
 // Função para fechar o modal
 function closeModal() {
-    document.getElementById('modal').style.display = 'none';
-    document.getElementById('iframe-pdf').src = ""; // Limpar o iframe
+  document.getElementById("modal").style.display = "none";
+  document.getElementById("iframe-pdf").src = ""; // Limpar o iframe
 }
 
 // Função para fechar o modal
 function closeModal() {
-  const modal = document.getElementById('modal');
-  const iframe = document.getElementById('iframe-pdf');
-  
+  const modal = document.getElementById("modal");
+  const iframe = document.getElementById("iframe-pdf");
+
   iframe.src = "";
-  modal.style.display = 'none';
-  document.body.classList.remove('no-scroll');
+  modal.style.display = "none";
+  document.body.classList.remove("no-scroll");
 }
 
 // Fechar modal ao clicar fora do conteúdo
-document.getElementById('modal').addEventListener('click', function(e) {
+document.getElementById("modal").addEventListener("click", function (e) {
   if (e.target === this) {
     closeModal();
   }
 });
 
 // Atualize os listeners dos botões de visualização
-document.querySelectorAll('.visualizar-button').forEach(button => {
-  button.addEventListener('click', function() {
-    const pdfPath = this.getAttribute('id');
+document.querySelectorAll(".visualizar-button").forEach((button) => {
+  button.addEventListener("click", function () {
+    const pdfPath = this.getAttribute("id");
     openModal(pdfPath);
   });
 });

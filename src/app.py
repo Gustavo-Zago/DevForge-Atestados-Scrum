@@ -207,7 +207,7 @@ def alterarStatus():
         with open(UPLOAD_FOLDER + 'atestados.txt', 'w', encoding='utf-8') as fileW:
                 fileW.writelines(atestados)
 
-        return 'Linha atualizada com sucesso!'
+        return f'Sucesso', 200  
 
     except Exception as e:
         return f'Erro ao atualizar o status: {str(e)}', 500  
