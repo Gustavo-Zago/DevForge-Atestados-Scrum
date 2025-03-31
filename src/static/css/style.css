@@ -2,7 +2,6 @@
 @import url(header.css);
 @import url(espera.css);
 @import url(gestãodeatestados.css);
-@import url(formAtestado.css);
 
 :root {
   --azul-base: #393f50;
