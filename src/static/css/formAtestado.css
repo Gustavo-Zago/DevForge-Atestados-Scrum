@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: var(--azul-base);
+}
+
+.container {
+    width: 100%;
+    min-height: 92vh;
+    padding: 20px 40px;
+    background-color: var(--azul-base);
+    color: var(--off-white);
+    margin: 0;
+    max-width: 100% !important;
+}
+
+.form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--off-white);
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+.back-button:hover {
+    color: var(--off-white-cinza);
+}
+
+.form-control {
+    background-color: var(--off-white) !important;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    color: var(--azul-base);
+    margin-bottom: 20px;
+    height: 50px;
+}
+
+.form-control:focus {
+    background-color: var(--off-white) !important;
+    color: var(--azul-base);
+    box-shadow: none;
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: none;
+}
+
+.form-label {
+    color: var(--off-white);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    border-radius: var(--border-radius);
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--off-white);
+    color: var(--azul-base);
+}
+
+.btn-primary:hover {
+    background-color: var(--off-white-cinza);
+    color: var(--azul-base);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--off-white);
+    border: 2px solid var(--off-white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--off-white);
+    color: var(--azul-base);
+}
+
+.file-input-container {
+    background-color: var(--off-white);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#arquivo {
+    background-color: var(--off-white);
+    color: var(--azul-base);
+}
+
+/* Override Bootstrap styles */
+.form-control::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+}
+
+.form-control::placeholder {
+    color: var(--azul-base);
+    opacity: 0.7;
+}
+
+/* Make sure date inputs have white background */
+input[type="date"].form-control {
+    background-color: var(--off-white) !important;
+} 

@@ -19,7 +19,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 def index():
     return render_template("index.html"), 200
 
-@app.route('/envio')
+@app.route('/formAtestado')
 def envio():
     return render_template('formAtestado.html')
 

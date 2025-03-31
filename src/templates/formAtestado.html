@@ -2,11 +2,19 @@
 <html>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/formAtestado.css">
     <link rel="shortcut icon" type="image/x-icon" href="../static/assets/DevForgePNG.ico">
     <title>Envio de Atestado Médico</title>
 </head>
 <body>
+    <header>
+        <a class="link-home" href="../templates/index.html"><img src="../static/assets/Home.png" /></a>
+        <div class="links_header">
+          <a href="/espera">Enviar Atestado</a>
+          <a href="/espera">Procurar Atestado</a>
+        </div>
+      </header>
 <div class="container mt-5">
     <h2 class="mb-4">Envio de Atestado Médico</h2>
     <form action="/enviar" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>

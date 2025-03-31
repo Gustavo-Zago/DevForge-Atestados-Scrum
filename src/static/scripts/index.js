@@ -37,6 +37,13 @@ if (atestadoButton) {
   });
 }
 
+if (enviarButton) {
+  enviarButton.addEventListener("click", function () {
+    redirecionar("/formAtestado");
+    console.log("teste")
+  });
+}
+
 if (equipeButton) {
   equipeButton.addEventListener("click", function () {
     redirecionar("/scrum");
