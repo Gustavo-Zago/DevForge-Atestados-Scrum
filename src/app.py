@@ -12,7 +12,7 @@ teste()
 i = 0
 app = Flask(__name__, static_folder='')
 app.secret_key = 'chave-secreta'
-UPLOAD_FOLDER = './src/static/uploads/atestados/'
+UPLOAD_FOLDER =  './src/static/uploads/atestados/' if __name__ == '__main__' else './static/uploads/atestados/'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/")
