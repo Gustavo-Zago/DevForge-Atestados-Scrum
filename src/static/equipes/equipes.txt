@@ -1,0 +1,7 @@
+Nome da Equipe: teste
+Nome do Integrante: integrante 1 - Função: PO
+Nome do Integrante: integrante 2 - Função: SM
+Nome do Integrante: integrante 3 - Função: dev team
+Nome do Integrante: integrante 4 - Função: dev team
+Nome do Integrante: integrante 5 - Função: dev team
+

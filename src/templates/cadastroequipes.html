@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>Cadastro de Equipes Scrum</h2>
+    <form method="POST">
+        <label>Nome da Equipe:</label><br>
+        <input type="text" name="nome_equipe" value="{{ request.form.nome_equipe }}"><br>
+    
+        <label>Nº de Integrantes:</label><br>
+        <input type="number" name="num_integrantes" min="5" max="9" value="{{ num_integrantes }}"><br><br>
+    
+        {% if num_integrantes is not none and 5 <= num_integrantes <= 9 %}
+            <!-- Campo oculto pra manter o nome da equipe -->
+            <input type="hidden" name="nome_equipe" value="{{ request.form.nome_equipe }}">
+    
+            {% for i in range(num_integrantes) %}
+                <label>Nome do Integrante {{ i + 1 }}:</label><br>
+                <input type="text" name="nome_{{ i }}"><br>
+                <label>Função do Integrante {{ i + 1 }}:</label><br>
+                <input type="text" name="funcao_{{ i }}"><br><br>
+            {% endfor %}
+        {% endif %}
+    
+        <input type="submit" value="Cadastrar Equipe">
+    </form>
+    <script src="../static/scripts/index.js"></script>
+</body>
+</html>

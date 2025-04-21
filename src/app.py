@@ -14,7 +14,7 @@ app = Flask(__name__, static_folder='')
 app.secret_key = 'chave-secreta'
 UPLOAD_FOLDER =  './src/static/uploads/atestados/' if __name__ == '__main__' else './static/uploads/atestados/'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
+    
 @app.route("/")
 def index():
     return render_template("index.html"), 200
@@ -280,5 +280,50 @@ def reprovar():
     except KeyError as e:
         return jsonify({"erro": f"Chave não encontrada: {str(e)}"}), 400
     
+@app.route("/cadastroequipes", methods=["GET", "POST"])
+def cadastro_equipes():
+    UPLOAD_EQUIPE = './src/static/equipes/'
+    
+    if request.method == "POST":
+        nome_equipe = request.form.get("nome_equipe")
+        num_integrantes = request.form.get("num_integrantes")
+
+        if nome_equipe and num_integrantes and not request.form.get("nome_0"):
+            try:
+                num_integrantes = int(num_integrantes)
+                if not (5 <= num_integrantes <= 9):
+                    flash("A equipe deve ter entre 5 e 9 integrantes.")
+                    return redirect(request.url)
+                return render_template("cadastroequipes.html", num_integrantes=num_integrantes)
+            except ValueError:
+                flash("Número de integrantes inválido.")
+                return redirect(request.url)
+
+        try:
+            num_integrantes = int(num_integrantes)
+        except ValueError:
+            flash("Número inválido de integrantes.")
+            return redirect(request.url)
+
+        integrantes = []
+        for i in range(num_integrantes):
+            nome = request.form.get(f"nome_{i}")
+            funcao = request.form.get(f"funcao_{i}")
+            if not nome or not funcao:
+                flash("Integrante ou função em branco.")
+                return redirect(request.url)
+            integrantes.append((nome, funcao))
+
+        with open(UPLOAD_EQUIPE + "equipes.txt", "a", encoding="utf-8") as f:
+            f.write(f"Nome da Equipe: {nome_equipe}\n")
+            for nome, funcao in integrantes:
+                f.write(f"Nome do Integrante: {nome} - Função: {funcao}\n")
+            f.write("\n")
+
+        flash("Equipe cadastrada com sucesso!")
+        return redirect("cadastroequipes")
+
+    return render_template("cadastroequipes.html", num_integrantes=None)
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)

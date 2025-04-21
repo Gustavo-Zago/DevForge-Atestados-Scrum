@@ -187,3 +187,19 @@ document.querySelectorAll(".visualizar-button").forEach((button) => {
     openModal(pdfPath);
   });
 });
+
+function gerarCampos() {
+  const numero = document.getElementById("num_integrantes").value;
+  const container = document.getElementById("campos_integrantes");
+  container.innerHTML = "";
+
+  for (let i = 0; i < numero; i++) {
+    container.innerHTML += `
+    <label>Nome do Integrante ${i + 1}:</label><br>
+    <input type="text" name="nome_${i}" required><br>
+    <label>Função do Integrante ${i + 1}:</label><br>
+    <input type="text" name="funcao_${i}" required><br><br>
+                `;
+  }
+}
+
