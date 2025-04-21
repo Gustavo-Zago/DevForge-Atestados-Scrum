@@ -35,26 +35,6 @@
   pointer-events: none;
 }
 
-.botao {
-  display: inline-block;
-  width: 30%;
-  height: 100%;
-
-  font: normal 900 2.5rem var(--font-principal), monospace;
-  text-align: center;
-  text-decoration: underline;
-
-  border: none;
-  border-radius: var(--border-radius);
-
-  color: var(--azul-base);
-  background-color: var(--off-white);
-}
-
-.botao:hover {
-  background-color: var(--off-white-cinza);
-}
-
 input {
   background-color: var(--off-white);
   border: none;
