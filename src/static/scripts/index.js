@@ -1,19 +1,19 @@
 //Geral
-main = document.querySelector("main");
-header = document.querySelector("header");
-modal = document.getElementById("modal");
-closeButton = document.getElementById("close_modal");
+const main = document.querySelector("main");
+const header = document.querySelector("header");
+const modal = document.getElementById("modal");
+const closeButton = document.getElementById("close_modal");
 
 //Index
-atestadoButton = document.getElementById("btn_atestado");
-gestaoButton = document.getElementById("btn_gestao");
-equipeButton = document.getElementById("btn_equipe");
-admButton = document.getElementById("btn_adm");
-enviarButton = document.getElementById("btn_enviar");
-adm_btn_senha = document.querySelector("#adm_btn_senha");
+const atestadoButton = document.getElementById("btn_atestado");
+const gestaoButton = document.getElementById("btn_gestao");
+const equipeButton = document.getElementById("btn_equipe");
+const admButton = document.getElementById("btn_adm");
+const enviarButton = document.getElementById("btn_enviar");
+const adm_btn_senha = document.querySelector("#adm_btn_senha");
 
 //Espera
-buscarButton = document.getElementById("btn_buscar");
+const buscarButton = document.getElementById("btn_buscar");
 
 const adm_password = "admin";
 
