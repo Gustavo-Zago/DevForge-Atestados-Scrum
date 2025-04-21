@@ -1,6 +1,4 @@
-@import url(header.css);
-
-body {
+.ScrumBody {
   background-color: var(--off-white);
 }
 
@@ -11,7 +9,6 @@ body {
   background-color: #393f50;
   color: #f2eee7;
   padding: 15px;
-  gap: 0px;
   font-family: var(--font-principal);
   font-weight: bold;
   gap: 10px;
@@ -33,6 +30,7 @@ body {
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
 }
+
 #Avaliação3 {
   display: flex;
   flex-direction: row;
@@ -52,7 +50,7 @@ body {
   margin-top: -55px;
 }
 
-.Artigo {
+.title-Pergunta {
   background-color: #393f50;
   color: #f2eee7;
   font-size: 20px;
@@ -63,20 +61,30 @@ body {
   margin-top: 10px;
 }
 
+.carrosel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carrosel-wrapper {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
 .Notas {
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-shrink: 0;
+  width: 100%;
   font-family: var(--font-principal);
   font-weight: bold;
   color: black;
   padding: 50px;
-  margin-right: 120px;
-  margin-left: 120px;
 }
 
-.Rodapé {
+.controles {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,7 +135,7 @@ body {
 }
 
 .Extremos {
-  color: black;
+  color: var(--azul-base);
   font-family: var(--font-principal);
   font-size: 20px;
   font-weight: bold;
@@ -150,8 +158,8 @@ body {
 }
 
 .Fimdapagina {
-  background-color: #393f50;
-  color: #f2eee7;
+  background-color: var(--azul-base);
+  color: var(--off-white);
   border: none;
   border-radius: 10px;
   font-family: var(--font-principal);
@@ -170,131 +178,6 @@ body {
   background-color: var(--laranja-queimado);
 }
 
-:root {
-  --azul-base: #393f50;
-  --off-white: #f2eee7;
-  --off-white-cinza: #c2bfbb;
-  --laranja-queimado: #e07a5f;
-  --font-principal: "Rowdies", monospace;
-  --border-radius: 25px;
-  --borda-laranja: 5px;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-family: var(--font-principal), monospace;
-}
-
-.main-index {
-  width: 100%;
-  height: 100vh;
-  background-color: var(--azul-base);
-}
-
-.blur {
-  filter: blur(4px);
-}
-
-.noClick {
-  pointer-events: none;
-}
-
-.botao {
-  display: inline-block;
-  width: 30%;
-  height: 100%;
-
-  font: normal 900 2.5rem var(--font-principal), monospace;
-  text-align: center;
-  text-decoration: underline;
-
-  border: none;
-  border-radius: var(--border-radius);
-
-  color: var(--azul-base);
-  background-color: var(--off-white);
-}
-
-.botao:hover {
-  background-color: var(--off-white-cinza);
-}
-
-input {
-  background-color: var(--off-white);
-  border: none;
-  border-radius: calc(var(--border-radius) - 5px);
-}
-
-input:hover {
-  background-color: var(--off-white-cinza);
-}
-/* Estilos do Modal Ampliado */
-.pdf-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  width: 95%;
-  height: 90vh;
-  max-width: 1200px;
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
+.ativo {
   display: flex;
-  flex-direction: column;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
-}
-
-.pdf-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f0f0f0;
-}
-
-.pdf-viewer {
-  width: 100%;
-  height: 100%;
-  min-height: 80vh;
-  border: none;
-}
-
-.modal-actions {
-  padding: 15px;
-  text-align: center;
-  background: #f5f5f5;
-  border-top: 1px solid #ddd;
-}
-
-.modal-close-btn {
-  padding: 10px 25px;
-  background-color: var(--azul-base);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.3s;
-}
-
-.modal-close-btn:hover {
-  background-color: #2c313f;
-  transform: translateY(-2px);
-}
-
-body.modal-open {
-  overflow: hidden;
 }

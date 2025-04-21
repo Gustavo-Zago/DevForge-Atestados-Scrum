@@ -1,17 +1,17 @@
-
 <!DOCTYPE html>
 <html>
   <head>
-    <meta lang="pt-br">
+    <meta lang="pt-br" />
     <meta charset="UTF-8" />
-    <title> Administrador Scrum </title>
-    <link rel="stylesheet" href='/static/css/Admscrum.css' />
-    <link rel="shortcut icon"
+    <title>Administrador Scrum</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      rel="shortcut icon"
       type="image/x-icon"
       href="../static/assets/DevForgePNG.ico"
     />
   </head>
-  <body>
+  <body class="ScrumBody">
     <header>
       <a class="link-home" href="/"><img src="/static/assets/Home.png" /></a>
       <div class="links_header">
@@ -19,62 +19,163 @@
       </div>
     </header>
     <main>
-        <section class="Avaliação">
-            <h2> Avaliação da Equipe:</h2>
-            <select name="Equipe" id="teamselection">
-              <optgroup label="Team">
-                <option value="" selected> Selecione a equipe </option>
-                <option value="DevForge"> DevForge </option>
-              </optgroup>
-            </select>
+      <section class="Avaliação">
+        <h2>Avaliação da Equipe:</h2>
+        <select name="Equipe" id="teamselection">
+          <optgroup label="Team">
+            <option value="None" disabled selected>Selecione a equipe</option>
+            <option value="DevForge">DevForge</option>
+          </optgroup>
+        </select>
+      </section>
+
+      <section class="Avaliação2">
+        <div id="Avaliação2">
+          <h3>Escolha o avaliador:</h3>
+          <select name="Avaliadores" id="Avaliador">
+            <optgroup label="Avaliador">
+              <option value="None" disabled selected>
+                Selecione o avaliador
+              </option>
+              <option value="Breno Reis">Breno Reis</option>
+              <option value="Lucas Silva">Lucas Silva</option>
+              <option value="Emmanuel Garakis">Emmanuel Garakis</option>
+              <option value="Gustavo Zago">Gustavo Zago de Lima</option>
+              <option value="Daniel Dias">Daniel Dias Pereira</option>
+              <option value="Eloá Ramos">Eloá Ramos</option>
+              <option value="Marya Vitória Garcia">Marya Vitória Garcia</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div id="Avaliação3">
+          <h3>Integrante avaliado:</h3>
+          <select name="Avaliados" id="Avaliado">
+            <optgroup label="Avaliado">
+              <option value="None" disabled selected>
+                Selecione o avaliado
+              </option>
+              <option value="Breno Reis">Breno Reis</option>
+              <option value="Lucas Silva">Lucas Silva</option>
+              <option value="Emmanuel Garakis">Emmanuel Garakis</option>
+              <option value="Gustavo Zago">Gustavo Zago de Lima</option>
+              <option value="Daniel Dias">Daniel Dias Pereira</option>
+              <option value="Eloá Ramos">Eloá Ramos</option>
+              <option value="Marya Vitória Garcia">Marya Vitória Garcia</option>
+            </optgroup>
+          </select>
+        </div>
+      </section>
+
+      <section class="notas-slide">
+        <section class="title-Pergunta">
+          <p>
+            Em relação a <span id="tipoAvalicao">Proatividade</span>, de 0 a 3 ,
+            qual seria a nota do integrante:
+          </p>
         </section>
-        <section class="Avaliação2">
-          <div id="Avaliação2">
-            <h3> Escolha o avaliador: </h3>
-            <select name="Avaliadores" id="Avaliador">
-              <optgroup label="Avaliador">
-                <option value="" selected> Selecione o avaliador </option>
-                <option value="evaluator1"> Breno Reis </option>
-                <option value="evaluator2"> Lucas Silva</option>
-                <option value="evaluator3"> Emmanuel Garakis </option>  
-                <option value="evaluator4"> Gustavo Zago de Lima </option>
-                <option value="evaluator5"> Daniel Dias Pereira</option>
-                <option value="evaluator6"> Eloá Ramos</option>
-                <option value="evaluator7"> Marya Vitória Garcia </option>
-              </optgroup>
-            </select> 
-          </div>
-          <div id="Avaliação3">
-            <h3> Integrante avaliado:</h3>
-            <select name="Avaliados" id="Avaliado">
-              <optgroup label="Avaliado">
-                <option value="" selected> Selecione o avaliado </option>
-                <option value="member1"> Breno Reis </option>
-                <option value="member2"> Lucas Silva</option>
-                <option value="member3"> Emmanuel Garakis </option>
-                <option value="member4"> Gustavo Zago de Lima </option>
-                <option value="member5"> Daniel Dias Pereira</option>
-                <option value="member6"> Eloá Ramos</option>
-                <option value="member7"> Marya Vitória Garcia </option>
-              </optgroup>
-            </select>
-          </div>
-        <article class="Artigo">
-                <p> Em relação a proatividade, de 0 a 3 , qual seria a nota do integrante:</p>
-        </article>
-        <section class="Notas"> 
-          <p class="Extremos"> Min</p>
-          <button class="Nota btnAvalia" id="0" title="Nota 0"></button>
-          <button class="Meio btnAvalia" id="1" title="Nota 1"></button>
-          <button class="Meio btnAvalia" id="2" title="Nota 2"></button>
-          <button class="Nota btnAvalia" id="3" title="Nota 3"></button>
-          <p class="Extremos"> Máx</p>
-          
+
+        <section class="carrosel-container">
+          <section class="carrosel-wrapper">
+            <section class="Notas produtividade ativo">
+              <p class="Extremos">Min</p>
+              <button class="Nota btnAvalia" data-nota="0" title="Nota 0">
+                a
+              </button>
+              <button
+                class="Meio btnAvalia"
+                data-nota="1"
+                title="Nota 1"
+              ></button>
+              <button
+                class="Meio btnAvalia"
+                data-nota="2"
+                title="Nota 2"
+              ></button>
+              <button
+                class="Nota btnAvalia"
+                data-nota="3"
+                title="Nota 3"
+              ></button>
+              <p class="Extremos">Máx</p>
+            </section>
+
+            <section class="Notas autonomia">
+              <p class="Extremos">Min</p>
+              <button class="Nota btnAvalia" data-nota="0" title="Nota 0">
+                b
+              </button>
+              <button
+                class="Meio btnAvalia"
+                data-nota="1"
+                title="Nota 1"
+              ></button>
+              <button
+                class="Meio btnAvalia"
+                data-nota="2"
+                title="Nota 2"
+              ></button>
+              <button
+                class="Nota btnAvalia"
+                data-nota="3"
+                title="Nota 3"
+              ></button>
+              <p class="Extremos">Máx</p>
+            </section>
+
+            <section class="Notas cooperação">
+              <p class="Extremos">Min</p>
+              <button class="Nota btnAvalia" data-nota="0" title="Nota 0">
+                c
+              </button>
+              <button
+                class="Meio btnAvalia"
+                data-nota="1"
+                title="Nota 1"
+              ></button>
+              <button
+                class="Meio btnAvalia"
+                data-nota="2"
+                title="Nota 2"
+              ></button>
+              <button
+                class="Nota btnAvalia"
+                data-nota="3"
+                title="Nota 3"
+              ></button>
+              <p class="Extremos">Máx</p>
+            </section>
+
+            <section class="Notas entrega">
+              <p class="Extremos">Min</p>
+              <button class="Nota btnAvalia" data-nota="0" title="Nota 0">
+                d
+              </button>
+              <button
+                class="Meio btnAvalia"
+                data-nota="1"
+                title="Nota 1"
+              ></button>
+              <button
+                class="Meio btnAvalia"
+                data-nota="2"
+                title="Nota 2"
+              ></button>
+              <button
+                class="Nota btnAvalia"
+                data-nota="3"
+                title="Nota 3"
+              ></button>
+              <p class="Extremos">Máx</p>
+            </section>
+          </section>
         </section>
-        <footer class="Rodapé">
-          <button class="Fimdapagina"> Anterior </button>
-          <button class="Fimdapagina"> Próxima  </button>
-        </footer>
+
+        <section class="controles">
+          <button class="Fimdapagina" id="anterior">Anterior</button>
+          <button class="Fimdapagina" id="proximo">Próxima</button>
+        </section>
+      </section>
     </main>
   </body>
 
