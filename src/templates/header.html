@@ -4,16 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../static/css/style.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/DevForgePNG.ico">
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../static/assets/DevForgePNG.ico"
+    />
     <title>Cabeçalho Template</title>
   </head>
   <body>
     <header>
       <a class="link-home" href="/"><img src="../static/assets/Home.png" /></a>
-      <div class="links_header">
+      <nav class="links_header">
         <a href="#">Enviar Atestado</a>
         <a href="#">Procurar Atestado</a>
-      </div>
+      </nav>
+
+      <a href="javascript:void(0);" class="menu-icon">
+        <i class="fa fa-bars"></i>
+      </a>
     </header>
   </body>
+
+  <script>
+    const menu = document.querySelector(".menu-icon");
+    const opcoes = document.querySelector(".links_header");
+    menu.addEventListener("click", () => {
+      opcoes.classList.toggle("open");
+    });
+  </script>
 </html>

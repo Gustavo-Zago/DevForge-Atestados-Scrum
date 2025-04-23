@@ -1,3 +1,5 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
 header {
   display: flex;
   justify-content: space-between;
@@ -6,6 +8,7 @@ header {
   width: 100%;
   height: 8%;
   padding: 10px;
+  position: relative;
 
   border-bottom: solid var(--borda-laranja) var(--laranja-queimado);
   background-color: var(--azul-base);
@@ -28,7 +31,8 @@ header {
 }
 
 .links_header a,
-.links_header button {
+.links_header button,
+.menu-icon {
   background-color: transparent;
   border: none;
   text-decoration: underline;
@@ -39,4 +43,51 @@ header {
 .links_header a:hover,
 .links_header button:hover {
   color: var(--off-white-cinza);
+}
+
+.menu-icon {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .links_header {
+    display: none;
+    flex-direction: column;
+
+    width: 100%;
+    gap: 0;
+
+    background-color: var(--azul-base);
+    border-top: solid var(--borda-laranja) var(--laranja-queimado);
+  }
+
+  .open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+
+  .links_header a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 15px;
+  }
+
+  .links_header a:hover {
+    color: var(--off-white);
+    background-color: var(--laranja-queimado);
+  }
+
+  .menu-icon {
+    display: block;
+    margin-left: auto;
+  }
+
+  .link-home img {
+    width: 45px;
+    height: 45px;
+  }
 }
