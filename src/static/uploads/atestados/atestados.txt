@@ -33,3 +33,12 @@ Motivo: sdd da ex
 Arquivo: src/static/uploads/atestados\19239_30032025235917.pdf
 Status: Aprovado
 
+Nome: ergetr
+RA do aluno: 64564
+Data Inicial: 1111-04-05
+Data Final: 6446-05-04
+Validade: 1948599 dias
+Motivo: gr
+Arquivo: src/static/uploads/atestados\64564_23042025093815.pdf
+Status: Pendente
+
