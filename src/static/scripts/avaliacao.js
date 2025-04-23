@@ -16,6 +16,7 @@ function inicializaButtonClick() {
   disableButtonClick();
   disableProximoCarrosel();
   atualizarBotao();
+  statusSelect(false, true, true);
 
   buttonsAvalia.forEach((button) => {
     button.addEventListener("click", () => handleButtonClick(button));
@@ -30,7 +31,7 @@ function handleButtonClick(button) {
   if (!jaSelecionado) {
     button.classList.add("selecionado");
     enableProximoCarrosel();
-    statusSelect(true);
+    statusSelect(true, true, true);
     atualNota = button.getAttribute("data-nota");
     console.log(atualNota);
   } else {
@@ -63,6 +64,7 @@ selectEquipe.addEventListener("change", () => {
         ? data.integrantes.filter((nome) => typeof nome === "string")
         : [];
       adicionaIntegrantes(nomes);
+      statusSelect(false, false, false);
     })
     .catch((error) => {
       console.error("Erro na requisição ou no JSON:", error);
@@ -86,7 +88,6 @@ function verificaValor() {
     selectAvaliado.value !== "None";
 
   allSelect ? enableButtonClick() : disableButtonClick();
-  console.log(allSelect);
 }
 
 function adicionaIntegrantes(integrantes) {
@@ -102,29 +103,44 @@ function adicionaIntegrantes(integrantes) {
   selectAvaliado.innerHTML = htmlOption;
 }
 
-function statusSelect(status) {
-  selectEquipe.disabled = status;
-  selectAvaliador.disabled = status;
-  selectAvaliado.disabled = status;
+function statusSelect(statusEquipe, statusAvaliador, statusAvaliado) {
+  selectEquipe.disabled = statusEquipe;
+  statusEquipe == true
+    ? selectEquipe.classList.add("disabled")
+    : selectEquipe.classList.remove("disabled");
+  selectAvaliador.disabled = statusAvaliador;
+  statusAvaliador == true
+    ? selectAvaliador.classList.add("disabled")
+    : selectAvaliador.classList.remove("disabled");
+  selectAvaliado.disabled = statusAvaliado;
+  statusAvaliado == true
+    ? selectAvaliado.classList.add("disabled")
+    : selectAvaliado.classList.remove("disabled");
 }
 
 function enableButtonClick() {
-  buttonsAvalia.forEach((b) => b.classList.remove("noClick"));
+  buttonsAvalia.forEach((b) => {
+    b.classList.remove("disabled");
+    b.disabled = false;
+  });
 }
 
 function disableButtonClick() {
   buttonsAvalia.forEach((b) => {
-    b.classList.add("noClick");
+    b.disabled = true;
+    b.classList.add("disabled");
     b.classList.remove("selecionado");
   });
 }
 
 function enableProximoCarrosel() {
   btnProx.disabled = false;
+  btnProx.classList.remove("disabled");
 }
 
 function disableProximoCarrosel() {
   btnProx.disabled = true;
+  btnProx.classList.add("disabled");
 }
 
 function setNotas() {
@@ -172,7 +188,7 @@ function atualizarBotao() {
     disableButtonClick();
     disableProximoCarrosel();
     atualizarBotao();
-    statusSelect(false);
+    statusSelect(false, false, false);
     exibirPergunta(currentIndex);
   }
 
@@ -190,6 +206,7 @@ btnProx.addEventListener("click", () => {
   selectedNotas[tipoAvaliacao[currentIndex]] = atualNota;
   setNotas();
   removeButtonValue();
+  disableProximoCarrosel();
 
   currentIndex + 1 < tipoAvaliacao.length ? currentIndex++ : currentIndex;
   exibirPergunta(currentIndex);
