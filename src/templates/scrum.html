@@ -24,7 +24,9 @@
         <select name="Equipe" id="teamselection">
           <optgroup label="Team">
             <option value="None" disabled selected>Selecione a equipe</option>
-            <option value="DevForge">DevForge</option>
+            {% for nome in equipes %}
+            <option value="{{ nome }}">{{ nome }}</option>
+            {% endfor %}
           </optgroup>
         </select>
       </section>
@@ -38,12 +40,6 @@
                 Selecione o avaliador
               </option>
               <option value="Breno Reis">Breno Reis</option>
-              <option value="Lucas Silva">Lucas Silva</option>
-              <option value="Emmanuel Garakis">Emmanuel Garakis</option>
-              <option value="Gustavo Zago">Gustavo Zago de Lima</option>
-              <option value="Daniel Dias">Daniel Dias Pereira</option>
-              <option value="Eloá Ramos">Eloá Ramos</option>
-              <option value="Marya Vitória Garcia">Marya Vitória Garcia</option>
             </optgroup>
           </select>
         </div>
@@ -56,12 +52,6 @@
                 Selecione o avaliado
               </option>
               <option value="Breno Reis">Breno Reis</option>
-              <option value="Lucas Silva">Lucas Silva</option>
-              <option value="Emmanuel Garakis">Emmanuel Garakis</option>
-              <option value="Gustavo Zago">Gustavo Zago de Lima</option>
-              <option value="Daniel Dias">Daniel Dias Pereira</option>
-              <option value="Eloá Ramos">Eloá Ramos</option>
-              <option value="Marya Vitória Garcia">Marya Vitória Garcia</option>
             </optgroup>
           </select>
         </div>
@@ -79,8 +69,11 @@
           <section class="carrosel-wrapper">
             <section class="Notas produtividade ativo">
               <p class="Extremos">Min</p>
-              <button class="Nota btnAvalia" data-nota="0" title="Nota 0">
-              </button>
+              <button
+                class="Nota btnAvalia"
+                data-nota="0"
+                title="Nota 0"
+              ></button>
               <button
                 class="Meio btnAvalia"
                 data-nota="1"

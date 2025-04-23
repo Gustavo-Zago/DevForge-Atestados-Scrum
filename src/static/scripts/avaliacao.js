@@ -48,7 +48,26 @@ function removeSelectValue() {
   selectAvaliado.value = "None";
 }
 
-selectEquipe.addEventListener("change", verificaValor);
+selectEquipe.addEventListener("change", () => {
+  verificaValor();
+  let nomeEquipe = selectEquipe.value;
+  fetch(`integrantesScrum?NOME=${encodeURIComponent(nomeEquipe)}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Erro do servidor: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const nomes = Array.isArray(data.integrantes)
+        ? data.integrantes.filter((nome) => typeof nome === "string")
+        : [];
+      adicionaIntegrantes(nomes);
+    })
+    .catch((error) => {
+      console.error("Erro na requisição ou no JSON:", error);
+    });
+});
 
 selectAvaliador.addEventListener("change", () => {
   verificaValor();
@@ -68,6 +87,19 @@ function verificaValor() {
 
   allSelect ? enableButtonClick() : disableButtonClick();
   console.log(allSelect);
+}
+
+function adicionaIntegrantes(integrantes) {
+  let htmlOption = [
+    '<option value="None" disabled selected>Selecione o avaliador</option>',
+  ];
+  integrantes.forEach((integrante) => {
+    opt = `<option value="${integrante}">${integrante}</option>`;
+    htmlOption.push(opt);
+  });
+
+  selectAvaliador.innerHTML = htmlOption;
+  selectAvaliado.innerHTML = htmlOption;
 }
 
 function statusSelect(status) {
