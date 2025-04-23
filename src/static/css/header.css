@@ -11,6 +11,10 @@ header {
   background-color: var(--azul-base);
 }
 
+.link-home {
+  position: absolute;
+}
+
 .link-home > img {
   width: 55px;
   height: 55px;
