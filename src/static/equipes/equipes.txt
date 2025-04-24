@@ -5,3 +5,20 @@ Nome do Integrante: integrante 3 - Função: dev team
 Nome do Integrante: integrante 4 - Função: dev team
 Nome do Integrante: integrante 5 - Função: dev team
 
+Nome da Equipe: Devforge
+Nome do Integrante: r32  - Função: po
+Nome do Integrante: frwe - Função: scrum_master
+Nome do Integrante: wgwre - Função: devteam
+Nome do Integrante: gfd - Função: scrum_master
+Nome do Integrante: f d - Função: devteam
+
+Nome da Equipe: Devforge
+Nome do Integrante: vhg   - Função: Product Owner
+Nome do Integrante: kn - Função: Team Developer
+Nome do Integrante: rt - Função: Team Developer
+Nome do Integrante: w egtwer4 - Função: Team Developer
+Nome do Integrante: fdggd - Função: Team Developer
+Nome do Integrante: hvkvyiyfi - Função: Team Developer
+Nome do Integrante: vyyi - Função: Scrum Master
+Nome do Integrante: vyfy7i - Função: Team Developer
+

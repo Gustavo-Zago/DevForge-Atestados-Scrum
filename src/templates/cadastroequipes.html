@@ -13,35 +13,44 @@
     <dialog id="meuModal" class="modal" open> 
         <article class="modal-conteudo">
             <header>
-                <button aria-label="Fechar" class="fechar">&times;</button>
+                <button aria-label="Fechar" class="fechar">&times;</button><br><br>
             </header>
             <section>
     
                 <form method="POST">
-                    <label>Nome da Equipe:</label><br>
-                    <input type="text" name="nome_equipe" value="{{ request.form.nome_equipe }}"><br>
-                
-                    <label>Nº de Integrantes:</label><br>
-                    <input type="number" name="num_integrantes" min="5" max="9" value="{{ num_integrantes }}"><br><br>
-                
+                    <div class="inputNomeN">
+                        <div style="display: flex; flex-direction: column;">
+                            <label>Nome da Equipe:</label>
+                            <input type="text" name="nome_equipe" value="{{ request.form.nome_equipe }}" required><br>
+                        </div>
+                        <div style="display: flex; flex-direction: column;">
+                            <label>Nº de Integrantes:</label>
+                            <input type="number" name="num_integrantes" min="5" max="9" value="{{ num_integrantes }}" required>
+                        </div>
+                    </div>
+
                     {% if num_integrantes is not none and 5 <= num_integrantes <= 9 %}
                         <!-- Campo oculto pra manter o nome da equipe -->
                         <input type="hidden" name="nome_equipe" value="{{ request.form.nome_equipe }}">
                 
                         {% for i in range(num_integrantes) %}
-                            <div class="input1">
+                            <div class="input1" style="margin-bottom: 12px;">
                                 <div class="labelInputNome">
-                                    <label>Nome do Integrante {{ i + 1 }}:</label><br>
-                                    <input type="text" name="nome_{{ i }}"><br>
+                                    <label>Nome:</label><br>
+                                    <input type="text" name="nome_{{ i }}" required>
                                 </div>
                                 <div class="labelInputFunc">
-                                    <label>Função do Integrante {{ i + 1 }}:</label><br>
-                                    <input type="text" name="funcao_{{ i }}"><br><br>
+                                    <label>Função:</label><br>
+                                    <!-- <input type="text" name="funcao_{{ i }}" required><br><br> -->
+                                    <select type="text" name="funcao_{{ i }}">
+                                        <option value="Team Developer">Team Developer</option>
+                                        <option value="Product Owner">Product Owner</option>
+                                        <option value="Scrum Master">Scrum Master</option>
+                                    </select>
                                 </div>
                             </div>
                         {% endfor %}
                     {% endif %}
-                
                     <input type="submit" value="Cadastrar Equipe" class="submitBtn">
                 </form>
 

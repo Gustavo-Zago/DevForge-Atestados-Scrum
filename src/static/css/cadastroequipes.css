@@ -17,12 +17,19 @@
     color: var(--off-white);
 }
 
-input{
+.inputNomeN{
+    display: flex;
+    flex-direction: row;
+}
+
+input, select{
     background-color: var(--off-white);
     border: none;
     border-radius: 10px;
     padding: 5px;
     margin: 3px;
+    font-family: var(--font-principal), monospace;
+    color: var(--azul-base);
 }
 
 .input1{
