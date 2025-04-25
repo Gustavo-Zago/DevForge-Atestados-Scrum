@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Administrador Scrum</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../static/assets/DevForgePNG.ico"
+    />
+  </head>
+  <body>
+    <header>
+      <a class="link-home" href="/"><img src="../static/assets/Home.png" /></a>
+      <div class="links_header">
+        <a href="#">Administrador Scrum</a>
+      </div>
+    </header>
+
+    <h2>Gerenciamento de Equipes</h2>
+
+<main class="gestao-main">
+    <table>
+        {% for equipe, integrantes in equipes.items() %}
+        <thead>
+            <tr>
+            <th >{{ equipe }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for integrante in integrantes %}
+            <tr>
+                <td>{{ integrante }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        {% endfor %}
+    </table>
+</main>
+      
+
+    <script src="../static/scripts/index.js"></script>
+  </body>
+</html>

@@ -79,9 +79,27 @@ def integrantes():
 def adminatestado():
     return render_template("adminAtestado.html")
 
-@app.route('/adminscrum')
-def adminscrum():
-    return render_template("adminScrum.html")
+@app.route('/adminscrum', methods=['GET'])
+def ler_equipe():
+    equipes = {}
+    equipe_atual = None
+
+    try:
+        with open(UPLOAD_EQUIPE + 'equipes.txt', 'r', encoding='utf-8') as f:
+            for linha in f:
+                linha = linha.strip()
+                if linha.startswith("Nome da Equipe:"):
+                    equipe_atual = linha.replace("Nome da Equipe:", "").strip()
+                    equipes[equipe_atual] = []
+                elif linha.startswith("Nome do Integrante:") and equipe_atual:
+                    integrante = linha.replace("Nome do Integrante:", "").strip()
+                    equipes[equipe_atual].append(integrante)
+    except FileNotFoundError:
+        equipes = {}
+
+    return render_template('adminScrum.html', equipes=equipes)
+
+    
 
 @app.route('/enviar', methods=['POST'])
 def enviar():
