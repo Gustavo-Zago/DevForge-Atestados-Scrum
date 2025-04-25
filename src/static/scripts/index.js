@@ -181,7 +181,6 @@ if (document.getElementById("modal")){
     }
   });
 }
-
 // Atualize os listeners dos botões de visualização
 document.querySelectorAll(".visualizar-button").forEach((button) => {
   button.addEventListener("click", function () {
@@ -189,17 +188,6 @@ document.querySelectorAll(".visualizar-button").forEach((button) => {
     openModal(pdfPath);
   });
 });
-
-        //Input número de integrantes, do popup de cadastro
-        // Seleciona o input pelo ID
-        const inputElementNIn = document.getElementById('inputNIn');
-
-        // Adiciona o ouvinte de evento 'input' ao campo de entrada
-        inputElementNIn.addEventListener('input', function() {
-            // Exibe um alerta com o valor atual do input
-            alert('Novo valor: ' + inputElementNIn.value);
-        }); 
-
 
 function gerarCampos() {
   const numero = document.getElementById("num_integrantes").value;
