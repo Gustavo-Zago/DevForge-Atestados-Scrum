@@ -203,3 +203,10 @@ function gerarCampos() {
   }
 }
 
+// Seleciona o input
+const input = document.getElementById('inputNIn');
+
+// Adiciona o evento de alteração no valor do input
+input.addEventListener('input', function() {
+    alert('O valor do input foi alterado!');
+}); 
