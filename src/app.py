@@ -46,7 +46,6 @@ def scrum():
 @app.route("/integrantesScrum")
 def integrantes():
     nomeEquipe = request.args.get("NOME")
-    print(nomeEquipe)
     try:
         with open(UPLOAD_EQUIPE+"equipes.txt", "r", encoding='utf-8') as file:
             equipesLinha = file.readlines()
@@ -72,7 +71,17 @@ def integrantes():
         return jsonify({'integrantes': integrantes}), 200
     except Exception as e:
         return 'Equipe não encontrada', 404
-                    
+
+@app.route('/enviarNotas')                   
+def enviarNotas():
+    equipeNome = request.args.get("equipeNome")
+    avaliador = request.args.get("Avaliador")
+    avaliado = request.args.get("Avaliado")
+    notas = request.args.get("notas")
+
+    with open(UPLOAD_EQUIPE+equipeNome, "w", encoding='utf-8'):
+        return
+    
 
 
 @app.route('/adminatestado')

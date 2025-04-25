@@ -6,25 +6,33 @@ const selectAvaliado = document.getElementById("Avaliado");
 
 const btnProx = document.getElementById("proximo");
 const btnAnt = document.getElementById("anterior");
-let selectedNotas = {};
+
+//Notas
+let nomeEquipe;
+let avaliador;
+let avaliado;
+let notas = {};
 let atualNota = NaN;
 let currentIndex = 0;
 
 inicializaButtonClick();
+eventoButtonClick();
 
 function inicializaButtonClick() {
   disableButtonClick();
   disableProximoCarrosel();
   atualizarBotao();
   statusSelect(false, true, true);
+}
 
+function eventoButtonClick() {
   buttonsAvalia.forEach((button) => {
     button.addEventListener("click", () => handleButtonClick(button));
   });
 }
 
 function handleButtonClick(button) {
-  const jaSelecionado = button.classList.contains("selecionado");
+  let jaSelecionado = button.classList.contains("selecionado");
 
   removeButtonValue();
 
@@ -51,7 +59,8 @@ function removeSelectValue() {
 
 selectEquipe.addEventListener("change", () => {
   verificaValor();
-  let nomeEquipe = selectEquipe.value;
+  nomeEquipe = selectEquipe.value;
+  nomeEquipe = nomeEquipe.split("-")[0];
   fetch(`integrantesScrum?NOME=${encodeURIComponent(nomeEquipe)}`)
     .then((response) => {
       if (!response.ok) {
@@ -73,13 +82,19 @@ selectEquipe.addEventListener("change", () => {
 
 selectAvaliador.addEventListener("change", () => {
   verificaValor();
+  avaliador = selectAvaliador.value;
+  avaliador = avaliador.split("-")[0];
   Array.from(selectAvaliado).forEach((opt) => (opt.disabled = false));
   selectAvaliado.querySelector(
     `option[value="${selectAvaliador.value}"]`
   ).disabled = true;
 });
 
-selectAvaliado.addEventListener("change", verificaValor);
+selectAvaliado.addEventListener("change", () => {
+  verificaValor();
+  avaliado = selectAvaliado.value;
+  avaliado = avaliado.split("-")[0];
+});
 
 function verificaValor() {
   const allSelect =
@@ -92,7 +107,7 @@ function verificaValor() {
 
 function adicionaIntegrantes(integrantes) {
   let htmlOption = [
-    '<option value="None" disabled selected>Selecione o avaliador</option>',
+    '<option value="None" disabled selected>Selecione o integrante</option>',
   ];
   integrantes.forEach((integrante) => {
     opt = `<option value="${integrante}">${integrante}</option>`;
@@ -145,20 +160,56 @@ function disableProximoCarrosel() {
 
 function setNotas() {
   localStorage.setItem(
-    selectEquipe.value +
-      "-" +
-      selectAvaliador.value +
-      "-" +
-      selectAvaliado.value,
-    JSON.stringify(selectedNotas)
+    nomeEquipe + "-" + avaliador + "-" + avaliado,
+    JSON.stringify(notas)
   );
 }
 
+function getNotas() {
+  console.log(nomeEquipe, avaliador, avaliado, notas);
+  let tenta = localStorage.getItem(
+    nomeEquipe + "-" + avaliador + "-" + avaliado
+  );
+
+  return;
+}
+
 function removeUltimaChave() {
-  const chaves = Object.keys(selectedNotas);
+  const chaves = Object.keys(notas);
   const ultimaChave = chaves.at(-1);
-  delete selectedNotas[ultimaChave];
+  delete notas[ultimaChave];
   setNotas();
+}
+
+function resetAvaliacao() {
+  enviarAvaliacao();
+  currentIndex = 0;
+  removeButtonValue();
+  removeSelectValue();
+  exibirPergunta(currentIndex);
+  inicializaButtonClick();
+  btnProx.removeEventListener("click", resetAvaliacao);
+  btnProx.addEventListener("click", proximaPergunta);
+}
+
+function enviarAvaliacao() {
+  try {
+    fetch(
+      `/enviarNotas?equipeNome=${encodeURIComponent(
+        nomeEquipe
+      )}&Avaliador=${encodeURIComponent(
+        avaliador
+      )}&Avaliado=${encodeURIComponent(avaliado)}$notas=${encodeURIComponent(
+        notas
+      )}`.then((response) => {
+        if (!response.ok) {
+          throw new Error(`Erro do servidor: ${response.status}`);
+        }
+      })
+    );
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 //Carrosel
@@ -181,38 +232,26 @@ function exibirPergunta(index) {
 function atualizarBotao() {
   btnAnt.disabled = currentIndex === 0;
 
-  function resetAvaliacao() {
-    currentIndex = 0;
-    removeButtonValue();
-    removeSelectValue();
-    disableButtonClick();
-    disableProximoCarrosel();
-    atualizarBotao();
-    statusSelect(false, false, false);
-    exibirPergunta(currentIndex);
-  }
-
   if (currentIndex === 3) {
     btnProx.textContent = "Enviar";
-    btnProx.addEventListener("click", () => {
-      resetAvaliacao();
-    });
+    btnProx.addEventListener("click", resetAvaliacao);
   } else {
     btnProx.textContent = "Próximo";
   }
 }
 
-btnProx.addEventListener("click", () => {
-  selectedNotas[tipoAvaliacao[currentIndex]] = atualNota;
+function proximaPergunta() {
+  notas[tipoAvaliacao[currentIndex]] = atualNota;
   setNotas();
   removeButtonValue();
   disableProximoCarrosel();
 
   currentIndex + 1 < tipoAvaliacao.length ? currentIndex++ : currentIndex;
   exibirPergunta(currentIndex);
+}
 
-  console.log(selectedNotas);
-});
+btnProx.removeEventListener("click", resetAvaliacao);
+btnProx.addEventListener("click", proximaPergunta);
 
 btnAnt.addEventListener("click", () => {
   removeUltimaChave();
@@ -221,5 +260,5 @@ btnAnt.addEventListener("click", () => {
   currentIndex > 0 && currentIndex--;
   exibirPergunta(currentIndex);
 
-  console.log(selectedNotas);
+  console.log(notas);
 });
