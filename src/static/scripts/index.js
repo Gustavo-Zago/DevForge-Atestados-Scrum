@@ -174,11 +174,13 @@ function closeModal() {
 }
 
 // Fechar modal ao clicar fora do conteúdo
-document.getElementById("modal").addEventListener("click", function (e) {
-  if (e.target === this) {
-    closeModal();
-  }
-});
+if (document.getElementById("modal")){
+  document.getElementById("modal").addEventListener("click", function (e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
+}
 
 // Atualize os listeners dos botões de visualização
 document.querySelectorAll(".visualizar-button").forEach((button) => {
@@ -187,6 +189,17 @@ document.querySelectorAll(".visualizar-button").forEach((button) => {
     openModal(pdfPath);
   });
 });
+
+        //Input número de integrantes, do popup de cadastro
+        // Seleciona o input pelo ID
+        const inputElementNIn = document.getElementById('inputNIn');
+
+        // Adiciona o ouvinte de evento 'input' ao campo de entrada
+        inputElementNIn.addEventListener('input', function() {
+            // Exibe um alerta com o valor atual do input
+            alert('Novo valor: ' + inputElementNIn.value);
+        }); 
+
 
 function gerarCampos() {
   const numero = document.getElementById("num_integrantes").value;
@@ -203,10 +216,4 @@ function gerarCampos() {
   }
 }
 
-// Seleciona o input
-const input = document.getElementById('inputNIn');
 
-// Adiciona o evento de alteração no valor do input
-input.addEventListener('input', function() {
-    alert('O valor do input foi alterado!');
-}); 
