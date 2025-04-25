@@ -11,15 +11,19 @@
     />
   </head>
   <body>
-    <header>
+    <header id="header-espera">
       <a class="link-home" href="/"><img src="../static/assets/Home.png" /></a>
       <div class="links_header">
-        <a href="#">Administrador Scrum</a>
+        <a href="/adminscrum">Gerenciamento de Equipes</a>
       </div>
     </header>
 
-    <h2>Gerenciamento de Equipes</h2>
-
+    <main class="main-espera">
+      <nav class="nav-espera">
+          <h1>Gerenciamento Scrum</h1>
+          <button id="btn_enviar">Cadastrar Equipe</button>
+      </nav>
+    </main>
 <main class="gestao-main">
     <table>
         {% for equipe, integrantes in equipes.items() %}

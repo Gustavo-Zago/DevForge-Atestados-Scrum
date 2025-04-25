@@ -184,3 +184,6 @@
 .ativo {
   display: flex;
 }
+.alinhar{
+  text-align: right
+}
