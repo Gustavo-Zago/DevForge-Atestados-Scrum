@@ -310,7 +310,7 @@ def cadastro_equipes():
         with open(UPLOAD_EQUIPE + "equipes.txt", "a", encoding="utf-8") as f:
             f.write(f"Nome da Equipe: {nome_equipe}\n")
             for nome, funcao in integrantes:
-                f.write(f"Nome do Integrante: {nome} - Função: {funcao}\n")
+                f.write(f"Nome do Integrante: {nome} - {funcao}\n")
             f.write("\n")
 
         flash("Equipe cadastrada com sucesso!")

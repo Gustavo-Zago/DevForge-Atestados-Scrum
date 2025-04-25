@@ -29,7 +29,7 @@
                         </div>
                         <div style="display: flex; flex-direction: column;">
                             <label>Nº de Integrantes:</label>
-                            <input type="number" name="num_integrantes" min="5" max="9" value="{{ num_integrantes }}" required>
+                            <input type="number" id="inputNIn" name="num_integrantes" min="5" max="9" value="{{ num_integrantes }}" required>
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                             </div>
                         {% endfor %}
                     {% endif %}
-                    <input type="submit" value="Cadastrar Equipe" class="submitBtn">
+                    <input type="submit" value="Cadastrar Equipe" class="submitBtnCadastro">
                 </form>
 
             </section>
@@ -63,5 +63,6 @@
     </dialog>
 
     <script src="../static/scripts/index.js"></script>
+
 </body>
 </html>

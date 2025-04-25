@@ -174,12 +174,13 @@ function closeModal() {
 }
 
 // Fechar modal ao clicar fora do conteúdo
-document.getElementById("modal").addEventListener("click", function (e) {
-  if (e.target === this) {
-    closeModal();
-  }
-});
-
+if (document.getElementById("modal")){
+  document.getElementById("modal").addEventListener("click", function (e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
+}
 // Atualize os listeners dos botões de visualização
 document.querySelectorAll(".visualizar-button").forEach((button) => {
   button.addEventListener("click", function () {
@@ -202,4 +203,5 @@ function gerarCampos() {
                 `;
   }
 }
+
 
