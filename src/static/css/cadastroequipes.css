@@ -10,11 +10,15 @@
 
 #meuModal{
     /* color: aqua; */
+    margin: auto;
     background-color: #393f50;
     border-radius: calc(var(--border-radius) - 10px);
     border-color: #393f50;
     font-family: var(--font-principal), monospace;
     color: var(--off-white);
+    padding: 12px;
+    box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.75);
+    width: 30%x;
 }
 
 .inputNomeN{
@@ -27,7 +31,7 @@ input, select{
     border: none;
     border-radius: 10px;
     padding: 5px;
-    margin: 3px;
+    margin: 5px;
     font-family: var(--font-principal), monospace;
     color: var(--azul-base);
 }
