@@ -93,16 +93,19 @@ def avaliacaoStatus():
 
 
 
+@app.route('/enviarNotas', methods=['POST'])                   
 def enviarNotas():
-    equipeNome = request.args.get("equipeNome")
-    avaliador = request.args.get("Avaliador")
-    avaliado = request.args.get("Avaliado")
-    notas = request.args.get("notas")
-
-    with open(UPLOAD_EQUIPE+equipeNome, "w", encoding='utf-8'):
-        return
-    
-
+    dados = request.json;
+    equipeNome = dados.get("equipeNome")
+    avaliador = dados.get("Avaliador")
+    avaliado = dados.get("Avaliado")
+    notas = dados.get("notas")
+    try:
+        with open(UPLOAD_EQUIPE+equipeNome+".txt", "a", encoding='utf-8') as file:
+            file.write(f"{avaliador} - {avaliado}: {notas}\n")
+        return jsonify({"mensagem": "Nota adicionada com sucesso!"}), 200
+    except Exception as e:
+        return jsonify({"Erro": str(e)}), 500
 
 @app.route('/adminatestado')
 def adminatestado():

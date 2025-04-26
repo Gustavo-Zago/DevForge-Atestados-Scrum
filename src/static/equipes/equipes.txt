@@ -4,6 +4,7 @@ Nome do Integrante: integrante 2 - Função: SM
 Nome do Integrante: integrante 3 - Função: dev team
 Nome do Integrante: integrante 4 - Função: dev team
 Nome do Integrante: integrante 5 - Função: dev team
+Avaliacão: True
 
 Nome da Equipe: Devforge
 Nome do Integrante: Lucas - Função: Product Owner
@@ -13,4 +14,13 @@ Nome do Integrante: Daniel - Função: Team Developer
 Nome do Integrante: Eloá - Função: Team Developer
 Nome do Integrante: Mavy - Função: Team Developer
 Nome do Integrante: Breno - Função: Team Developer
+Avaliacão: False
+
+Nome da Equipe: 404
+Nome do Integrante: Mano Brown - Product Owner
+Nome do Integrante: Djonga - Scrum Master
+Nome do Integrante: Yago - Team Developer
+Nome do Integrante: Caio Ocean - Team Developer
+Nome do Integrante: Febre - Team Developer
+Avaliacão: False
 

@@ -218,19 +218,29 @@ function resetAvaliacao() {
 
 function enviarAvaliacao() {
   try {
-    fetch(
-      `/enviarNotas?equipeNome=${encodeURIComponent(
-        nomeEquipe
-      )}&Avaliador=${encodeURIComponent(
-        avaliador
-      )}&Avaliado=${encodeURIComponent(avaliado)}$notas=${encodeURIComponent(
-        notas
-      )}`.then((response) => {
+    notasString = JSON.stringify(notas);
+    dados = {
+      equipeNome: nomeEquipe,
+      Avaliador: avaliador,
+      Avaliado: avaliado,
+      notas: notasString,
+    };
+    fetch(`/enviarNotas`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(dados),
+    })
+      .then((response) => {
         if (!response.ok) {
           throw new Error(`Erro do servidor: ${response.status}`);
         }
+        return response.json();
       })
-    );
+      .then((data) => {
+        console.log(data.mensagem);
+      });
   } catch (error) {
     console.error(error);
   }
