@@ -55,17 +55,22 @@ input:hover {
   background-color: var(--off-white-cinza);
 }
 /* Estilos do Modal Ampliado */
-.pdf-modal {
+section.pdf-modal {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+
+  background-color: var(--azul-base);
   z-index: 1000;
+
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 
 .modal-content {
@@ -78,6 +83,8 @@ input:hover {
   display: flex;
   flex-direction: column;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
+  margin: auto;
+  margin-top: 35px;
 }
 
 .pdf-container {

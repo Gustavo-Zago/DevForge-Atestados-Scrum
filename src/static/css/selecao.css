@@ -40,7 +40,7 @@
   background-color: var(--off-white-cinza);
 }
 
-#modal {
+dialog#modal {
   display: none;
   flex-direction: column;
   justify-content: center;
