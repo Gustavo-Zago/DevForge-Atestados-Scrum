@@ -62,7 +62,7 @@ def integrantes():
                     equipe_achado = False
                     break
                 
-                if equipe_achado and linha:
+                if equipe_achado and linha and not linha.startswith("Avaliacão"):
                     chave_valor = linha.split(":", 1)
                     if len(chave_valor) == 2:
                         chave, valor = chave_valor
@@ -311,6 +311,7 @@ def cadastro_equipes():
             f.write(f"Nome da Equipe: {nome_equipe}\n")
             for nome, funcao in integrantes:
                 f.write(f"Nome do Integrante: {nome} - {funcao}\n")
+            f.write("Avaliacão: False\n")
             f.write("\n")
 
         flash("Equipe cadastrada com sucesso!")

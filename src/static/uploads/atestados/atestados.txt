@@ -24,6 +24,7 @@ Validade: 1 dias
 Motivo: ssdd
 Arquivo: src/static/uploads/atestados/22123456789_20250314074501.pdf
 Status: Aprovado
+
 Nome: Joao Paulo neto
 RA do aluno: 19239
 Data Inicial: 2025-04-05
