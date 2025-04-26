@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 '''from pyscript import Element'''
-import os
+import os, json
 from datetime import datetime
 i,x = 0,1
 escolha = []
@@ -67,12 +67,32 @@ def integrantes():
                     if len(chave_valor) == 2:
                         chave, valor = chave_valor
                         integrantes.append(valor.strip())
-        print(integrantes)
         return jsonify({'integrantes': integrantes}), 200
     except Exception as e:
         return 'Equipe não encontrada', 404
+    
+@app.route("/avaliacaoStatus")
+def avaliacaoStatus():
+    nomeEquipe = request.args.get("equipeNome")
 
-@app.route('/enviarNotas')                   
+    with open(UPLOAD_EQUIPE+"equipes.txt", "r", encoding="utf-8") as file:
+        equipe_found = False
+        for linha in file:
+            if linha.startswith("Nome da Equipe") and nomeEquipe in linha:
+                equipe_found = True
+                continue
+
+            if not linha:
+                equipe_found=False
+                continue
+
+            if linha.startswith("Avaliacão") and equipe_found:
+                avalicao_status = linha.split(":", 1)
+                return jsonify(avalicao_status[-1])
+        return jsonify("False")
+
+
+
 def enviarNotas():
     equipeNome = request.args.get("equipeNome")
     avaliador = request.args.get("Avaliador")

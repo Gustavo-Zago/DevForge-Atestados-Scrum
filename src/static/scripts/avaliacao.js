@@ -1,3 +1,7 @@
+const mainChilds = document.querySelectorAll(
+  "main > section:not(:first-child)"
+);
+const aside = document.querySelector(".mensagem-aside");
 const buttonsAvalia = document.querySelectorAll(".btnAvalia");
 const buttonsPergunta = document.querySelectorAll(".Fimdapagina");
 const selectEquipe = document.getElementById("teamselection");
@@ -15,6 +19,7 @@ let notas = {};
 let atualNota = NaN;
 let currentIndex = 0;
 
+avaliacaoStatus();
 inicializaButtonClick();
 eventoButtonClick();
 
@@ -61,6 +66,7 @@ selectEquipe.addEventListener("change", () => {
   verificaValor();
   nomeEquipe = selectEquipe.value;
   nomeEquipe = nomeEquipe.split("-")[0];
+  avaliacaoStatus(nomeEquipe);
   fetch(`integrantesScrum?NOME=${encodeURIComponent(nomeEquipe)}`)
     .then((response) => {
       if (!response.ok) {
@@ -95,6 +101,33 @@ selectAvaliado.addEventListener("change", () => {
   avaliado = selectAvaliado.value;
   avaliado = avaliado.split("-")[0];
 });
+
+function avaliacaoStatus(nomeEquipe) {
+  fetch(`/avaliacaoStatus?equipeNome=${nomeEquipe}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Erro do servidor: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      let equipe = data.trim();
+      if (equipe === "True") {
+        console.log("True");
+        mainChilds.forEach((child) => {
+          child.classList.remove("desativado");
+        });
+        aside.classList.add("desativado");
+      } else {
+        console.log("False");
+        mainChilds.forEach((child) => {
+          child.classList.add("desativado");
+        });
+        aside.classList.remove("desativado");
+      }
+    })
+    .catch((error) => console.error(error));
+}
 
 function verificaValor() {
   const allSelect =
@@ -163,15 +196,6 @@ function setNotas() {
     nomeEquipe + "-" + avaliador + "-" + avaliado,
     JSON.stringify(notas)
   );
-}
-
-function getNotas() {
-  console.log(nomeEquipe, avaliador, avaliado, notas);
-  let tenta = localStorage.getItem(
-    nomeEquipe + "-" + avaliador + "-" + avaliado
-  );
-
-  return;
 }
 
 function removeUltimaChave() {
