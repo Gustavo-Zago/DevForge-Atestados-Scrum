@@ -1,62 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro Equipe</title>
     <link rel="stylesheet" href="../static/css/style.css" />
-</head>
-<body>
-    <br><br><br>
-    <button id="btn_equipe_modal" class="visualizar-button">Cadastrar Equipe</button>
+  </head>
+  <body>
+    <br /><br /><br />
+    <button id="btn_equipe_modal" class="visualizar-button">
+      Cadastrar Equipe
+    </button>
 
-    <dialog id="meuModal" class="modal"> 
-        <article class="modal-conteudo">
-            <div>
-                <br><br>
+    <dialog id="meuModal" class="modal">
+      <article class="modal-conteudo">
+        <div><br /><br /></div>
+        <section>
+          <img
+            onclick="closeCadastroModal()"
+            class="close_button"
+            src="../static/assets/close.png"
+            alt="Botão Fechar"
+          />
+          <form method="POST">
+            <div class="inputNomeN">
+              <div>
+                <label>Nome da Equipe:</label>
+                <input type="text" name="nome_equipe" value="" required />
+              </div>
+
+              <div>
+                <label>Nº de Integrantes:</label>
+                <input
+                  type="number"
+                  id="inputNIn"
+                  name="num_integrantes"
+                  min="5"
+                  max="9"
+                  value=""
+                  required
+                />
+              </div>
             </div>
-            <section>
-                <img onclick="closeCadastroModal()" class="close_button" src="../static/assets/close.png" alt="Botão Fechar"/>
-                <form method="POST">
-                    <div class="inputNomeN">
-                        <div style="display: flex; flex-direction: column;">
-                            <label>Nome da Equipe:</label>
-                            <input type="text" name="nome_equipe" value="{{ request.form.nome_equipe }}" required><br>
-                        </div>
-                        <div style="display: flex; flex-direction: column;">
-                            <label>Nº de Integrantes:</label>
-                            <input type="number" id="inputNIn" name="num_integrantes" min="5" max="9" value="{{ num_integrantes }}" required>
-                        </div>
-                    </div>
 
-                    {% if num_integrantes is not none and 5 <= num_integrantes <= 9 %}
-                        <!-- Campo oculto para manter o nome da equipe -->
-                        <input type="hidden" name="nome_equipe" value="{{ request.form.nome_equipe }}">
-                
-                        {% for i in range(num_integrantes) %}
-                            <div class="input1" style="margin-bottom: 12px;">
-                                <div class="labelInputNome">
-                                    <label>Nome:</label><br>
-                                    <input type="text" name="nome_{{ i }}" required>
-                                </div>
-                                <div class="labelInputFunc">
-                                    <label>Função:</label><br>
-                                    <select type="text" name="funcao_{{ i }}">
-                                        <option value="Team Developer">Team Developer</option>
-                                        <option value="Product Owner">Product Owner</option>
-                                        <option value="Scrum Master">Scrum Master</option>
-                                    </select>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                    <input type="submit" value="Cadastrar Equipe" class="submitBtnCadastro">
-                </form>
-            </section>
-        </article>
+            <section
+              class="input1"
+              id="campos_integrantes"
+              style="margin-bottom: 12px"
+            ></section>
+
+            <input
+              type="submit"
+              value="Cadastrar Equipe"
+              class="submitBtnCadastro"
+            />
+          </form>
+        </section>
+      </article>
     </dialog>
 
     <script src="../static/scripts/index.js"></script>
-
-</body>
+    <script src="../static/scripts/cadastroEquipes.js"></script>
+  </body>
 </html>

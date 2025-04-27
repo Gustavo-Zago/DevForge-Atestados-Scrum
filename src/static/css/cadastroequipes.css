@@ -1,62 +1,75 @@
 :root {
-    --azul-base: #393f50;
-    --off-white: #f2eee7;
-    --off-white-cinza: #c2bfbb;
-    --laranja-queimado: #e07a5f;
-    --font-principal: "Rowdies", monospace;
-    --border-radius: 25px;
-    --borda-laranja: 5px;
-  }
-
-#meuModal{
-    /* color: aqua; */
-    margin: auto;
-    background-color: #393f50;
-    border-radius: calc(var(--border-radius) - 10px);
-    border-color: #393f50;
-    font-family: var(--font-principal), monospace;
-    color: var(--off-white);
-    padding: 12px;
-    box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.75);
-    width: 30%x;
+  --azul-base: #393f50;
+  --off-white: #f2eee7;
+  --off-white-cinza: #c2bfbb;
+  --laranja-queimado: #e07a5f;
+  --font-principal: "Rowdies", monospace;
+  --border-radius: 25px;
+  --borda-laranja: 5px;
 }
 
-.inputNomeN{
-    display: flex;
-    flex-direction: row;
+#meuModal {
+  /* color: aqua; */
+  margin: auto;
+  background-color: #393f50;
+  border-radius: calc(var(--border-radius) - 10px);
+  border-color: #393f50;
+  font-family: var(--font-principal), monospace;
+  color: var(--off-white);
+  padding: 12px;
+  box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.75);
+  width: 30%x;
 }
 
-input, select{
-    background-color: var(--off-white);
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    margin: 5px;
-    font-family: var(--font-principal), monospace;
-    color: var(--azul-base);
+.inputNomeN {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.input1{
-    display: flex;
-    flex-direction: row;
+.inputNomeN > div {
+  display: flex;
+  flex-direction: column;
 }
 
-.labelInputNome{
-    margin-right: 5px;
+input,
+select {
+  background-color: var(--off-white);
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  font-family: var(--font-principal), monospace;
+  color: var(--azul-base);
 }
 
-.labelInputFunc{
-    margin-left: 5px;
+.input1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.submitBtnCadastro{
-    font-family: var(--font-principal), monospace;
-    display: block;
-    margin: auto;
-    color: #393f50;
-    padding: 10px;
+.input1 > section {
+  display: flex;
 }
 
-.submitBtnCadastro:hover{
-    background-color: var(--off-white-cinza);
+.labelInputNome {
+  margin-right: 5px;
+}
+
+.labelInputFunc {
+  margin-left: 5px;
+}
+
+.submitBtnCadastro {
+  font-family: var(--font-principal), monospace;
+  display: block;
+  margin: auto;
+  color: #393f50;
+  padding: 10px;
+}
+
+.submitBtnCadastro:hover {
+  background-color: var(--off-white-cinza);
 }

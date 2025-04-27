@@ -123,10 +123,22 @@ def enviarNotas():
 def adminatestado():
     return render_template("adminAtestado.html")
 
-@app.route('/adminscrum', methods=['GET'])
+@app.route('/adminscrum', methods=['GET', "POST"])
 def ler_equipe():
     equipes = {}
     equipe_atual = None
+
+    if request.method == "POST":
+        nome_equipe = request.form.get("nome_equipe")
+        num_integrantes = request.form.get("num_integrantes")
+
+        if nome_equipe and num_integrantes and not request.form.get("nome_0"):
+            try:
+                num_integrantes = int(num_integrantes)
+                return render_template("cadastroequipes.html", num_integrantes=num_integrantes)
+            except ValueError:
+                return redirect(request.url)
+
 
     try:
         with open(UPLOAD_EQUIPE + 'equipes.txt', 'r', encoding='utf-8') as f:
@@ -308,38 +320,24 @@ def alterarStatus():
         return f'Erro ao atualizar o status: {str(e)}', 500  
 
     
-@app.route("/cadastroequipes", methods=["GET", "POST"])
+@app.route("/cadastroequipes", methods=["POST"])
 def cadastro_equipes():
     UPLOAD_EQUIPE = './src/static/equipes/'
     
     if request.method == "POST":
-        nome_equipe = request.form.get("nome_equipe")
-        num_integrantes = request.form.get("num_integrantes")
-
-        if nome_equipe and num_integrantes and not request.form.get("nome_0"):
-            try:
-                num_integrantes = int(num_integrantes)
-                if not (5 <= num_integrantes <= 9):
-                    flash("A equipe deve ter entre 5 e 9 integrantes.")
-                    return redirect(request.url)
-                return render_template("cadastroequipes.html", num_integrantes=num_integrantes)
-            except ValueError:
-                flash("Número de integrantes inválido.")
-                return redirect(request.url)
-
-        try:
-            num_integrantes = int(num_integrantes)
-        except ValueError:
-            flash("Número inválido de integrantes.")
-            return redirect(request.url)
+        nome_equipe = request.form["nome_equipe"]
+        num_integrantes = int(request.form["num_integrantes"])
+        print(nome_equipe, num_integrantes)
 
         integrantes = []
         for i in range(num_integrantes):
             nome = request.form.get(f"nome_{i}")
             funcao = request.form.get(f"funcao_{i}")
+            print(nome, funcao)
             if not nome or not funcao:
+                print("erro nome funcao")
                 flash("Integrante ou função em branco.")
-                return redirect(request.url)
+                return redirect("adminscrum")
             integrantes.append((nome, funcao))
 
         with open(UPLOAD_EQUIPE + "equipes.txt", "a", encoding="utf-8") as f:
@@ -350,9 +348,8 @@ def cadastro_equipes():
             f.write("\n")
 
         flash("Equipe cadastrada com sucesso!")
-        return redirect("cadastroequipes")
 
-    return render_template("cadastroequipes.html", num_integrantes=None)
+    return redirect("adminscrum")
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
