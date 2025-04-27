@@ -1,22 +1,18 @@
 const inp_numIntegrantes = document.getElementById("inputNIn");
+const container = document.getElementById("campos_integrantes");
 
 inp_numIntegrantes.addEventListener("keyup", gerarCampos);
 
 function validaNumIntegrantes(num_integrantes) {
-  if (num_integrantes === 0 || num_integrantes === "") {
-    return true;
-  }
-
   if (num_integrantes < 5 || num_integrantes > 9) {
+    container.innerHTML = "";
     throw new Error("Número de integrantes inválido (deve ser entre 5 e 9)");
   }
 }
 
 function gerarCampos() {
   let num_integrantes = inp_numIntegrantes.value;
-  console.log(num_integrantes);
   validaNumIntegrantes(num_integrantes);
-  const container = document.getElementById("campos_integrantes");
   container.innerHTML = "";
 
   for (let i = 0; i < num_integrantes; i++) {
