@@ -95,7 +95,7 @@ def avaliacaoStatus():
 
 @app.route('/enviarNotas', methods=['POST'])                   
 def enviarNotas():
-    dados = request.json;
+    dados = request.json
     equipeNome = dados.get("equipeNome")
     avaliador = dados.get("Avaliador")
     avaliado = dados.get("Avaliado")
