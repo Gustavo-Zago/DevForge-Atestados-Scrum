@@ -20,14 +20,14 @@ let atualNota = NaN;
 let currentIndex = 0;
 
 avaliacaoStatus();
-inicializaButtonClick();
+inicializaAvaliacao();
 eventoButtonClick();
+statusSelect(false, true, true);
 
-function inicializaButtonClick() {
-  disableButtonClick();
-  disableProximoCarrosel();
+function inicializaAvaliacao() {
+  statusButtonClick(false);
+  statusProximoCarrosel(false);
   atualizarBotao();
-  statusSelect(false, true, true);
 }
 
 function eventoButtonClick() {
@@ -43,12 +43,11 @@ function handleButtonClick(button) {
 
   if (!jaSelecionado) {
     button.classList.add("selecionado");
-    enableProximoCarrosel();
+    statusProximoCarrosel(true);
     statusSelect(true, true, true);
     atualNota = button.getAttribute("data-nota");
-    console.log(atualNota);
   } else {
-    disableProximoCarrosel();
+    statusProximoCarrosel(false);
   }
 }
 
@@ -57,7 +56,6 @@ function removeButtonValue() {
 }
 
 function removeSelectValue() {
-  selectEquipe.value = "None";
   selectAvaliador.value = "None";
   selectAvaliado.value = "None";
 }
@@ -88,8 +86,10 @@ selectEquipe.addEventListener("change", () => {
 
 selectAvaliador.addEventListener("change", () => {
   verificaValor();
+
   avaliador = selectAvaliador.value;
   avaliador = avaliador.split("-")[0];
+
   Array.from(selectAvaliado).forEach((opt) => (opt.disabled = false));
   selectAvaliado.querySelector(
     `option[value="${selectAvaliador.value}"]`
@@ -113,13 +113,11 @@ function avaliacaoStatus(nomeEquipe) {
     .then((data) => {
       let equipe = data.trim();
       if (equipe === "True") {
-        console.log("True");
         mainChilds.forEach((child) => {
           child.classList.remove("desativado");
         });
         aside.classList.add("desativado");
       } else {
-        console.log("False");
         mainChilds.forEach((child) => {
           child.classList.add("desativado");
         });
@@ -135,7 +133,7 @@ function verificaValor() {
     selectAvaliador.value !== "None" &&
     selectAvaliado.value !== "None";
 
-  allSelect ? enableButtonClick() : disableButtonClick();
+  allSelect ? statusButtonClick(true) : statusButtonClick(false);
 }
 
 function adicionaIntegrantes(integrantes) {
@@ -143,7 +141,7 @@ function adicionaIntegrantes(integrantes) {
     '<option value="None" disabled selected>Selecione o integrante</option>',
   ];
   integrantes.forEach((integrante) => {
-    opt = `<option value="${integrante}">${integrante}</option>`;
+    const opt = `<option value="${integrante}">${integrante}</option>`;
     htmlOption.push(opt);
   });
 
@@ -151,44 +149,31 @@ function adicionaIntegrantes(integrantes) {
   selectAvaliado.innerHTML = htmlOption;
 }
 
+function toggleDisabled(elemento, isDisabled) {
+  elemento.disabled = isDisabled;
+  elemento.classList.toggle("disabled", isDisabled);
+}
+
 function statusSelect(statusEquipe, statusAvaliador, statusAvaliado) {
-  selectEquipe.disabled = statusEquipe;
-  statusEquipe == true
-    ? selectEquipe.classList.add("disabled")
-    : selectEquipe.classList.remove("disabled");
-  selectAvaliador.disabled = statusAvaliador;
-  statusAvaliador == true
-    ? selectAvaliador.classList.add("disabled")
-    : selectAvaliador.classList.remove("disabled");
-  selectAvaliado.disabled = statusAvaliado;
-  statusAvaliado == true
-    ? selectAvaliado.classList.add("disabled")
-    : selectAvaliado.classList.remove("disabled");
+  toggleDisabled(selectEquipe, statusEquipe);
+  toggleDisabled(selectAvaliador, statusAvaliador);
+  toggleDisabled(selectAvaliado, statusAvaliado);
 }
 
-function enableButtonClick() {
+function statusButtonClick(status) {
   buttonsAvalia.forEach((b) => {
-    b.classList.remove("disabled");
-    b.disabled = false;
+    status
+      ? ((b.disabled = false), b.classList.remove("disabled"))
+      : ((b.disabled = true),
+        b.classList.add("disabled"),
+        b.classList.remove("selecionado"));
   });
 }
 
-function disableButtonClick() {
-  buttonsAvalia.forEach((b) => {
-    b.disabled = true;
-    b.classList.add("disabled");
-    b.classList.remove("selecionado");
-  });
-}
-
-function enableProximoCarrosel() {
-  btnProx.disabled = false;
-  btnProx.classList.remove("disabled");
-}
-
-function disableProximoCarrosel() {
-  btnProx.disabled = true;
-  btnProx.classList.add("disabled");
+function statusProximoCarrosel(status) {
+  status
+    ? ((btnProx.disabled = false), btnProx.classList.remove("disabled"))
+    : ((btnProx.disabled = true), btnProx.classList.add("disabled"));
 }
 
 function setNotas() {
@@ -207,11 +192,13 @@ function removeUltimaChave() {
 
 function resetAvaliacao() {
   enviarAvaliacao();
-  currentIndex = 0;
+  inicializaAvaliacao();
   removeButtonValue();
   removeSelectValue();
+  statusSelect(false, false, false);
+
+  currentIndex = 0;
   exibirPergunta(currentIndex);
-  inicializaButtonClick();
   btnProx.removeEventListener("click", resetAvaliacao);
   btnProx.addEventListener("click", proximaPergunta);
 }
@@ -278,7 +265,7 @@ function proximaPergunta() {
   notas[tipoAvaliacao[currentIndex]] = atualNota;
   setNotas();
   removeButtonValue();
-  disableProximoCarrosel();
+  statusProximoCarrosel(false);
 
   currentIndex + 1 < tipoAvaliacao.length ? currentIndex++ : currentIndex;
   exibirPergunta(currentIndex);

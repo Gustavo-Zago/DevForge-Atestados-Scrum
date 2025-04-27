@@ -2,10 +2,6 @@
   background-color: var(--off-white);
 }
 
-/* .main-avaliacao > section:not(:first-child) {
-  display: none;
-} */
-
 .Avaliação {
   display: flex;
   flex-direction: row;
