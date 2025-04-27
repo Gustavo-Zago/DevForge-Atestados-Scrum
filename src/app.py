@@ -101,8 +101,20 @@ def enviarNotas():
     avaliado = dados.get("Avaliado")
     notas = dados.get("notas")
     try:
-        with open(UPLOAD_EQUIPE+equipeNome+".txt", "a", encoding='utf-8') as file:
-            file.write(f"{avaliador} - {avaliado}: {notas}\n")
+        with open(UPLOAD_EQUIPE+equipeNome+".txt", "r", encoding='utf-8') as fileR:
+            arquivo = fileR.readlines()
+            arquivo_reescrito = []
+
+            for linha in arquivo:
+                if linha.startswith(f"{avaliador} - {avaliado}"):
+                    nova_linha = f"{avaliador} - {avaliado}: {notas}\n"
+                    arquivo_reescrito.append(nova_linha)
+                else:
+                    arquivo_reescrito.append(linha)
+
+        with open(UPLOAD_EQUIPE+equipeNome+".txt", "w", encoding='utf-8') as fileW:
+            fileW.writelines(arquivo_reescrito)
+
         return jsonify({"mensagem": "Nota adicionada com sucesso!"}), 200
     except Exception as e:
         return jsonify({"Erro": str(e)}), 500
