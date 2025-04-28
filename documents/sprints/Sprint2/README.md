@@ -14,3 +14,7 @@ Durante essa sprint foi desenvolvido toda a parte de gestão e avaliação de eq
 | #18  |    BackEnd: Avaliação Scrum     |            "Como membro de equipes scrum, quero uma tela para a execução da avaliação 360 da equipe, onde posso selecionar minha equipe, quem sou eu e quem eu estou avaliando"             |   MÉDIA    |   120min   |   🟩   |      26/04      |   2    |
 | #20  | Responsividade: Tela de Seleção |                                       "Como usuário, quero que o sistema possa ser acessado de qualquer dispositivo para um uso contínuo do sistema"                                        |   BAIXO    |   90min    |   🟩   |      21/04      |   2    |
 | #21  | Responsividade: Header Template |                                        "Como usuário, quero que o cabeçalho do sistema se adapte a diferentes dispositivos para melhor usabilidade."                                        |   BAIXO    |   90min    |   🟩   |      23/04      |   2    |
+
+## Vídeo do Sistema Desenvolvido na Sprint - 🎥
+
+https://github.com/user-attachments/assets/b77dde17-dc4a-46f7-970c-1f951b730d55
