@@ -26,24 +26,32 @@
     </section>
 
     <main class="gestao-main">
-      <table>
-        {% for equipe, integrantes in equipes.items() %}
-        <thead>
-          <tr>
-            <th>{{ equipe }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for integrante in integrantes %}
-          <tr>
-            <td>{{ integrante }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
+      <div class="cards-container">
+        <!--Trazer avaliacao da equipe (True or False)-->
+        {% for equipe, sub_dict in equipes.items() %}
+          <div class="card-equipe">
+            <h2>{{ equipe }}</h2>
+            <p><strong>Integrantes:</strong></p>
+            <ul>
+              {% for integrante in sub_dict['integrantes'] %}
+                <li>{{ integrante }}</li>
+              {% endfor %}
+            </ul>
+            {% if sub_dict['statusAvaliacao'] == True %}
+              <form method="POST" action="/fechar_avaliacao">
+                <input type="hidden" name="equipe" value="{{ equipe }}">
+                <button type="submit" class="btn-fechar">Fechar Avaliação</button>
+              </form>
+            {% else %}
+              <form method="POST" action="/iniciar_avaliacao">
+                <input type="hidden" name="equipe" value="{{ equipe }}">
+                <button type="submit" class="btn-avaliar">Iniciar Avaliação</button>
+              </form>
+            {% endif %}
+          </div>
         {% endfor %}
-      </table>
+      </div>
     </main>
-
     <dialog id="meuModal" class="modal">
       <article class="modal-conteudo">
         <div><br /><br /></div>

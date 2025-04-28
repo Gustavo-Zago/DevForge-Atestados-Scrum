@@ -92,6 +92,37 @@ def avaliacaoStatus():
         return jsonify("False")
 
 
+@app.route("/alterarStatusAvaliacao", methods=["GET"])
+def alterarStatusAvaliacao():
+    equipeNome = request.args.get("equipeNome")
+    novoStatus = request.args.get("status")  
+
+    try:
+        with open(UPLOAD_EQUIPE + "equipes.txt", "r", encoding="utf-8") as file:
+            linhas = file.readlines()
+
+        equipe_found = False
+        for i, linha in enumerate(linhas):
+            if linha.strip().startswith("Nome da Equipe") and equipeNome in linha:
+                equipe_found = True
+                continue
+
+            if not linha.strip():
+                equipe_found = False
+                continue
+
+            if linha.strip().startswith("Avaliacão") and equipe_found:
+                linhas[i] = f"Avaliacão: {novoStatus}\n"
+                break
+
+        with open(UPLOAD_EQUIPE + "equipes.txt", "w", encoding="utf-8") as file:
+            file.writelines(linhas)
+
+        return jsonify({"mensagem": f"Status da equipe {equipeNome} alterado para {novoStatus}."}), 200
+
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 500
+
 
 @app.route('/enviarNotas', methods=['POST'])                   
 def enviarNotas():
@@ -141,18 +172,27 @@ def ler_equipe():
 
 
     try:
-        with open(UPLOAD_EQUIPE + 'equipes.txt', 'r', encoding='utf-8') as f:
-            for linha in f:
+
+        with open(UPLOAD_EQUIPE + 'equipes.txt', 'r', encoding='utf-8') as file:
+            for linha in file:
                 linha = linha.strip()
                 if linha.startswith("Nome da Equipe:"):
                     equipe_atual = linha.replace("Nome da Equipe:", "").strip()
-                    equipes[equipe_atual] = []
+                    equipes[equipe_atual] = {'integrantes': []}
                 elif linha.startswith("Nome do Integrante:") and equipe_atual:
                     integrante = linha.replace("Nome do Integrante:", "").strip()
-                    equipes[equipe_atual].append(integrante)
+                    equipes[equipe_atual]['integrantes'].append(integrante)
+                    # equipes = {'404': ['integrante1, '...']}
+                    # equipes = {'404': {'integrantes': ['integrante1', 'integrante2'], 'avaliacao': True}, 'teste': []}
+                elif linha.startswith("Avaliacão"):
+                    avaliacao_status = linha.split(":", 1)[1].replace('\n', '').strip()
+                    print(f'NomeEquipe: {equipe_atual}, {avaliacao_status}')
+                    # print('******', avaliacao_status)
+                    equipes[equipe_atual]['statusAvaliacao'] = bool(avaliacao_status)
+                     
     except FileNotFoundError:
         equipes = {}
-
+    print(f'Dicionario Final:{equipes}')
     return render_template('adminScrum.html', equipes=equipes)
 
     
@@ -318,6 +358,8 @@ def alterarStatus():
 
     except Exception as e:
         return f'Erro ao atualizar o status: {str(e)}', 500  
+
+
 
     
 @app.route("/cadastroequipes", methods=["POST"])

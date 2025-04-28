@@ -73,3 +73,80 @@ select {
 .submitBtnCadastro:hover {
   background-color: var(--off-white-cinza);
 }
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  margin: 20px;
+}
+
+.card-equipe {
+  background-color: #373d51;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-equipe h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.card-equipe ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.card-equipe ul li {
+  margin: 5px 0;
+}
+
+.btn-fechar {
+  background-color: #e7e0d6;
+  color: #373d51;
+  font-weight: bold;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto 0;
+}
+
+.btn-fechar:hover {
+  background-color: #d1c7ba;
+}
+.btn-fechar {
+  background-color:  white;
+  color: #373d51;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-fechar:hover {
+  background-color: #f57453;
+}
+
+.btn-avaliar {
+  background-color: white;
+  color: #373d51;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-avaliar:hover {
+  background-color: #f57453;
+}
