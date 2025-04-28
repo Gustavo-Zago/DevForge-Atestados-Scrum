@@ -32,6 +32,16 @@
   flex-direction: column;
 }
 
+.no-spinBox::-webkit-outer-spin-button,
+.no-spinBox::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* .no-spinBox {
+  -moz-appearance: textfield;
+} */
+
 input,
 select {
   background-color: var(--off-white);

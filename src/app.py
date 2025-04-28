@@ -371,6 +371,22 @@ def cadastro_equipes():
         num_integrantes = int(request.form["num_integrantes"])
         print(nome_equipe, num_integrantes)
 
+        if nome_equipe and num_integrantes:
+            try:
+                with open(UPLOAD_EQUIPE + "equipes.txt", "r", encoding="utf-8") as f:
+                    linhas = f.readlines()
+                    for l in linhas:
+                        if l.strip().lower().startswith("nome da equipe:"):
+                            nome_arquivo = l.split(":", 1)[1].strip()
+                            print(nome_arquivo.lower() == nome_equipe.strip().lower())
+                            if nome_arquivo.lower() == nome_equipe.strip().lower():
+                                print("erro equipe existente")
+                                flash("Equipe existente")
+                                return redirect("adminscrum")
+            except FileNotFoundError:
+                pass
+
+
         integrantes = []
         for i in range(num_integrantes):
             nome = request.form.get(f"nome_{i}")
@@ -392,6 +408,25 @@ def cadastro_equipes():
         flash("Equipe cadastrada com sucesso!")
 
     return redirect("adminscrum")
+
+@app.route("/verificaequipe", methods = ["GET","POST"])
+def verificarequipe():
+    nome_equipe = request.args.get("nome_equipe")
+    if nome_equipe:
+        try:
+            with open(UPLOAD_EQUIPE + "equipes.txt", "r", encoding="utf-8") as f:
+                linhas = f.readlines()
+                for l in linhas:
+                    if l.strip().lower().startswith("nome da equipe:"):
+                        nome_arquivo = l.split(":", 1)[1].strip()
+                        print(nome_arquivo.lower() == nome_equipe.strip().lower())
+                        if nome_arquivo.lower() == nome_equipe.strip().lower():
+                            print("erro equipe existente")
+                            flash("Equipe existente")
+                            return "",200
+            return "",300
+        except FileNotFoundError:
+            pass
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
