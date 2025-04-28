@@ -172,7 +172,8 @@ def ler_equipe():
 
 
     try:
-
+        # ANTES equipes = {'404': ['integrante1, '...']}
+        # DEPOIS (MARYA VITORIA) equipes = {'404': {'integrantes': ['integrante1', 'integrante2'], 'avaliacao': True}, 'teste': []}
         with open(UPLOAD_EQUIPE + 'equipes.txt', 'r', encoding='utf-8') as file:
             for linha in file:
                 linha = linha.strip()
@@ -182,13 +183,12 @@ def ler_equipe():
                 elif linha.startswith("Nome do Integrante:") and equipe_atual:
                     integrante = linha.replace("Nome do Integrante:", "").strip()
                     equipes[equipe_atual]['integrantes'].append(integrante)
-                    # equipes = {'404': ['integrante1, '...']}
-                    # equipes = {'404': {'integrantes': ['integrante1', 'integrante2'], 'avaliacao': True}, 'teste': []}
+
                 elif linha.startswith("Avaliacão"):
                     avaliacao_status = linha.split(":", 1)[1].replace('\n', '').strip()
                     print(f'NomeEquipe: {equipe_atual}, {avaliacao_status}')
-                    # print('******', avaliacao_status)
-                    equipes[equipe_atual]['statusAvaliacao'] = bool(avaliacao_status)
+                    equipes[equipe_atual]['statusAvaliacao'] = avaliacao_status.strip().lower() == 'true'
+                    
                      
     except FileNotFoundError:
         equipes = {}
