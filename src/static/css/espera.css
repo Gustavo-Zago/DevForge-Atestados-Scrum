@@ -11,7 +11,8 @@
   padding: 20px;
 }
 
-#btn_equipe_modal {
+#btn_equipe_modal,
+#btn_enviar {
   background-color: var(--off-white);
   color: var(--azul-base);
   border: none;
