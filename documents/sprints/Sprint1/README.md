@@ -20,6 +20,6 @@ Durante essa Sprint foi criado e apresentado o protótipo do sistema como um tod
 | #12  |    BackEnd: Procurar Atestado    |                    "Como aluno, quero seja possível pesquisar o ultimo atestado enviado por mim para que seja mais fácil encontrar o status do atestado"                     |    ALTA    |   60min    |   🟩   |      28/03      |   1    |
 | #19  |       BackEnd: PopUp Senha       |             "Como Administrador, quero um sistema de senha ao entrar nas áreas de administrador para que nem todos tenham acesso, somente o pessoal autorizado"              |   MÉDIA    |   90min    |   🟩   |      27/03      |   1    |
 
-## Vídeo do Protótipo - 🎥
+## Vídeo do Sistema Desenvolvido na Sprint - 🎥
 
-https://github.com/user-attachments/assets/05d01b84-4c48-4e95-b572-ab8b2c963a7f
+https://github.com/user-attachments/assets/d965dc69-22bc-47f4-9a89-abd6d9670712
