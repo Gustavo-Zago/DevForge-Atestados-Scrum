@@ -38,14 +38,16 @@
               {% endfor %}
             </ul>
             {% if sub_dict['statusAvaliacao'] == True %}
-            <form method="POST" action="http://127.0.0.1:5000/scrum">
+            <form method="POST" action="{{ url_for('alterarStatusAvaliacao') }}">
               <input type="hidden" name="equipe" value="{{ equipe }}">
-              <button type="submit" class="btn-avaliar">Iniciar Avaliação</button>
+              <input type="hidden" name="status" value="False">
+              <button type="submit" class="btn-fechar">Fechar Avaliação</button>
             </form>
             {% else %}
-            <form method="POST" action="http://127.0.0.1:5000/adminscrum">
+            <form method="POST" action="{{ url_for('alterarStatusAvaliacao') }}">
               <input type="hidden" name="equipe" value="{{ equipe }}">
-              <button type="submit" class="btn-fechar">Fechar Avaliação</button>
+              <input type="hidden" name="status" value="True">
+              <button type="submit" class="btn-avaliar">Iniciar Avaliação</button>
             </form>
             {% endif %}
           </div>
@@ -102,5 +104,7 @@
 
     <script src="../static/scripts/index.js"></script>
     <script src="../static/scripts/cadastroEquipes.js"></script>
+    <script src="../static/scripts/adminscrum.js"></script>
+
   </body>
 </html>

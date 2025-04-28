@@ -101,36 +101,38 @@ def avaliacaoStatus():
     return jsonify({"avaliacao": False})
 
 
-@app.route("/alterarStatusAvaliacao", methods=["GET"])
+@app.route('/alterarStatusAvaliacao', methods=['POST'])
 def alterarStatusAvaliacao():
-    equipeNome = request.args.get("equipeNome")
-    novoStatus = request.args.get("status")  
-
+    equipeNome = request.form.get("equipe")
+    novoStatus = request.form.get("status")
+    
     try:
+        # Ler todo o arquivo
         with open(UPLOAD_EQUIPE + "equipes.txt", "r", encoding="utf-8") as file:
             linhas = file.readlines()
 
-        equipe_found = False
+        equipe_encontrada = False
         for i, linha in enumerate(linhas):
-            if linha.strip().startswith("Nome da Equipe") and equipeNome in linha:
-                equipe_found = True
+            if linha.strip().startswith("Nome da Equipe:") and equipeNome in linha:
+                equipe_encontrada = True
                 continue
-
-            if not linha.strip():
-                equipe_found = False
-                continue
-
-            if linha.strip().startswith("Avaliacão") and equipe_found:
+            
+            if equipe_encontrada and linha.strip().startswith("Avaliacão:"):
                 linhas[i] = f"Avaliacão: {novoStatus}\n"
                 break
+            elif not linha.strip():  # Linha vazia, reseta a flag
+                equipe_encontrada = False
 
+        # Escrever de volta no arquivo
         with open(UPLOAD_EQUIPE + "equipes.txt", "w", encoding="utf-8") as file:
             file.writelines(linhas)
 
-        return jsonify({"mensagem": f"Status da equipe {equipeNome} alterado para {novoStatus}."}), 200
+        flash(f"Status da equipe {equipeNome} alterado para {'Aberta' if novoStatus == 'True' else 'Fechada'}!")
+        return redirect(url_for('adminscrum'))
 
     except Exception as e:
-        return jsonify({"erro": str(e)}), 500
+        flash(f"Erro ao alterar status: {str(e)}")
+        return render_template("adminAtestado.html")
 
 
 @app.route('/enviarNotas', methods=['POST'])                   

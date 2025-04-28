@@ -30,7 +30,7 @@ Nome do Integrante: cleber - Team Developer
 Nome do Integrante: amera - Team Developer
 Nome do Integrante: joaquim - Team Developer
 Nome do Integrante: eu - Team Developer
-Avaliacão: False
+Avaliacão: True
 
 Nome da Equipe: 12
 Nome do Integrante: Joao - Team Developer
@@ -39,5 +39,12 @@ Nome do Integrante: amera - Team Developer
 Nome do Integrante: joaquim - Team Developer
 Nome do Integrante: eu - Team Developer
 Nome do Integrante: aaa - Team Developer
-Avaliacão: False
+Avaliacão: True
 
+Nome da Equipe: Fatec
+Nome do Integrante: Jean - Product Owner
+Nome do Integrante: Massanori - Scrum Master
+Nome do Integrante: amera - Team Developer
+Nome do Integrante: joaquim - Team Developer
+Nome do Integrante: eu - Team Developer
+Avaliacão: False
