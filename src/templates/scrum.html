@@ -25,7 +25,7 @@
           <optgroup label="Team">
             <option value="None" disabled selected>Selecione a equipe</option>
             {% for nome in equipes %}
-            <option value="{{ nome }}">{{ nome }}</option>
+            <option value="{{ nome }}" {% if nome == equipe_selecionada %}selected{% endif %}>{{ nome }}</option>
             {% endfor %}
           </optgroup>
         </select> 

@@ -14,7 +14,7 @@ Nome do Integrante: Daniel - Função: Team Developer
 Nome do Integrante: Eloá - Função: Team Developer
 Nome do Integrante: Mavy - Função: Team Developer
 Nome do Integrante: Breno - Função: Team Developer
-Avaliacão: False
+Avaliacão: True
 
 Nome da Equipe: 404
 Nome do Integrante: Mano Brown - Product Owner

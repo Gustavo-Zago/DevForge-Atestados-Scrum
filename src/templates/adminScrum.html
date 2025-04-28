@@ -38,15 +38,15 @@
               {% endfor %}
             </ul>
             {% if sub_dict['statusAvaliacao'] == True %}
-              <form method="POST" action="/fechar_avaliacao">
-                <input type="hidden" name="equipe" value="{{ equipe }}">
-                <button type="submit" class="btn-fechar">Fechar Avaliação</button>
-              </form>
+            <form method="POST" action="http://127.0.0.1:5000/scrum">
+              <input type="hidden" name="equipe" value="{{ equipe }}">
+              <button type="submit" class="btn-avaliar">Iniciar Avaliação</button>
+            </form>
             {% else %}
-              <form method="POST" action="/iniciar_avaliacao">
-                <input type="hidden" name="equipe" value="{{ equipe }}">
-                <button type="submit" class="btn-avaliar">Iniciar Avaliação</button>
-              </form>
+            <form method="POST" action="http://127.0.0.1:5000/adminscrum">
+              <input type="hidden" name="equipe" value="{{ equipe }}">
+              <button type="submit" class="btn-fechar">Fechar Avaliação</button>
+            </form>
             {% endif %}
           </div>
         {% endfor %}

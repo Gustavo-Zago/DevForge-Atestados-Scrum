@@ -19,7 +19,7 @@ let notas = {};
 let atualNota = NaN;
 let currentIndex = 0;
 
-avaliacaoStatus();
+avaliacaoStatus(""); 
 inicializaAvaliacao();
 eventoButtonClick();
 statusSelect(false, true, true);
@@ -111,8 +111,7 @@ function avaliacaoStatus(nomeEquipe) {
       return response.json();
     })
     .then((data) => {
-      let equipe = data.trim();
-      if (equipe === "True") {
+      if (data.avaliacao === true) {    
         mainChilds.forEach((child) => {
           child.classList.remove("desativado");
         });

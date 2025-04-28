@@ -24,25 +24,32 @@ def index():
 def envio():
     return render_template('formAtestado.html')
 
-@app.route('/scrum', methods=["GET"])
+@app.route('/scrum', methods=['GET', 'POST'])
 def scrum():
-    try:
-        with open(UPLOAD_EQUIPE+"equipes.txt", "r", encoding='utf-8') as file:
-            equipesLinhas = file.readlines()
+    equipe_selecionada = None
 
-        equipesNome = []
-        for linha in equipesLinhas:
-            linha = linha.strip()
-
-            if 'Nome da Equipe' in linha:
-                chave_valor = linha.split(":", 1)
-                chave, valor = chave_valor
-                equipesNome.append(valor.strip())
-
-        return render_template("scrum.html", equipes=equipesNome)
-    except Exception as e:
-        return str(e)
+    if request.method == "POST":
+        equipe_selecionada = request.form.get("equipe")
     
+    equipes = {}
+    try:
+        with open(UPLOAD_EQUIPE + 'equipes.txt', 'r', encoding='utf-8') as file:
+            for linha in file:
+                linha = linha.strip()
+                if linha.startswith("Nome da Equipe:"):
+                    equipe_atual = linha.replace("Nome da Equipe:", "").strip()
+                    equipes[equipe_atual] = {'integrantes': []}
+                elif linha.startswith("Nome do Integrante:") and equipe_atual:
+                    integrante = linha.replace("Nome do Integrante:", "").strip()
+                    equipes[equipe_atual]['integrantes'].append(integrante)
+                elif linha.startswith("Avaliacão"):
+                    avaliacao_status = linha.split(":", 1)[1].replace('\n', '').strip()
+                    equipes[equipe_atual]['statusAvaliacao'] = avaliacao_status.strip().lower() == 'true'
+    except FileNotFoundError:
+        equipes = {}
+
+    return render_template('scrum.html', equipes=equipes, equipe_selecionada=equipe_selecionada)
+
 @app.route("/integrantesScrum")
 def integrantes():
     nomeEquipe = request.args.get("NOME")
@@ -75,21 +82,23 @@ def integrantes():
 def avaliacaoStatus():
     nomeEquipe = request.args.get("equipeNome")
 
-    with open(UPLOAD_EQUIPE+"equipes.txt", "r", encoding="utf-8") as file:
+    with open(UPLOAD_EQUIPE + "equipes.txt", "r", encoding="utf-8") as file:
         equipe_found = False
         for linha in file:
             if linha.startswith("Nome da Equipe") and nomeEquipe in linha:
                 equipe_found = True
                 continue
 
-            if not linha:
-                equipe_found=False
+            if not linha.strip():  # corrigido para verificar linha vazia corretamente
+                equipe_found = False
                 continue
 
             if linha.startswith("Avaliacão") and equipe_found:
-                avalicao_status = linha.split(":", 1)
-                return jsonify(avalicao_status[-1])
-        return jsonify("False")
+                avalicao_status = linha.split(":", 1)[-1].strip()  # remove \n e espaços
+                return jsonify({"avaliacao": avalicao_status == "True"})
+
+    # Se não encontrar, retorna False
+    return jsonify({"avaliacao": False})
 
 
 @app.route("/alterarStatusAvaliacao", methods=["GET"])
