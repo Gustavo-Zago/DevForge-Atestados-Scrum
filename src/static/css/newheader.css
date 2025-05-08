@@ -15,6 +15,11 @@ body{
 
 header{border-bottom: solid 5px #e07a5f;}
 
+.navbar-dark .navbar-toggler {
+    color: rgba(255, 255, 255, .0)!important;
+    border-color: rgba(255, 255, 255, .0)!important;
+}
+
 .navbar.navbar-expand-sm.bg-dark.navbar-dark{
     width:  100vw;     
 }
@@ -26,7 +31,8 @@ header{border-bottom: solid 5px #e07a5f;}
     align-items: center;
 }
 
-.collapse.navbar-collapse.justify-content-end{
+.collapse.navbar-collapse{
+    justify-content: center;
     background-color: #393f50;
     color: #393f50;
     background: #393f50;
