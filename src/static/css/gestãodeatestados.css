@@ -7,6 +7,7 @@ h2 {
   color: white;
   padding: 20px;
   font-size: 25px;
+  text-shadow: 1px 1px 14px black;
 }
 
 .gestao-main {
@@ -32,6 +33,7 @@ th {
   background-color: var(--azul-base);
   color: var(--off-white);
   font-weight: bold;
+  text-shadow: 1px 1px 14px black;
 }
 
 .visualizar-button {
@@ -43,6 +45,7 @@ th {
   padding: 5px 15px;
   border-radius: var(--border-radius);
   border: 2px solid var(--azul-base);
+  box-shadow: 1px 1px 10px;
 }
 
 .visualizar-button:hover {
