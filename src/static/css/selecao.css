@@ -27,13 +27,15 @@
 
   font: normal 900 2.4rem var(--font-principal), monospace;
   text-align: center;
-  text-decoration: underline;
+  text-decoration: none;
 
   border: none;
   border-radius: var(--border-radius);
 
   color: var(--azul-base);
   background-color: var(--off-white);
+
+  box-shadow: 1px 1px 14px black;
 }
 
 .botao:hover {
