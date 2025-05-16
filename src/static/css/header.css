@@ -6,18 +6,12 @@ header {
   align-items: center;
 
   width: 100%;
-  height: 10%;
   padding: 10px;
   position: relative;
 
   border-bottom: solid var(--borda-laranja) var(--laranja-queimado);
   background-color: var(--azul-base);
 }
-
-.link-home {
-  position: absolute;
-}
-
 .link-home > img {
   width: 55px;
   height: 55px;
