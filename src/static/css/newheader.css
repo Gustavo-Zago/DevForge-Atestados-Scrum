@@ -60,3 +60,19 @@ header{border-bottom: solid 5px #e07a5f;}
 .nav-item{
     margin-right: 1em!important;
 }
+.links_header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: auto;
+}
+
+.links_header a,
+.links_header button,
+.menu-icon {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  font: normal 900 1.3rem var(--font-principal);
+  color: var(--off-white);
+}
