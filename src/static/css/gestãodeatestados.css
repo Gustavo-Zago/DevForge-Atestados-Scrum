@@ -51,3 +51,33 @@ th {
 .visualizar-button:hover {
   background-color: var(--off-white-cinza);
 }
+
+/* Mobile */
+
+@media screen and (max-width: 430px){
+  h2{
+    color: white;
+    font-family: 10px;
+    padding: 20px;
+  }
+}
+/* Para Ipads e Tables em geral, ou dispositivos similares */
+
+@media screen  and (min-width: 430px) and (max-width: 1024px){
+  h2{
+    color: white;
+    font-family: 25px;
+    padding: 20px;
+  }
+  
+  td {
+    border-bottom: 1px solid var(--azul-base);
+    padding: 20px;
+  }
+  
+  table{
+    margin-right: 100px;
+  }
+}
+
+/* Macbooks e dispo
