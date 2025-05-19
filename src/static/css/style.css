@@ -5,6 +5,12 @@
 @import url(Admscrum.css);
 @import url(cadastroequipes.css);
 
+
+button:hover{
+  cursor: pointer;
+}
+
+
 :root {
   --azul-base: #393f50;
   --off-white: #f2eee7;
