@@ -43,3 +43,12 @@ Motivo: gr
 Arquivo: src/static/uploads/atestados\64564_23042025093815.pdf
 Status: Pendente
 
+Nome: Oinn
+RA do aluno: 12
+Data Inicial: 2025-05-08
+Data Final: 2025-05-23
+Validade: 15 dias
+Motivo: Hbgy
+Arquivo: src/static/uploads/atestados\12_19052025103059.jpg
+Status: Pendente
+
