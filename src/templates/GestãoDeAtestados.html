@@ -62,7 +62,7 @@
             <td>{{ atestado['Nome'] }}</td>
             <td>{{ atestado['Status'] }}</td>
             <td>
-              <button class="visualizar-button" id="{{atestado['Arquivo']}}"> Visualizar </button>
+              <button class="visualizar-button" id="{{ atestado['Arquivo'] | replace('src/', '') }}"> Visualizar </button>
             </td>
             <!-- Coloquei o "{{atestado['Arquivo'] }}" para mostrar a rota do arquivo respectivo, favor tirar e deixar só o "Vizualizar""-->
           </tr>

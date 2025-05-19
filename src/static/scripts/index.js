@@ -169,14 +169,19 @@ if (listaBtnStatus) {
 
 // Função para abrir o PDF no iframe dentro do modal
 function openModal(url) {
-  url = url.split("/");
-  nomeArquivo = url[url.length - 1];
-  url.splice(0, 1);
-  url = url.join("/");
-  urlArquivo = nomeArquivo;
-  document.getElementById("iframe-pdf").src = url;
-  document.getElementById("modal").style.display = "block";
+  console.log("URL recebida:", url); // para depurar no console
+
+  if (!url.startsWith("/")) {
+    url = "/" + url;
+  }
+
+  urlArquivo = url; // guarda para o botão Aprovar/Reprovar
+  const iframe = document.getElementById("iframe-pdf");
+  iframe.src = url;
+  document.getElementById("modal").style.display = "flex";
 }
+
+
 
 // Função para fechar o modal
 function closeModal() {

@@ -50,5 +50,23 @@ Data Final: 2025-05-23
 Validade: 15 dias
 Motivo: Hbgy
 Arquivo: src/static/uploads/atestados\12_19052025103059.jpg
+Status: Reprovado
+
+Nome: Gustavo Zago de Lima
+RA do aluno: 5
+Data Inicial: 2025-05-20
+Data Final: 2025-05-24
+Validade: 4 dias
+Motivo: Resfriado
+Arquivo: src/static/uploads/atestados\5_19052025173248.pdf
 Status: Pendente
+
+Nome: Gustavo Zago de Lima
+RA do aluno: 5
+Data Inicial: 2020-02-22
+Data Final: 2020-11-11
+Validade: 263 dias
+Motivo: qqqq
+Arquivo: src/static/uploads/atestados\5_19052025174156.pdf
+Status: Aprovado
 
