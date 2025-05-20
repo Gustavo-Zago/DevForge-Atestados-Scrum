@@ -92,6 +92,8 @@ select {
 }
 
 .card-equipe {
+  display: flex;
+  flex-direction: column;
   background-color: #373d51;
   color: #ffffff;
   padding: 20px;
@@ -116,6 +118,10 @@ select {
   margin: 5px 0;
 }
 
+.card-equipe form {
+  margin-top: auto;
+}
+
 .btn-fechar {
   background-color: #e7e0d6;
   color: #373d51;
@@ -132,7 +138,7 @@ select {
   background-color: #d1c7ba;
 }
 .btn-fechar {
-  background-color:  white;
+  background-color: white;
   color: #373d51;
   border: none;
   padding: 10px 20px;
