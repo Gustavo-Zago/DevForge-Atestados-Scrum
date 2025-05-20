@@ -59,8 +59,12 @@
         <p>Nome do Aluno</p>
         <p>Status</p>
       </section>
-      {% for atestado in atestados %}
-      <section class="dados_aluno">
+      {% for atestado in atestados %} 
+        {% if loop.index % 2 != 0: %}
+        <section class="dados_aluno">
+        {% else: %}
+        <section class="dados_aluno dados_aluno_branco">
+        {% endif %}
         <p>{{ atestado['Data Final'] }}</p>
         <p>{{ atestado['Nome'] }}</p>
         <p>{{ atestado['Status'] }}</p>
