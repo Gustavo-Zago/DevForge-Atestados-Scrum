@@ -76,6 +76,10 @@ h1 {
   background-color: white;
 }
 
+.dados_aluno p {
+  margin-bottom: 0;
+}
+
 p {
   font: normal 900 1.3rem var(--font-principal), monospace;
 }
