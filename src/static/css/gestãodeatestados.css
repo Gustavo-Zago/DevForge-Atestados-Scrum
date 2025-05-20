@@ -3,7 +3,6 @@ body {
 }
 
 h2 {
-  background-color: hsl(224, 17%, 27%);
   color: white;
   text-shadow: 1px 1px 14px black;
 }
@@ -125,11 +124,6 @@ th {
 /* Mobile */
 
 @media screen and (max-width: 430px) {
-  h2 {
-    color: white;
-    font-family: 10px;
-    padding: 20px;
-  }
   .gestao-main {
     padding: 10px;
   }
@@ -143,15 +137,9 @@ th {
     border-bottom: 1px solid var(--azul-base);
   }
 }
-/* Para Ipads e Tables em geral, ou dispositivos similares */
+/* Para Tables em geral, ou dispositivos similares */
 
 @media screen and (max-width: 1024px) {
-  h2 {
-    color: white;
-    font-size: 25px;
-    padding: 20px;
-  }
-
   .gestao-main {
     padding: 20px;
   }
