@@ -2,6 +2,10 @@
   background-color: var(--off-white);
 }
 
+.main-avaliacao select {
+  -webkit-appearance: none;
+}
+
 .Avaliação {
   display: flex;
   flex-direction: row;
