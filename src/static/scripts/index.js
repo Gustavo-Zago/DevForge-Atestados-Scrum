@@ -1,5 +1,6 @@
 import meuModal from "./cadastroEquipe-modal.js";
 import modal from "./modal.js";
+import statusAvaliacao from "./statusAvaliacao.js";
 
 //Index
 const atestadoButton = document.getElementById("btn_atestado");
@@ -88,6 +89,12 @@ function verificaSenha(url) {
     input_senha.value = "";
     redirecionar(url);
   }
+}
+
+//Avaliação
+
+if (statusAvaliacao.statusAvaliacaoP) {
+  await statusAvaliacao.exibeStatusAvaliacao();
 }
 
 const listaBtnArquivo = document.querySelectorAll(".visualizar-button");

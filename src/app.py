@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 '''from pyscript import Element'''
-import os, json
+import os, json, requests
 from datetime import datetime
 i,x = 0,1
 escolha = []
@@ -142,29 +142,72 @@ def enviarNotas():
     avaliador = dados.get("Avaliador")
     avaliado = dados.get("Avaliado")
     notas = dados.get("notas")
-    pathArquivo = UPLOAD_EQUIPE+equipeNome+".txt"
-    if os.path.exists(pathArquivo):
-        try:
+    pathArquivo = os.path.join(UPLOAD_EQUIPE, f"{equipeNome}.txt")
+
+    try:
+        if os.path.exists(pathArquivo):
             with open(pathArquivo, "r", encoding='utf-8') as fileR:
                 arquivo = fileR.readlines()
-                arquivo_reescrito = []
 
-                for linha in arquivo:
-                    if linha.startswith(f"{avaliador} - {avaliado}"):
-                        nova_linha = f"{avaliador} - {avaliado}: {notas}\n"
-                        arquivo_reescrito.append(nova_linha)
-                    else:
-                        arquivo_reescrito.append(linha)
+            arquivo_reescrito = []
+
+            for linha in arquivo:
+                if linha.startswith(f"{avaliador} - {avaliado}"):
+                    nova_linha = f"{avaliador} - {avaliado}: {notas}\n"
+                    arquivo_reescrito.append(nova_linha)
+                else:
+                    arquivo_reescrito.append(linha)
 
             with open(pathArquivo, "w", encoding='utf-8') as fileW:
                 fileW.writelines(arquivo_reescrito)
+        else:
+            with open(pathArquivo, "a", encoding='utf-8') as fileA:
+                fileA.writelines(f"{avaliador} - {avaliado}: {notas}\n")
 
-            return jsonify({"mensagem": "Nota adicionada com sucesso!"}), 200
-        except Exception as e:
-            return jsonify({"Erro": str(e)}), 500
-    with open(pathArquivo, "a", encoding='utf-8') as fileA:
-        fileA.writelines(f"{avaliador} - {avaliado}: {notas}\n")
-    return jsonify({"mensagem": "Nota adicionada com sucesso!"}), 200
+
+        return jsonify({"mensagem": "Nota adicionada com sucesso!"}), 200
+    except Exception as e:
+        return jsonify({"Erro": str(e)}), 500
+
+@app.route("/verificaAvaliacaoCompleta", methods=['GET', 'POST'])
+def verificaAvaliacaoCompleta():
+    nomeEquipe = request.args.get("NomeEquipe")
+    pathArquivo = f"{UPLOAD_EQUIPE}{nomeEquipe}.txt"
+    if os.path.exists(pathArquivo):
+        with open(pathArquivo, "r", encoding="utf-8") as file:
+            arquivo = file.readlines()
+
+        equipeScrum = requests.get("http://localhost:5000/integrantesScrum",  params={"NOME": nomeEquipe})
+        equipeScrum = equipeScrum.json()
+        listaIntegrantes_semFormatacao = equipeScrum.get("integrantes", [])
+        listaIntegrantes = []
+
+        for integrante in listaIntegrantes_semFormatacao:
+            integrante = integrante.split("-")
+            integrante = integrante[0]
+            listaIntegrantes.append(integrante.strip())
+
+        qntIntegrantes = len(listaIntegrantes)
+        avalicao_completo = True
+        dictAvaliacao = {}
+        for integrante in range(qntIntegrantes):
+            qntNotas = 0
+            for notasIntegrante in arquivo:
+                if notasIntegrante.startswith(f"{listaIntegrantes[integrante]}"):
+                    qntNotas += 1
+
+            dictAvaliacao[listaIntegrantes[integrante]] = qntNotas
+            
+            if qntNotas < qntIntegrantes - 1:
+                avalicao_completo = False
+                break
+        print(dictAvaliacao)
+        print(avalicao_completo)
+        
+        return jsonify({"statusAvaliacao": avalicao_completo})
+    return jsonify({"Erro": "Avaliacão Fechada"})
+
+    
 
 @app.route('/adminatestado')
 def adminatestado():
@@ -210,8 +253,6 @@ def ler_equipe():
         equipes = {}
     print(f'Dicionario Final:{equipes}')
     return render_template('adminScrum.html', equipes=equipes)
-
-    
 
 @app.route('/enviar', methods=['POST'])
 def enviar():
@@ -315,9 +356,7 @@ def buscar():
                 
             return jsonify({"status": "Não Encontrado"})
     except FileNotFoundError:
-        return render_template('Espera.html')
-          
-           
+        return render_template('Espera.html')        
 
 @app.route("/gestaoat", methods=["GET"])
 def gestao():
