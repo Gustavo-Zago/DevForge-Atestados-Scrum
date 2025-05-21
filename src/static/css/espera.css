@@ -18,7 +18,7 @@
   font-weight: 800;
 }
 
-#btn_equipe_modal,
+#open_Modal_Button,
 #btn_enviar {
   background-color: var(--off-white);
   color: var(--azul-base);
