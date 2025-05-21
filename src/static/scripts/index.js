@@ -1,5 +1,5 @@
 //Geral
-const main = document.querySelector("main");
+import modal from "./modal.js";
 const header = document.querySelector("header");
 const modal = document.getElementById("modal");
 const closeButton = document.getElementById("close_modal");
@@ -40,16 +40,6 @@ if (closeButton) {
 
 //Geral
 
-if (closeButton) {
-  closeButton.addEventListener("click", () => {
-    modalAction("close");
-    listaInputs = document.querySelectorAll("dialog input");
-    listaInputs.forEach((input) => {
-      input.value = "";
-    });
-  });
-}
-
 //Index
 // Verifica se o botão "atestadoButton" existe no DOM
 if (atestadoButton) {
@@ -61,7 +51,6 @@ if (atestadoButton) {
 if (enviarButton) {
   enviarButton.addEventListener("click", function () {
     redirecionar("/formAtestado");
-    console.log("teste");
   });
 }
 
@@ -73,10 +62,9 @@ if (equipeButton) {
 
 if (gestaoButton) {
   gestaoButton.addEventListener("click", function () {
-    modalAction("open");
+    modal.modalAction("open");
 
-    adm_btn_senha.addEventListener("click", function (e) {
-      e.preventDefault();
+    adm_btn_senha.addEventListener("click", function () {
       verificaSenha("/gestaoat");
     });
   });
@@ -84,20 +72,23 @@ if (gestaoButton) {
 
 if (admButton) {
   admButton.addEventListener("click", function () {
-    modalAction("open");
+    modal.modalAction("open");
 
-    adm_btn_senha.addEventListener("click", function (e) {
-      e.preventDefault();
+    adm_btn_senha.addEventListener("click", function () {
       verificaSenha("/adminscrum");
     });
   });
+}
+
+if (modal.closeButton) {
+  modal.closeModal();
 }
 
 //Histórico Atestado
 
 if (buscarButton) {
   buscarButton.addEventListener("click", function () {
-    modalAction("open");
+    modal.modalAction("open");
   });
 }
 
@@ -105,39 +96,18 @@ function redirecionar(url) {
   window.location.href = url;
 }
 
-function modalAction(action) {
-  modal.style.display = action == "open" ? "flex" : "none";
-  if (main) {
-    main.classList.toggle("blur");
-    main.classList.toggle("noClick");
-  }
-
-  if (header) {
-    header.classList.toggle("blur");
-    header.classList.toggle("noClick");
-  }
-
-  listaBotao = document.querySelectorAll(".botao");
-  listaBotao.forEach((botao) => {
-    botao.classList.toggle("noClick");
-  });
-}
-
 function verificaSenha(url) {
-  let input_senha = document.querySelector("#inp_senha").value;
-  if (input_senha == adm_password) {
+  let input_senha = document.querySelector("#inp_senha");
+  if (input_senha.value == adm_password) {
     input_senha.value = "";
     redirecionar(url);
-    return;
   }
 }
-function ModalAtestado(url) {
-  console.log(url);
-}
 
-listaBtnArquivo = document.querySelectorAll(".visualizar-button");
-listaBtnStatus = document.querySelectorAll(".status-button");
-urlArquivo = "";
+const listaBtnArquivo = document.querySelectorAll(".visualizar-button");
+const listaBtnStatus = document.querySelectorAll(".status-button");
+let urlArquivo = "";
+
 if (listaBtnArquivo) {
   listaBtnArquivo.forEach((botao) => {
     botao.addEventListener("click", () => {
@@ -200,7 +170,7 @@ function closeModal() {
 }
 
 // Fechar modal ao clicar fora do conteúdo
-if (document.getElementById("modal")){
+if (document.getElementById("modal")) {
   document.getElementById("modal").addEventListener("click", function (e) {
     if (e.target === this) {
       closeModal();
@@ -229,5 +199,3 @@ function gerarCampos() {
                 `;
   }
 }
-
-

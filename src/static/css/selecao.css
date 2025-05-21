@@ -70,7 +70,7 @@ dialog#modal {
   transform: translate(-50%, -50%);
 }
 
-#modal > form {
+#modal > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,6 +113,7 @@ dialog#modal {
   top: 5px;
   right: 5px;
 
+  cursor: pointer;
   width: 30px;
   height: 30px;
 }
