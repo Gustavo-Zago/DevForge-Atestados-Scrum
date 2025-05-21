@@ -13,7 +13,7 @@ i = 0
 app = Flask(__name__, static_folder='')
 app.secret_key = 'chave-secreta'
 UPLOAD_FOLDER =  './src/static/uploads/atestados/' if __name__ == '__main__' else './static/uploads/atestados/'
-UPLOAD_EQUIPE = './src/static/equipes/'
+UPLOAD_EQUIPE = './src/static/equipes/' if __name__ == '__main__' else './static/equipes/'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
     
 @app.route("/")
@@ -100,7 +100,6 @@ def avaliacaoStatus():
     # Se não encontrar, retorna False
     return jsonify({"avaliacao": False})
 
-
 @app.route('/alterarStatusAvaliacao', methods=['POST'])
 def alterarStatusAvaliacao():
     equipeNome = request.form.get("equipe")
@@ -133,7 +132,6 @@ def alterarStatusAvaliacao():
     except Exception as e:
         flash(f"Erro ao alterar status: {str(e)}")
         return render_template("adminAtestado.html")
-
 
 @app.route('/enviarNotas', methods=['POST'])                   
 def enviarNotas():
@@ -206,8 +204,6 @@ def verificaAvaliacaoCompleta():
         
         return jsonify({"statusAvaliacao": avalicao_completo})
     return jsonify({"Erro": "Avaliacão Fechada"})
-
-    
 
 @app.route('/adminatestado')
 def adminatestado():
@@ -413,18 +409,12 @@ def alterarStatus():
 
     except Exception as e:
         return f'Erro ao atualizar o status: {str(e)}', 500  
-
-
-
     
 @app.route("/cadastroequipes", methods=["POST"])
 def cadastro_equipes():
-    UPLOAD_EQUIPE = './src/static/equipes/'
-    
     if request.method == "POST":
         nome_equipe = request.form["nome_equipe"]
         num_integrantes = int(request.form["num_integrantes"])
-        print(nome_equipe, num_integrantes)
 
         if nome_equipe and num_integrantes:
             try:
@@ -433,9 +423,7 @@ def cadastro_equipes():
                     for l in linhas:
                         if l.strip().lower().startswith("nome da equipe:"):
                             nome_arquivo = l.split(":", 1)[1].strip()
-                            print(nome_arquivo.lower() == nome_equipe.strip().lower())
                             if nome_arquivo.lower() == nome_equipe.strip().lower():
-                                print("erro equipe existente")
                                 flash("Equipe existente")
                                 return redirect("adminscrum")
             except FileNotFoundError:
@@ -446,9 +434,7 @@ def cadastro_equipes():
         for i in range(num_integrantes):
             nome = request.form.get(f"nome_{i}")
             funcao = request.form.get(f"funcao_{i}")
-            print(nome, funcao)
             if not nome or not funcao:
-                print("erro nome funcao")
                 flash("Integrante ou função em branco.")
                 return redirect("adminscrum")
             integrantes.append((nome, funcao))
@@ -474,14 +460,12 @@ def verificarequipe():
                 for l in linhas:
                     if l.strip().lower().startswith("nome da equipe:"):
                         nome_arquivo = l.split(":", 1)[1].strip()
-                        print(nome_arquivo.lower() == nome_equipe.strip().lower())
                         if nome_arquivo.lower() == nome_equipe.strip().lower():
-                            print("erro equipe existente")
                             flash("Equipe existente")
                             return "",200
             return "",300
         except FileNotFoundError:
-            pass
+            return "",404
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True, host="0.0.0.0")
