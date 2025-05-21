@@ -21,19 +21,23 @@ function modalAction(action) {
   });
 }
 
-function closeModal() {
-  closeButton.addEventListener("click", () => {
-    modalAction("close");
-    listaInputs = document.querySelectorAll("dialog input");
-    listaInputs.forEach((input) => {
-      input.value = "";
+function addCloseModal() {
+  if (closeButton) {
+    closeButton.addEventListener("click", () => {
+      modalAction("close");
+      listaInputs = document.querySelectorAll("dialog input");
+      listaInputs.forEach((input) => {
+        input.value = "";
+      });
     });
-  });
+  }
+}
+
+function modalMain() {
+  addCloseModal();
 }
 
 export default {
-  modal,
-  closeButton,
   modalAction,
-  closeModal,
+  modalMain,
 };

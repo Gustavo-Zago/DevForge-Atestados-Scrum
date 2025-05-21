@@ -91,7 +91,8 @@ dialog#modal {
   height: 35%;
 }
 
-#modal button {
+#modal button,
+.status-button {
   align-self: flex-end;
   width: 40%;
   padding: 5px;
@@ -103,6 +104,7 @@ dialog#modal {
   border: none;
 }
 
+.status-button:active,
 #modal button:active {
   outline: solid 2px var(--off-white-cinza);
 }
