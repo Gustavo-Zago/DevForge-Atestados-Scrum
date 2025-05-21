@@ -1,8 +1,5 @@
-//Geral
+import meuModal from "./cadastroEquipe-modal.js";
 import modal from "./modal.js";
-const header = document.querySelector("header");
-const modal = document.getElementById("modal");
-const closeButton = document.getElementById("close_modal");
 
 //Index
 const atestadoButton = document.getElementById("btn_atestado");
@@ -17,25 +14,14 @@ const buscarButton = document.getElementById("btn_buscar");
 
 const adm_password = "admin";
 
-//cadastroEquipes-modal
-const btn_equipe_modal = document.getElementById("btn_equipe_modal");
-const meuModal = document.getElementById("meuModal");
-const closeButtonequipe = document.querySelector(".close_button"); // Seleciona o botão de fechar
+//meuModal
 
-if (btn_equipe_modal) {
-    btn_equipe_modal.addEventListener("click", () => {
-        meuModal.showModal();
-    });
+if (meuModal.openModalButton) {
+  meuModal.openCadastroModal();
 }
 
-// Função para fechar o modal de cadastro de equipe
-function closeCadastroModal() {
-  meuModal.close(); // Fecha o modal
-}
-
-// Associa o evento de click no botão de fechar
-if (closeButton) {
-  closeButtonequipe.addEventListener("click", closeCadastroModal);
+if (meuModal.closeButtonEquipe) {
+  meuModal.closeCadastroModal();
 }
 
 //Geral
