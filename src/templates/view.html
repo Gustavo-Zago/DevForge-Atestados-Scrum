@@ -7,17 +7,22 @@
     <title>Document</title>
   </head>
   <body>
-    <dialog id="meuModal" class="modal"> 
-        <article class="modal-conteudo">
-            <header>
-                <button aria-label="Fechar" class="fechar">&times;</button>
-            </header>
-            <section>
-                <iframe id="pdfVisualizacao" src="{{ caminho_arquivo }}" width="600%" height="1000px"></iframe>
-            </section>
-        </article>
+    <dialog id="meuModal" class="modal">
+      <article class="modal-conteudo">
+        <header>
+          <button aria-label="Fechar" class="fechar">&times;</button>
+        </header>
+        <section>
+          <iframe
+            id="pdfVisualizacao"
+            src="{{ caminho_arquivo }}"
+            width="600%"
+            height="1000px"
+          ></iframe>
+        </section>
+      </article>
     </dialog>
-    
-    <script src="../static/scripts/index.js"></script>
+
+    <script type="module" src="../static/scripts/index.js"></script>
   </body>
 </html>
