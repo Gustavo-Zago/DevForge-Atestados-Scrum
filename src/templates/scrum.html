@@ -9,18 +9,48 @@
       rel="shortcut icon"
       type="image/x-icon"
       href="../static/assets/DevForgePNG.ico"
-    />
+    <!-- CSS bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/newheader.css">
   </head>
-  <body class="ScrumBody">
-    <header>
-      <a class="link-home" href="/"><img src="../static/assets/Home.png" /></a>
-      <div class="links_header">
-        <a href="#">Scrum</a>
-      </div>
-    </header>
+
+  <!-- script bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+  <body>
+            <header>
+            <div class="container">
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+                    <a class="link-home" href="/">
+                        <img style="width:50px!important;" src="../static/assets/Home.png">
+                    </a>
+                        
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div id="myNav" class="collapse navbar-collapse">
+                        <ul style="text-align: center;" class="navbar-nav ">
+                          <li>
+                            <div class="links_header">
+                              <a href="#">Scrum</a>
+                            </div>
+                          </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+        </header>
+
+
     <main class="main-avaliacao">
       <section class="Avaliação">
-        <h2>Avaliação da Equipe:</h2>
+        <nav class="nav-espera">
+          <h1>Avaliação da Equipe:</h1>
+        </nav>
         <select name="Equipe" id="teamselection">
           <optgroup label="Team">
             <option value="None" disabled selected>Selecione a equipe</option>
