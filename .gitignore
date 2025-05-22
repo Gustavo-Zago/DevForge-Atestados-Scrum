@@ -4,3 +4,4 @@
 *.cpython-313.pyc
 /src/static/equipes/*
 !/src/static/equipes/equipes.txt
+venv/
