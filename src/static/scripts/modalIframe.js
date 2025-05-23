@@ -1,3 +1,5 @@
+import modal from "./modal.js";
+
 const modalIframe = document.getElementById("modalIframe");
 const iframe = document.getElementById("iframe-pdf");
 const listaBtnArquivo = document.querySelectorAll(".visualizar-button");
@@ -54,13 +56,12 @@ function openIframe(url) {
   }
 
   iframe.src = pdfPath;
-  modalIframe.style.display = "flex";
+  modal.modalAction("open");
 }
 
 function closeIframe() {
   iframe.src = "";
-  modalIframe.style.display = "none";
-  document.body.classList.remove("no-scroll");
+  modal.modalAction("close");
 }
 
 function fixURL(url) {

@@ -8,6 +8,8 @@ const admButton = document.getElementById("btn_adm");
 const enviarButton = document.getElementById("btn_enviar");
 const adm_btn_senha = document.querySelector("#adm_btn_senha");
 const buscarButton = document.getElementById("btn_buscar");
+const openModalButton = document.getElementById("open_Modal_Button");
+const openNotasModal = document.getElementById("vizualizar_notas");
 
 function addAtestadoEvent() {
   if (atestadoButton) {
@@ -36,7 +38,7 @@ function addEquipeEvent() {
 function addGestaoEvent() {
   if (gestaoButton) {
     gestaoButton.addEventListener("click", function () {
-      modal.modalAction("open");
+      modal.modalAction("open", true);
 
       adm_btn_senha.addEventListener("click", function () {
         index.verificaSenha("/gestaoat");
@@ -48,7 +50,7 @@ function addGestaoEvent() {
 function addAdmEvent() {
   if (admButton) {
     admButton.addEventListener("click", function () {
-      modal.modalAction("open");
+      modal.modalAction("open", true);
 
       adm_btn_senha.addEventListener("click", function () {
         index.verificaSenha("/adminscrum");
@@ -60,18 +62,34 @@ function addAdmEvent() {
 function addBuscarEvent() {
   if (buscarButton) {
     buscarButton.addEventListener("click", function () {
+      modal.modalAction("open", true);
+    });
+  }
+}
+
+function addCadastroModalEvent() {
+  if (openModalButton) {
+    openModalButton.addEventListener("click", () => {
       modal.modalAction("open");
     });
   }
 }
 
-function selecaoMain() {
+function addNotasModalEvent() {
+  if (openNotasModal) {
+    const modalNotas = document.getElementById("modalNotas");
+    openNotasModal.addEventListener("click", () => modal.modalAction("open"));
+  }
+}
+
+function eventsModalMain() {
   addAtestadoEvent();
   addEnviarEvent();
   addEquipeEvent();
   addGestaoEvent();
   addAdmEvent();
   addBuscarEvent();
+  addCadastroModalEvent();
+  addNotasModalEvent();
 }
-
-export default selecaoMain;
+export default eventsModalMain;

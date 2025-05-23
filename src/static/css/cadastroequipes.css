@@ -8,17 +8,20 @@
   --borda-laranja: 5px;
 }
 
-#meuModal {
-  /* color: aqua; */
-  margin: auto;
-  background-color: #393f50;
-  border-radius: calc(var(--border-radius) - 10px);
-  border-color: #393f50;
-  font-family: var(--font-principal), monospace;
-  color: var(--off-white);
+.modalCadastro {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 12px;
+
+  background-color: #393f50;
+  color: var(--off-white);
+  border-color: #393f50;
+  border-radius: calc(var(--border-radius) - 10px);
+  font-family: var(--font-principal), monospace;
   box-shadow: 10px 10px 22px -4px rgba(0, 0, 0, 0.75);
-  width: 30%x;
 }
 
 .inputNomeN {
@@ -38,10 +41,6 @@
   -webkit-appearance: none;
   margin: 0;
 }
-
-/* .no-spinBox {
-  -moz-appearance: textfield;
-} */
 
 input,
 select {

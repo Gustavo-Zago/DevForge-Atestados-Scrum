@@ -42,7 +42,7 @@
   background-color: var(--off-white-cinza);
 }
 
-dialog#modal {
+dialog.popUp_modal {
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -70,7 +70,8 @@ dialog#modal {
   transform: translate(-50%, -50%);
 }
 
-#modal > div {
+.popUp_modal > form,
+.popUp_modal > .popUp_Senha_Inputs {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,20 +79,20 @@ dialog#modal {
   gap: 10px;
 }
 
-#modal label {
+.popUp_modal label {
   font-size: 1.5rem;
   font-weight: 900;
   text-indent: 10px;
   align-self: flex-start;
 }
 
-#modal input {
+.popUp_modal input {
   padding: 10px;
   width: 100%;
   height: 35%;
 }
 
-#modal button,
+.popUp_modal button,
 .status-button {
   align-self: flex-end;
   width: 40%;
@@ -105,7 +106,7 @@ dialog#modal {
 }
 
 .status-button:active,
-#modal button:active {
+.popUp_modal button:active {
   outline: solid 2px var(--off-white-cinza);
 }
 
