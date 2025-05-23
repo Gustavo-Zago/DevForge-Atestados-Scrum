@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 '''from pyscript import Element'''
-import os, json, requests
+import os, json, requests, uuid, itertools
 from datetime import datetime
+from math import floor
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+
 i,x = 0,1
 escolha = []
-import uuid  # Para garantir nomes únicos de arquivos
 from static.python.funcAtestado import *
 
 teste()
@@ -14,7 +17,10 @@ app = Flask(__name__, static_folder='')
 app.secret_key = 'chave-secreta'
 UPLOAD_FOLDER =  './src/static/uploads/atestados/' if __name__ == '__main__' else './static/uploads/atestados/'
 UPLOAD_EQUIPE = './src/static/equipes/' if __name__ == '__main__' else './static/equipes/'
+UPLOAD_FOLDER_PDFS = './src/static/uploads/equipes/' if __name__ == '__main__' else './static/uploads/equipes/'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(UPLOAD_EQUIPE, exist_ok=True)
+os.makedirs(UPLOAD_FOLDER_PDFS, exist_ok=True)
     
 @app.route("/")
 def index():
@@ -465,7 +471,111 @@ def verificarequipe():
                             return "",200
             return "",300
         except FileNotFoundError:
-            return "",404
+            pass
+
+@app.route("/gerarPDF", methods = ["GET", "POST"])
+def generatePDF():
+    nomeEquipe = request.args.get("nomeEquipe")
+    pdf = canvas.Canvas(f"{UPLOAD_FOLDER_PDFS}{nomeEquipe}.pdf", pagesize=A4)
+    pdf.setTitle(f"{nomeEquipe}-notas")
+    pdf = generateGrid(pdf=pdf,nomeEquipe=nomeEquipe)
+
+    pdf.save()
+
+    return ""
+
+def generateGrid(pdf, nomeEquipe):
+    pathArquivo = f"{UPLOAD_EQUIPE}{nomeEquipe}.txt"
+    if os.path.exists(pathArquivo):
+        with open(pathArquivo, 'r', encoding='utf-8') as file:
+            arquivo = file.readlines()
+        
+        json_notas = generateJson(jsonFile=arquivo)
+        tupla_notas = generateTupla(jsonFile=json_notas)
+
+        w, h = A4
+        print(w)
+        max_rows = 45
+
+        margin_x = 30
+        margin_y = 50
+        padding = 15
+
+        xList = [x + margin_x for x in [0, 100, 200, 300, 400, 530]]
+        yList = [h - margin_y - i * padding for i in range(max_rows + 1)]
+
+        for rows in grouper(tupla_notas, max_rows):
+            rows = tuple(filter(bool, rows))
+            pdf.grid(xList, yList)
+            for y, row in zip(yList[:-1], rows):
+                for x, cell in zip(xList, row):
+                    pdf.drawString(x + 2, y - padding + 3, str(cell))
+            pdf.showPage()
+        
+        return pdf
+
+    return "False"
+
+def generateJson(jsonFile):
+    json_notas = {}
+    for nota in jsonFile:
+        nota = nota.strip().split(":", 1)
+
+        chave, valor = nota[0], nota[1]
+        chave = chave.strip().split("-")
+        chave = chave[1]
+
+        valor = valor.strip()
+
+        if chave not in json_notas:
+            json_notas[chave] = {"notas":[json.loads(valor)]}
+        else:
+            json_notas[chave]["notas"].append(json.loads(valor))
+
+    json_notas = mediaNotas(jsonFile=json_notas)
+    json_notas = ordenarJson(jsonFile=json_notas)
+
+    return json_notas
+
+def ordenarJson(jsonFile):
+    jsonFile_ordenado = dict(sorted(jsonFile.items()))
+    return jsonFile_ordenado
+
+def mediaNotas(jsonFile):
+    medias = {}
+
+    for integrante, info in jsonFile.items():
+        soma = {}
+        contador = {}
+
+        for notas in info["notas"]:
+            for criterio, valor in notas.items():
+                valor = int(valor)
+                soma[criterio] = soma.get(criterio, 0) + valor
+                contador[criterio] = contador.get(criterio, 0) + 1
+        
+        medias["medias"] = {
+            criterio: round(soma[criterio]/contador[criterio], 1) for criterio in soma
+        }
+
+        jsonFile[integrante].update(medias)
+    return jsonFile
+
+def generateTupla(jsonFile):
+    data = [("Nome", "Proatividade", "Autonomia", "Cooperação", "Entrega de Resultados")]
+
+    for integrante, notaMedias in jsonFile.items():
+        medias = []
+
+        for criterio, valorMedia in notaMedias["medias"].items():
+            medias.append(valorMedia)
+        
+        data.append((integrante, *medias))
+    return data
+
+def grouper(iteravel, n):
+    args = [iter(iteravel)] * n
+    return itertools.zip_longest(*args)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True, host="0.0.0.0")
