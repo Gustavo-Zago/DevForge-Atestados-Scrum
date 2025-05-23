@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 import os, json, requests, uuid, itertools
 from datetime import datetime
 from math import floor
+from openpyxl import Workbook
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 
@@ -473,16 +474,48 @@ def verificarequipe():
         except FileNotFoundError:
             pass
 
+@app.route("/gerarExcel", methods = ["GET", "POST"])
+def genarateExcel():
+    nomeEquipe = request.args.get("nomeEquipe")
+    pathArquivo = f"{UPLOAD_EQUIPE}{nomeEquipe}.txt"
+    excelPath = f"{UPLOAD_FOLDER_PDFS}{nomeEquipe}.xlsx"
+    if os.path.exists(pathArquivo):
+        with open(pathArquivo, 'r', encoding='utf-8') as file:
+            arquivo = file.readlines()
+
+        jsonFile = generateJson(jsonFile=arquivo)
+
+        arquivo = Workbook()
+        aba = arquivo.active
+
+        aba.cell(row=1, column=1).value = "Integrante"
+        for i, (integrante, info) in enumerate(jsonFile.items(), start=2):
+            aba.cell(row=i, column=1).value = integrante
+            
+            k = 2
+
+            for j, (criterio, media) in enumerate(info['medias'].items(), start=2):
+                aba.cell(row=1, column=j).value = criterio
+                
+                aba.cell(row=i, column=k).value = media
+                k+=1
+
+        arquivo.save(excelPath)
+        return jsonify({'url': excelPath}), 200
+    return jsonify({"error": "Equipe não encontrada"})
+
 @app.route("/gerarPDF", methods = ["GET", "POST"])
 def generatePDF():
     nomeEquipe = request.args.get("nomeEquipe")
-    pdf = canvas.Canvas(f"{UPLOAD_FOLDER_PDFS}{nomeEquipe}.pdf", pagesize=A4)
+    pdfPath = f"{UPLOAD_FOLDER_PDFS}{nomeEquipe}.pdf"
+    pdf = canvas.Canvas(pdfPath, pagesize=A4)
     pdf.setTitle(f"{nomeEquipe}-notas")
     pdf = generateGrid(pdf=pdf,nomeEquipe=nomeEquipe)
 
-    pdf.save()
-
-    return ""
+    if pdf:
+        pdf.save()
+        return jsonify({'url': pdfPath}), 200
+    return jsonify({'error': "Equipe Não encontrada"}), 404
 
 def generateGrid(pdf, nomeEquipe):
     pathArquivo = f"{UPLOAD_EQUIPE}{nomeEquipe}.txt"
@@ -494,7 +527,6 @@ def generateGrid(pdf, nomeEquipe):
         tupla_notas = generateTupla(jsonFile=json_notas)
 
         w, h = A4
-        print(w)
         max_rows = 45
 
         margin_x = 30
@@ -506,15 +538,15 @@ def generateGrid(pdf, nomeEquipe):
 
         for rows in grouper(tupla_notas, max_rows):
             rows = tuple(filter(bool, rows))
-            pdf.grid(xList, yList)
-            for y, row in zip(yList[:-1], rows):
+            pdf.grid(xList, yList[:len(rows) + 1])
+            for y, row in zip(yList[:len(rows) + 1], rows):
                 for x, cell in zip(xList, row):
                     pdf.drawString(x + 2, y - padding + 3, str(cell))
             pdf.showPage()
         
         return pdf
 
-    return "False"
+    return False
 
 def generateJson(jsonFile):
     json_notas = {}

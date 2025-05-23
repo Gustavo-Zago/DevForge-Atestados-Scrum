@@ -9,7 +9,6 @@ const enviarButton = document.getElementById("btn_enviar");
 const adm_btn_senha = document.querySelector("#adm_btn_senha");
 const buscarButton = document.getElementById("btn_buscar");
 const openModalButton = document.getElementById("open_Modal_Button");
-const openNotasModal = document.getElementById("vizualizar_notas");
 
 function addAtestadoEvent() {
   if (atestadoButton) {
@@ -75,13 +74,6 @@ function addCadastroModalEvent() {
   }
 }
 
-function addNotasModalEvent() {
-  if (openNotasModal) {
-    const modalNotas = document.getElementById("modalNotas");
-    openNotasModal.addEventListener("click", () => modal.modalAction("open"));
-  }
-}
-
 function eventsModalMain() {
   addAtestadoEvent();
   addEnviarEvent();
@@ -90,6 +82,5 @@ function eventsModalMain() {
   addAdmEvent();
   addBuscarEvent();
   addCadastroModalEvent();
-  addNotasModalEvent();
 }
 export default eventsModalMain;

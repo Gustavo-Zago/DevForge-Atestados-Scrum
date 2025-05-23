@@ -88,7 +88,13 @@
             {% endfor %}
           </ul>
           <p class="statusAvaliacao" data-equipe="{{ equipe }}"></p>
-            <form method="POST" action="{{ url_for('alterarStatusAvaliacao') }}">
+          <button
+            type="button"
+            data-equipe="{{ equipe }}"
+            class="btn-avaliar vizualizar_notas"
+          >
+            Vizualizar Notas
+          </button>
           {% if sub_dict['statusAvaliacao'] == True %}
           <form method="POST" action="{{ url_for('alterarStatusAvaliacao') }}">
             <input type="hidden" name="equipe" value="{{ equipe }}" />
@@ -158,6 +164,29 @@
           </form>
         </section>
       </article>
+    </dialog>
+
+    <dialog id="modalNotas" class="pdf-modal">
+      <img
+        id="close_modalNotas"
+        class="close_button"
+        src="../static/assets/close.png"
+        alt="Botão Fechar"
+      />
+
+      <div class="modal-content">
+        <div class="pdf-container">
+          <iframe
+            id="iframe-pdf"
+            class="pdf-viewer"
+            src=""
+            title="Visualizador de PDF"
+          ></iframe>
+        </div>
+        <div class="modal-actions">
+          <a class="export_button" href="" download>Exportar Notas</a>
+        </div>
+      </div>
     </dialog>
 
     <script type="module" src="../static/scripts/index.js"></script>

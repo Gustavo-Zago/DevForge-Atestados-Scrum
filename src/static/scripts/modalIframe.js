@@ -48,14 +48,22 @@ function addCloseIframe() {
   }
 }
 
-function openIframe(url) {
+function setURLIframe(url) {
   pdfPath = fixURL(url);
 
   if (!url.startsWith("/")) {
     pdfPath = "/" + pdfPath;
   }
 
+  if (url.startsWith(".")) {
+    pdfPath = url.replace(".", "");
+  }
+
   iframe.src = pdfPath;
+}
+
+function openIframe(url) {
+  setURLIframe(url);
   modal.modalAction("open");
 }
 
@@ -77,4 +85,7 @@ function iframeMain() {
   addCloseIframe();
 }
 
-export default iframeMain;
+export default {
+  setURLIframe,
+  iframeMain,
+};

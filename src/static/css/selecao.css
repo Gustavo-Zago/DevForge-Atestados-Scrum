@@ -93,7 +93,8 @@ dialog.popUp_modal {
 }
 
 .popUp_modal button,
-.status-button {
+.status-button,
+.export_button {
   align-self: flex-end;
   width: 40%;
   padding: 5px;
@@ -106,7 +107,7 @@ dialog.popUp_modal {
 }
 
 .status-button:active,
-.popUp_modal button:active {
+.popUp_modal button:active .export_button:active {
   outline: solid 2px var(--off-white-cinza);
 }
 

@@ -5,11 +5,9 @@
 @import url(Admscrum.css);
 @import url(cadastroequipes.css);
 
-
-button:hover{
+button:hover {
   cursor: pointer;
 }
-
 
 :root {
   --azul-base: #393f50;
@@ -39,6 +37,10 @@ body {
   background-color: var(--azul-base);
 }
 
+.visible {
+  display: flex !important;
+}
+
 .blur {
   filter: blur(4px);
 }
@@ -61,7 +63,7 @@ input:hover {
   background-color: var(--off-white-cinza);
 }
 /* Estilos do Modal Ampliado */
-section.pdf-modal {
+dialog.pdf-modal {
   display: none;
 
   position: absolute;
