@@ -1,15 +1,17 @@
-.table th, .table td {
+.table th,
+.table td {
   vertical-align: middle;
   font: normal 900 1.2rem var(--font-principal), monospace;
 }
-th{
+th {
   background-color: var(--azul-base);
 }
 td {
-  border-bottom: 0.1rem solid var(--laranja-queimado)!important; /*sobrescreve o estilo do bootstrap*/
+  border-bottom: 0.1rem solid var(--laranja-queimado) !important; /*sobrescreve o estilo do bootstrap*/
 }
 @media screen and (max-width: 390px) {
-  .table th, .table td {
+  .table th,
+  .table td {
     font: normal 900 0.8rem var(--font-principal), monospace;
   }
 }
@@ -94,6 +96,10 @@ h1 {
 
 .dados_aluno p {
   margin-bottom: 0;
+}
+
+.coluna_motivo {
+  word-break: break-all;
 }
 
 p {

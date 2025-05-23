@@ -79,6 +79,7 @@
             <th>Validade</th>
             <th>Nome do Aluno</th>
             <th>Status</th>
+            <th>Motivo</th>
             <th>Arquivo</th>
           </tr>
         </thead>
@@ -88,6 +89,7 @@
             <td>{{ atestado['Data Final'] }}</td>
             <td>{{ atestado['Nome'] }}</td>
             <td>{{ atestado['Status'] }}</td>
+            <td class="coluna_motivo">{{atestado['Motivo']}}</td>
             <td>
               <button class="visualizar-button" id="{{atestado['Arquivo']}}">
                 Visualizar
