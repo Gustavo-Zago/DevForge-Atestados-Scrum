@@ -70,3 +70,12 @@ Motivo: qqqq
 Arquivo: src/static/uploads/atestados\5_19052025174156.pdf
 Status: Aprovado
 
+Nome: Mavy
+RA do aluno: 991919191
+Data Inicial: 2025-05-23
+Data Final: 2025-05-30
+Validade: 7 dias
+Motivo: Fiquei doente ué
+Arquivo: src/static/uploads/atestados\991919191_23052025094447.pdf
+Status: Aprovado
+

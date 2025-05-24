@@ -10,6 +10,7 @@ h2 {
 .gestao-main {
   padding: 20px;
   background-color: white;
+  max-width: none;
 }
 
 table {
@@ -17,7 +18,7 @@ table {
   border-collapse: collapse;
   font-size: 25px;
   text-align: center;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 th,
@@ -104,11 +105,14 @@ th {
 }
 
 /* Responsividade */
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) and  (max-width: 1024px) {
   .modal-content {
     width: 100%;
     height: auto;
     max-height: none;
+  }
+  h2 {
+    font-size: 25px !important;
   }
 
   .pdf-viewer {
@@ -119,29 +123,80 @@ th {
     flex-direction: column;
     align-items: stretch;
   }
+  .visualizar-button {
+    font-size: 14px;
+    padding: 4px 8px;
+    max-width: 100px;
+  }
+  th, td{
+    font-size: 20px
+
+  }
+  .coluna_nome,
+  .coluna_status,
+  .coluna_motivo{
+    white-space: normal;
+    word-break:normal;
+   
+
+  }
 }
 
 /* Mobile */
 
-@media screen and (max-width: 430px) {
-  .gestao-main {
+@media screen and (min-width: 344px) and  (max-width:414px){ 
+ .gestao-main {
     padding: 10px;
+    margin: 0;
+    overflow-x: auto; 
+  }
+  h2 {
+    font-size: 18px !important;
   }
   table {
     width: 100%;
-    font-size: 15px;
-    text-align: center;
+    font-size: 12px;
+    table-layout: auto; 
+    white-space: wrap;
+    
+   
   }
-  td {
-    padding: 10px;
-    border-bottom: 1px solid var(--azul-base);
+  .coluna_data{
+    word-break: break-word;
+  
+  }
+  .coluna_nome,
+  .coluna_status,
+  .coluna_motivo{
+    white-space: normal;
+    word-break:normal;
+   
+
+  }
+
+  th, td {
+    padding: 8px;
+    font-size: 8px !important;
+  }
+
+  .visualizar-button {
+    font-size: 8px;
+    padding: 4px 6px;
+    width: 100%; 
+    max-width: 100%;
+    box-sizing: border-box; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
+
 /* Para Tables em geral, ou dispositivos similares */
 
 @media screen and (max-width: 1024px) {
   .gestao-main {
     padding: 20px;
+    
   }
   td {
     border-bottom: 1px solid var(--azul-base);
@@ -166,7 +221,7 @@ th {
     border-collapse: collapse;
   }
 
-  td {
+  td{
     border-bottom: 1px solid var(--azul-base);
     padding: 12px;
   }

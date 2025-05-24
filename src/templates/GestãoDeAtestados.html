@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestão de Atestados</title>
     <link
       rel="stylesheet"
@@ -51,7 +52,7 @@
             type="button"
             data-toggle="collapse"
             data-target="#myNav"
-          >
+            >
             <span class="navbar-toggler-icon"></span>
           </button>
 
@@ -72,34 +73,38 @@
       <h2>Histórico de Atestados</h2>
     </nav>
 
-    <main class="gestao-main">
-      <table>
-        <thead>
-          <tr>
-            <th>Validade</th>
-            <th>Nome do Aluno</th>
-            <th>Status</th>
-            <th>Motivo</th>
-            <th>Arquivo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for atestado in atestados %}
-          <tr>
-            <td>{{ atestado['Data Final'] }}</td>
-            <td>{{ atestado['Nome'] }}</td>
-            <td>{{ atestado['Status'] }}</td>
-            <td class="coluna_motivo">{{atestado['Motivo']}}</td>
-            <td>
-              <button class="visualizar-button" id="{{atestado['Arquivo']}}">
-                Visualizar
-              </button>
-            </td>
-            <!-- Coloquei o "{{atestado['Arquivo'] }}" para mostrar a rota do arquivo respectivo, favor tirar e deixar só o "Vizualizar""-->
-          </tr>
-          {% endfor %}
-        </tbody>
+    <main class="gestao-main container mt-4">
+     <div class="table-responsive">
+        <table class="table table-hover text-center">
+          <thead>
+            <tr>
+              <th>Validade</th>
+              <th>Nome do Aluno</th>
+              <th>Status</th>
+              <th>Motivo</th>
+              <th>Arquivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for atestado in atestados %}
+            <tr>
+              <td class="coluna_data">{{ atestado['Data Final'] }}</td>
+              <td class="coluna_nome">{{ atestado['Nome'] }}</td>
+              <td class="coluna_status">{{ atestado['Status'] }}</td>
+              <td class="coluna_motivo">{{atestado['Motivo']}}</td>
+              <td>
+                <div style="display: flex; justify-content: center;"></div>
+                  <button class="visualizar-button" id="{{atestado['Arquivo']}}">
+                    Visualizar
+                  </button>
+                  </div>
+              </td>
+              <!-- Coloquei o "{{atestado['Arquivo'] }}" para mostrar a rota do arquivo respectivo, favor tirar e deixar só o "Vizualizar""-->
+            </tr>
+            {% endfor %}
+          </tbody>
       </table>
+    </div>
       <dialog id="modalIframe" class="pdf-modal">
         <img
           id="closeIframe"

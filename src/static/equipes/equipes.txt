@@ -1,9 +1,6 @@
 Nome da Equipe: teste
 Nome do Integrante: integrante 1 - Função: PO
 Nome do Integrante: integrante 2 - Função: SM
-Nome do Integrante: integrante 3 - Função: dev team
-Nome do Integrante: integrante 4 - Função: dev team
-Nome do Integrante: integrante 5 - Função: dev team
 Avaliacão: True
 
 Nome da Equipe: Devforge
@@ -14,7 +11,7 @@ Nome do Integrante: Daniel - Função: Team Developer
 Nome do Integrante: Eloá - Função: Team Developer
 Nome do Integrante: Mavy - Função: Team Developer
 Nome do Integrante: Breno - Função: Team Developer
-Avaliacão: True
+Avaliacão: False
 
 Nome da Equipe: 404
 Nome do Integrante: Mano Brown - Product Owner
@@ -30,7 +27,7 @@ Nome do Integrante: cleber - Team Developer
 Nome do Integrante: amera - Team Developer
 Nome do Integrante: joaquim - Team Developer
 Nome do Integrante: eu - Team Developer
-Avaliacão: True
+Avaliacão: False
 
 Nome da Equipe: 12
 Nome do Integrante: Joao - Team Developer
@@ -39,7 +36,7 @@ Nome do Integrante: amera - Team Developer
 Nome do Integrante: joaquim - Team Developer
 Nome do Integrante: eu - Team Developer
 Nome do Integrante: aaa - Team Developer
-Avaliacão: True
+Avaliacão: False
 
 Nome da Equipe: Fatec
 Nome do Integrante: Jean - Product Owner

@@ -235,7 +235,7 @@ def ler_equipe():
 
     try:
         # ANTES equipes = {'404': ['integrante1, '...']}
-        # DEPOIS (MARYA VITORIA) equipes = {'404': {'integrantes': ['integrante1', 'integrante2'], 'avaliacao': True}, 'teste': []}
+        # DEPOIS equipes = {'404': {'integrantes': ['integrante1', 'integrante2'], 'avaliacao': True}, 'teste': []}
         with open(UPLOAD_EQUIPE + 'equipes.txt', 'r', encoding='utf-8') as file:
             for linha in file:
                 linha = linha.strip()
