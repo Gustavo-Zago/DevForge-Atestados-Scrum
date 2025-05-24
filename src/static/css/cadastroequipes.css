@@ -84,8 +84,8 @@ select {
   background-color: var(--off-white-cinza);
 }
 .cards-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   justify-content: flex-start;
   margin: 20px;
@@ -98,7 +98,7 @@ select {
   color: #ffffff;
   padding: 20px;
   border-radius: 15px;
-  width: 250px;
+  width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -169,4 +169,30 @@ button[type="button"].btn-avaliar {
 
 .btn-avaliar:hover {
   background-color: #f57453;
+}
+
+/*médio*/
+@media screen and (max-width: 720px) {
+  .cards-container{
+    grid-template-columns: 1fr 1fr;
+  }
+  
+}
+
+/*pequeno*/
+@media screen and (max-width: 414px) {
+  .cards-container{
+    grid-template-columns: 1fr;
+  }
+
+  /* #open_Modal_Button {
+  white-space: nowrap;
+  padding: 10px 20px;
+  font-size: 1rem;
+  width: fit-content;
+  max-width: 100%;
+  display: inline-block;
+  overflow-wrap: normal;     
+} */
+
 }
