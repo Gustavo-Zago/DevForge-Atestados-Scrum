@@ -171,28 +171,19 @@ button[type="button"].btn-avaliar {
   background-color: #f57453;
 }
 
-/*médio*/
-@media screen and (max-width: 720px) {
-  .cards-container{
-    grid-template-columns: 1fr 1fr;
-  }
-  
-}
 
-/*pequeno*/
+/* Dispositvios pequenos */
+
 @media screen and (max-width: 414px) {
   .cards-container{
     grid-template-columns: 1fr;
   }
+}
 
-  /* #open_Modal_Button {
-  white-space: nowrap;
-  padding: 10px 20px;
-  font-size: 1rem;
-  width: fit-content;
-  max-width: 100%;
-  display: inline-block;
-  overflow-wrap: normal;     
-} */
+/* Dispositivos médios */
 
+@media screen and (max-width: 720px) {
+  .cards-container{
+    grid-template-columns: 1fr 1fr;
+  }
 }
