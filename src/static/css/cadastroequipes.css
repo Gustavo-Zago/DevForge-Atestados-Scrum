@@ -89,6 +89,7 @@ select {
   gap: 20px;
   justify-content: flex-start;
   margin: 20px;
+  width: 95%;
 }
 
 .card-equipe {
@@ -116,6 +117,7 @@ select {
 
 .card-equipe ul li {
   margin: 5px 0;
+  font-size: 20px;
 }
 
 .card-equipe form {
@@ -178,11 +180,21 @@ button[type="button"].btn-avaliar {
   .cards-container{
     grid-template-columns: 1fr;
   }
+
+  .card-equipe h2{
+    font-size: 40px;
+  }
+  .card-equipe ul{
+    font-size: 30px;
+  }
+  .card-equipe ul li{
+    font-size: 30px;
+  }
 }
 
 /* Dispositivos médios */
 
-@media screen and (max-width: 720px) {
+@media screen and (min-width: 414px) and (max-width: 720px) {
   .cards-container{
     grid-template-columns: 1fr 1fr;
   }

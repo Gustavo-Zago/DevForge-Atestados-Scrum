@@ -80,11 +80,11 @@
         <!--Trazer avaliacao da equipe (True or False)-->
         {% for equipe, sub_dict in equipes.items() %}
         <div class="card-equipe">
-          <h2>{{ equipe }}</h2>
+          <h2 class="card-equipe h2">{{ equipe }}</h2>
           <p><strong>Integrantes:</strong></p>
-          <ul>
+          <ul class="card-equipe ul">
             {% for integrante in sub_dict['integrantes'] %}
-            <li>{{ integrante }}</li>
+            <li class="card-equipe ul li">{{ integrante }}</li>
             {% endfor %}
           </ul>
           <p class="statusAvaliacao" data-equipe="{{ equipe }}"></p>
