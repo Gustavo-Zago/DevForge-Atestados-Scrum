@@ -187,8 +187,14 @@ def verificaAvaliacaoCompleta():
         with open(pathArquivo, "r", encoding="utf-8") as file:
             arquivo = file.readlines()
 
-        equipeScrum = requests.get("http://localhost:5000/integrantesScrum",  params={"NOME": nomeEquipe})
-        equipeScrum = equipeScrum.json()
+        try:
+            with app.test_client() as client:
+                response = client.get(f'/integrantesScrum?NOME={nomeEquipe}')
+                equipeScrum = response.data.decode('utf-8')
+        except Exception as e:
+            print(e)
+
+        equipeScrum = json.loads(equipeScrum)
         listaIntegrantes_semFormatacao = equipeScrum.get("integrantes", [])
         listaIntegrantes = []
 
@@ -211,8 +217,6 @@ def verificaAvaliacaoCompleta():
             if qntNotas < qntIntegrantes - 1:
                 avalicao_completo = False
                 break
-        print(dictAvaliacao)
-        print(avalicao_completo)
         
         return jsonify({"statusAvaliacao": avalicao_completo})
     return jsonify({"Erro": "Avaliacão Fechada"})
@@ -253,13 +257,11 @@ def ler_equipe():
 
                 elif linha.startswith("Avaliacão"):
                     avaliacao_status = linha.split(":", 1)[1].replace('\n', '').strip()
-                    print(f'NomeEquipe: {equipe_atual}, {avaliacao_status}')
                     equipes[equipe_atual]['statusAvaliacao'] = avaliacao_status.strip().lower() == 'true'
                     
                      
     except FileNotFoundError:
         equipes = {}
-    print(f'Dicionario Final:{equipes}')
     return render_template('adminScrum.html', equipes=equipes)
 
 @app.route('/enviar', methods=['POST'])
