@@ -41,7 +41,7 @@ Para instituições e equipes scrum nosso produto é uma plataforma integrada qu
 
 ### Sprint - 2️⃣ ([Acesse](/documents/sprints/Sprint2/README.md)): Concluida 🟩
 
-### Sprint - 3️⃣ ([Acesse](/documents/sprints/Sprint3/README.md)): Não Iniciado 🟥
+### Sprint - 3️⃣ ([Acesse](/documents/sprints/Sprint3/README.md)): Concluida 🟩
 
 ## 🌱Backlog
 
@@ -68,15 +68,15 @@ Para instituições e equipes scrum nosso produto é uma plataforma integrada qu
 | #19  |          BackEnd: PopUp Senha          |                     "Como Administrador, quero um sistema de senha ao entrar nas áreas de administrador para que nem todos tenham acesso, somente o pessoal autorizado"                     |   MÉDIA    |   90min    |   🟩   |      27/03      |   1    |
 | #20  |    Responsividade: Tela de Seleção     |                                       "Como usuário, quero que o sistema possa ser acessado de qualquer dispositivo para um uso contínuo do sistema"                                        |   BAIXO    |   90min    |   🟩   |      21/04      |   2    |
 | #21  |    Responsividade: Header Template     |                                        "Como usuário, quero que o cabeçalho do sistema se adapte a diferentes dispositivos para melhor usabilidade."                                        |   BAIXO    |   90min    |   🟩   |      23/04      |   2    |
-| #22 | BackEnd: Amostragem de notas Scrum | "Como gestor scrum, quero que o sistema exporte um arquivo com as notas para finalizar a avaliação" | ALTA | 120min | 🟥 | --- | 3 |
-| #23  | Responsividade: Histórico de Atestados |                                            "Como usuário, quero acessar o histórico de atestados de qualquer dispositivo para consulta rápida."                                             |   BAIXO    |   120min   |   🟥   |       ---       |   3    |
-| #24  |   Responsividade: Envio de Atestado    |                                         "Como usuário, quero poder enviar atestados de qualquer dispositivo para garantir a facilidade do sistema."                                         |   BAIXO    |   60min    |   🟥   |       ---       |   3    |
-| #25  |  Responsividade: Gestão de Atestados   |                               "Como usuário, quero gerenciar meus atestados em qualquer dispositivo para facilitar a administração dos envios de atestados."                                |   BAIXO    |   120min   |   🟥   |       ---       |   3    |
-| #26  |  Responsividade: Visualizar Atestado   |                                     "Como usuário, quero visualizar atestados em qualquer dispositivo sem perder a qualidade das informações exibidas."                                     |   BAIXO    |   90min    |   🟥   |       ---       |   3    |
-| #27  |   Responsividade: Procurar Atestado    |                                          "Como usuário, quero procurar atestados de maneira responsiva para localizar documentos com facilidade."                                           |   BAIXO    |   30min    |   🟥   |       ---       |   3    |
-| #28  |  Responsividade: Administrador Scrum   |                                           "Como usuário, quero acessar a área de gestão do Scrum em qualquer dispositivo para acompanhar o time."                                           |   BAIXO    |   60min    |   🟥   |       ---       |   3    |
-| #29  |    Responsividade: Cadastro Equipes    |                                               "Como usuário, quero cadastrar equipes de maneira responsiva para facilitar a gestão do time."                                                |   BAIXO    |   60min    |   🟥   |       ---       |   3    |
-| #30  |    Responsividade: Avaliação Scrum     |                                     "Como usuário, quero acessar a avaliação do Scrum de qualquer dispositivo para acompanhar o desempenho da equipe."                                      |   BAIXO    |   120min   |   🟥   |       ---       |   3    |
+| #22 | BackEnd: Amostragem de notas Scrum | "Como gestor scrum, quero que o sistema exporte um arquivo com as notas para finalizar a avaliação" | ALTA | 120min | 🟩 | 23/05 | 3 |
+| #23  | Responsividade: Histórico de Atestados |                                            "Como usuário, quero acessar o histórico de atestados de qualquer dispositivo para consulta rápida."                                             |   BAIXO    |   120min   |   🟩   |       24/04       |   3    |
+| #24  |   Responsividade: Envio de Atestado    |                                         "Como usuário, quero poder enviar atestados de qualquer dispositivo para garantir a facilidade do sistema."                                         |   BAIXO    |   60min    |   🟩   |       20/05       |   3    |
+| #25  |  Responsividade: Gestão de Atestados   |                               "Como usuário, quero gerenciar meus atestados em qualquer dispositivo para facilitar a administração dos envios de atestados."                                |   BAIXO    |   120min   |   🟩   |       20/05       |   3    |
+| #26  |  Responsividade: Visualizar Atestado   |                                     "Como usuário, quero visualizar atestados em qualquer dispositivo sem perder a qualidade das informações exibidas."                                     |   BAIXO    |   90min    |   🟩   |       16/05       |   3    |
+| #27  |   Responsividade: Procurar Atestado    |                                          "Como usuário, quero procurar atestados de maneira responsiva para localizar documentos com facilidade."                                           |   BAIXO    |   30min    |   🟩   |       14/05       |   3    |
+| #28  |  Responsividade: Administrador Scrum   |                                           "Como usuário, quero acessar a área de gestão do Scrum em qualquer dispositivo para acompanhar o time."                                           |   BAIXO    |   60min    |   🟩   |       15/05       |   3    |
+| #29  |    Responsividade: Cadastro Equipes    |                                               "Como usuário, quero cadastrar equipes de maneira responsiva para facilitar a gestão do time."                                                |   BAIXO    |   60min    |   🟩   |       22/05       |   3    |
+| #30  |    Responsividade: Avaliação Scrum     |                                     "Como usuário, quero acessar a avaliação do Scrum de qualquer dispositivo para acompanhar o desempenho da equipe."                                      |   BAIXO    |   120min   |   🟩   |       25/05       |   3    |
 
 ## 👨‍💻Equipe
 
