@@ -38,10 +38,7 @@ function addGestaoEvent() {
   if (gestaoButton) {
     gestaoButton.addEventListener("click", function () {
       modal.modalAction("open", true);
-
-      adm_btn_senha.addEventListener("click", function () {
-        index.verificaSenha("/gestaoat");
-      });
+      adm_btn_senha.setAttribute("data-url", "/gestaoat");
     });
   }
 }
@@ -50,12 +47,16 @@ function addAdmEvent() {
   if (admButton) {
     admButton.addEventListener("click", function () {
       modal.modalAction("open", true);
-
-      adm_btn_senha.addEventListener("click", function () {
-        index.verificaSenha("/adminscrum");
-      });
+      adm_btn_senha.setAttribute("data-url", "/adminscrum");
     });
   }
+}
+
+function addVerificarEvent() {
+  adm_btn_senha.addEventListener("click", function () {
+    let urlSenha = adm_btn_senha.getAttribute("data-url");
+    index.verificaSenha(urlSenha);
+  });
 }
 
 function addBuscarEvent() {
@@ -80,6 +81,7 @@ function eventsModalMain() {
   addEquipeEvent();
   addGestaoEvent();
   addAdmEvent();
+  addVerificarEvent();
   addBuscarEvent();
   addCadastroModalEvent();
 }
