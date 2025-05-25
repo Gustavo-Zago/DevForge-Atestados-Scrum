@@ -105,3 +105,11 @@ h1 {
 p {
   font: normal 900 1.3rem var(--font-principal), monospace;
 }
+
+@media screen and (max-width: 576px) {
+  .links_header{
+    display: flex;
+    flex-direction: column!important;
+    align-items: flex-start!important;
+  }
+}
