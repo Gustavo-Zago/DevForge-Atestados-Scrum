@@ -53,10 +53,12 @@ function addAdmEvent() {
 }
 
 function addVerificarEvent() {
-  adm_btn_senha.addEventListener("click", function () {
-    let urlSenha = adm_btn_senha.getAttribute("data-url");
-    index.verificaSenha(urlSenha);
-  });
+  if (adm_btn_senha) {
+    adm_btn_senha.addEventListener("click", function () {
+      let urlSenha = adm_btn_senha.getAttribute("data-url");
+      index.verificaSenha(urlSenha);
+    });
+  }
 }
 
 function addBuscarEvent() {
