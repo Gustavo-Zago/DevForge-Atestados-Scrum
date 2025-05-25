@@ -142,7 +142,7 @@ function addNotasModalEvent() {
         const PDFPath = await getPDFPath(nomeEquipe);
 
         if (PDFPath) {
-          modalIframe.setURLIframe(PDFPath);
+          setURLIframe(PDFPath);
           modalNotas.classList.add("visible");
           addExportExcelEvent();
         } else {
