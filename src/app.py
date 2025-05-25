@@ -288,7 +288,7 @@ def enviar():
     # Salvar o arquivo com um nome único para evitar sobrescrita
     file_ext = os.path.splitext(arquivo.filename)[1]  # Extrair a extensão do arquivo
     novo_nome = f"{RA}_{datetime.now().strftime('%d%m%Y%H%M%S')}{file_ext}"  # Novo nome com RA e timestamp
-    caminho_arquivo = os.path.join("src/static/uploads/atestados", novo_nome)
+    caminho_arquivo = os.path.join(UPLOAD_FOLDER, novo_nome)
     arquivo.save(caminho_arquivo)
 
     # Salvar os dados em um arquivo de texto
