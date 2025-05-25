@@ -154,23 +154,28 @@ def enviarNotas():
             with open(pathArquivo, "r", encoding='utf-8') as fileR:
                 arquivo = fileR.readlines()
 
-            arquivo_reescrito = []
+            substring = f"{avaliador} - {avaliado}"
+            existe_avaliacao = any(substring in item for item in arquivo)
 
-            for linha in arquivo:
-                if linha.startswith(f"{avaliador} - {avaliado}"):
-                    nova_linha = f"{avaliador} - {avaliado}: {notas}\n"
-                    arquivo_reescrito.append(nova_linha)
-                else:
-                    arquivo_reescrito.append(linha)
+            if existe_avaliacao:
+                arquivo_reescrito = []
 
-            with open(pathArquivo, "w", encoding='utf-8') as fileW:
-                fileW.writelines(arquivo_reescrito)
-        else:
-            with open(pathArquivo, "a", encoding='utf-8') as fileA:
-                fileA.writelines(f"{avaliador} - {avaliado}: {notas}\n")
+                for linha in arquivo:
+                    if linha.startswith(f"{avaliador} - {avaliado}"):
+                        nova_linha = f"{avaliador} - {avaliado}: {notas}\n"
+                        arquivo_reescrito.append(nova_linha)
+                    else:
+                        arquivo_reescrito.append(linha)
 
+                with open(pathArquivo, "w", encoding='utf-8') as fileW:
+                    fileW.writelines(arquivo_reescrito)
 
-        return jsonify({"mensagem": "Nota adicionada com sucesso!"}), 200
+                return jsonify({"mensagem": "Nota Atualizada com sucesso"}), 200
+
+        with open(pathArquivo, "a", encoding='utf-8') as fileA:
+            fileA.writelines(f"{avaliador} - {avaliado}: {notas}\n")
+
+        return jsonify({"mensagem": "Nota Enviada com sucesso"}), 200
     except Exception as e:
         return jsonify({"Erro": str(e)}), 500
 
