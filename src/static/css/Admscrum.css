@@ -18,6 +18,10 @@
   gap: 10px;
 }
 
+.Avaliação .nav-espera {
+  width: auto;
+}
+
 .Avaliação2 {
   display: flex;
   align-items: center;
@@ -25,6 +29,10 @@
   background-color: #393f50;
   color: #f2eee7;
   margin-top: 10px;
+}
+
+section.Avaliação2 h3 {
+  margin: 0 !important;
 }
 
 #Avaliação2 {
