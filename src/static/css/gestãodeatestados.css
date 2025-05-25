@@ -105,7 +105,7 @@ th {
 }
 
 /* Responsividade */
-@media screen and (min-width: 768px) and  (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .modal-content {
     width: 100%;
     height: auto;
@@ -128,27 +128,25 @@ th {
     padding: 4px 8px;
     max-width: 100px;
   }
-  th, td{
-    font-size: 20px
-
+  th,
+  td {
+    font-size: 20px;
   }
   .coluna_nome,
   .coluna_status,
-  .coluna_motivo{
+  .coluna_motivo {
     white-space: normal;
-    word-break:normal;
-   
-
+    word-break: normal;
   }
 }
 
 /* Mobile */
 
-@media screen and (min-width: 344px) and  (max-width:414px){ 
- .gestao-main {
+@media screen and (min-width: 344px) and (max-width: 414px) {
+  .gestao-main {
     padding: 10px;
     margin: 0;
-    overflow-x: auto; 
+    overflow-x: auto;
   }
   h2 {
     font-size: 18px !important;
@@ -156,25 +154,21 @@ th {
   table {
     width: 100%;
     font-size: 12px;
-    table-layout: auto; 
+    table-layout: auto;
     white-space: wrap;
-    
-   
   }
-  .coluna_data{
+  .coluna_data {
     word-break: break-word;
-  
   }
   .coluna_nome,
   .coluna_status,
-  .coluna_motivo{
+  .coluna_motivo {
     white-space: normal;
-    word-break:normal;
-   
-
+    word-break: normal;
   }
 
-  th, td {
+  th,
+  td {
     padding: 8px;
     font-size: 8px !important;
   }
@@ -182,9 +176,9 @@ th {
   .visualizar-button {
     font-size: 8px;
     padding: 4px 6px;
-    width: 100%; 
+    width: 100%;
     max-width: 100%;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -196,7 +190,6 @@ th {
 @media screen and (max-width: 1024px) {
   .gestao-main {
     padding: 20px;
-    
   }
   td {
     border-bottom: 1px solid var(--azul-base);
@@ -221,7 +214,7 @@ th {
     border-collapse: collapse;
   }
 
-  td{
+  td {
     border-bottom: 1px solid var(--azul-base);
     padding: 12px;
   }
