@@ -6,15 +6,11 @@ Abaixo está um guia passo a passo de como executar e rodar nosso sistema em sua
 
 ### 1.Baixar o Git:
 
-    - Primeiro intale o git para fazer a clonagem de nosso repositório: [Clique aqui para instalar o Git](https://git-scm.com/downloads)
+    - Primeiro instale o git para fazer a clonagem de nosso repositório: [Clique aqui para instalar o Git](https://git-scm.com/downloads)
 
 ### 2.Baixar o Python:
 
     - Também é necessário fazer a instalação do Python em sua máquina. Durante a instalação, não se esqueça de marcar a opção da instalação do "pip"; [Clique aqui para instalar o Python](https://www.python.org/downloads/).
-
-### 3.Baixar Flask:
-
-    - Em seu terminal de comando, cmd, cole o seguinte comando: pip install Flask. Assim que executar o flask deve ser instalado em sua máquina.
 
 <br>
 
@@ -33,7 +29,28 @@ cd DevForge-Atestados-Scrum/
 cd src/
 ```
 
-### 3.Execute o Flask através do comando abaixo:
+### 3.Crie um ambiente virtual:
+```
+python -m venv venv
+```
+
+### 4.Inicie o ambiente virtual:
+No windows:
+```
+./venv/Scripts/activate
+```
+
+No linux:
+```
+source ./venv/bin/activate
+```
+
+### 5.Instale as dependências:
+```
+pip install -r requirements.txt
+```
+
+### 6.Execute o Flask através do comando abaixo:
 
 `flask run`
 
