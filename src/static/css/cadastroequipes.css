@@ -103,6 +103,12 @@ select {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.sombra-content-card {
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .card-equipe h2 {
   font-size: 24px;
   margin-bottom: 10px;
@@ -173,21 +179,20 @@ button[type="button"].btn-avaliar {
   background-color: #f57453;
 }
 
-
 /* Dispositvios pequenos */
 
 @media screen and (max-width: 414px) {
-  .cards-container{
+  .cards-container {
     grid-template-columns: 1fr;
   }
 
-  .card-equipe h2{
+  .card-equipe h2 {
     font-size: 40px;
   }
-  .card-equipe ul{
+  .card-equipe ul {
     font-size: 30px;
   }
-  .card-equipe ul li{
+  .card-equipe ul li {
     font-size: 30px;
   }
 }
@@ -195,7 +200,7 @@ button[type="button"].btn-avaliar {
 /* Dispositivos médios */
 
 @media screen and (min-width: 414px) and (max-width: 720px) {
-  .cards-container{
+  .cards-container {
     grid-template-columns: 1fr 1fr;
   }
 }
