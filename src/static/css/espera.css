@@ -1,6 +1,6 @@
 .table th,
 .table td {
-  vertical-align: middle;
+  vertical-align: middle !important;
   font: normal 900 1.2rem var(--font-principal), monospace;
 }
 th {
