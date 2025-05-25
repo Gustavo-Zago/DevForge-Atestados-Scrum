@@ -7,6 +7,12 @@ const btnClose = document.getElementById("closeIframe");
 const listaBtnStatus = document.querySelectorAll(".status-button");
 let pdfPath = "";
 
+//Excel
+const openNotasModal = document.querySelectorAll(".vizualizar_notas");
+const closeNotasModal = document.getElementById("close_modalNotas");
+const exportButton = document.querySelector(".export_button");
+let nomeEquipe = "";
+
 function addGetURL() {
   if (listaBtnArquivo) {
     listaBtnArquivo.forEach((botao) => {
@@ -15,6 +21,54 @@ function addGetURL() {
         openIframe(pdfPath);
       });
     });
+  }
+}
+
+async function getPDFPath(nomeEquipe) {
+  try {
+    const response = await fetch(
+      `/gerarPDF?nomeEquipe=${encodeURIComponent(nomeEquipe)}`
+    );
+
+    if (!response.ok) {
+      throw new error("Equipe não encontrada");
+    }
+
+    const data = await response.json();
+    return data.url;
+  } catch (error) {
+    console.error("Erro ao buscar status da avaliação:", error);
+    return null;
+  }
+}
+
+async function getExcelPath(nomeEquipe) {
+  try {
+    const response = await fetch(
+      `/gerarExcel?nomeEquipe=${encodeURIComponent(nomeEquipe)}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Equipe não encontrada");
+    }
+
+    const data = await response.json();
+    return data.url;
+  } catch (error) {
+    console.error("Erro ao buscar url Excel:", error);
+    return null;
+  }
+}
+
+async function addExportExcelEvent() {
+  if (exportButton) {
+    let ExcelURL = await getExcelPath(nomeEquipe);
+
+    if (ExcelURL.startsWith(".")) {
+      ExcelURL = ExcelURL.replace(".", "");
+    }
+
+    exportButton.setAttribute("href", ExcelURL);
   }
 }
 
@@ -79,6 +133,32 @@ function fixURL(url) {
   return url;
 }
 
+function addNotasModalEvent() {
+  const modalNotas = document.getElementById("modalNotas");
+  if (openNotasModal) {
+    openNotasModal.forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        nomeEquipe = btn.getAttribute("data-equipe");
+        const PDFPath = await getPDFPath(nomeEquipe);
+
+        if (PDFPath) {
+          modalIframe.setURLIframe(PDFPath);
+          modalNotas.classList.add("visible");
+          addExportExcelEvent();
+        } else {
+          alert("Avaliação ainda não foi feita");
+        }
+      });
+    });
+  }
+
+  if (closeNotasModal) {
+    closeNotasModal.addEventListener("click", () =>
+      modalNotas.classList.remove("visible")
+    );
+  }
+}
+
 function iframeMain() {
   addGetURL();
   addAlterStatus();
@@ -87,5 +167,6 @@ function iframeMain() {
 
 export default {
   setURLIframe,
+  addNotasModalEvent,
   iframeMain,
 };
