@@ -15,3 +15,7 @@ Essa sprint foi focada no desenvolvimento responsivo das telas do sistema, além
 | #28  |  Responsividade: Administrador Scrum   |            "Como usuário, quero acessar a área de gestão do Scrum em qualquer dispositivo para acompanhar o time."             |   BAIXO    |   60min    |   🟩   |      15/05      |   3    |
 | #29  |    Responsividade: Cadastro Equipes    |                 "Como usuário, quero cadastrar equipes de maneira responsiva para facilitar a gestão do time."                 |   BAIXO    |   60min    |   🟩   |      22/05      |   3    |
 | #30  |    Responsividade: Avaliação Scrum     |       "Como usuário, quero acessar a avaliação do Scrum de qualquer dispositivo para acompanhar o desempenho da equipe."       |   BAIXO    |   120min   |   🟩   |      25/05      |   3    |
+
+## Vídeo do Sistema Desenvolvido na Sprint - 🎥
+
+https://github.com/user-attachments/assets/1c19e373-6d05-4dde-83a1-72b44c80e5f3
