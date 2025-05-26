@@ -79,3 +79,12 @@ Motivo: Fiquei doente ué
 Arquivo: src/static/uploads/atestados\991919191_23052025094447.pdf
 Status: Aprovado
 
+Nome: Olaaaa
+RA do aluno: 123456
+Data Inicial: 2000-01-01
+Data Final: 2000-02-02
+Validade: 32 dias
+Motivo: effd
+Arquivo: ./src/static/uploads/atestados/123456_25052025220611.png
+Status: Pendente
+

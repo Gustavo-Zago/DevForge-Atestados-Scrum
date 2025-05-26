@@ -65,7 +65,7 @@
       <tbody>
         {% for atestado in atestados %}
         <tr class="{% if loop.index % 2 == 0 %}table-light{% endif %}">
-          <td>{{ atestado['Data Final'] }}</td>
+          <td>{{ datetime.strptime(atestado['Data Final'], "%Y-%m-%d").strftime("%d/%m/%Y") }}</td>
           <td>{{ atestado['Nome'] }}</td>
           <td>{{ atestado['Status'] }}</td>
         </tr>
@@ -86,38 +86,12 @@
         <label style="margin-left: 40px">RA:</label>
         <label style="margin-left: 110px">Status: </label>
       </div>
-      <form
-        style="
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          gap: 10px;
-        "
-      >
+      <form style="display: flex; flex-direction: row; align-items: center; gap: 10px;"></form>
         <div style="position: relative; display: flex; align-items: center">
-          <input
-            type="text"
-            id="inp_RA"
-            style="padding-right: 30px; width: 150px"
-          />
-          <img
-            id="search-atestado"
-            src="../static/assets/icone-loupe-gris.png"
-            style="
-              position: absolute;
-              right: 10px;
-              height: 15px;
-              width: 15px;
-              cursor: pointer;
-            "
-          />
+          <input type="text" id="inp_RA" style="padding-right: 30px; width: 150px"/>
+          <img id="search-atestado" src="../static/assets/icone-loupe-gris.png" style=" position: absolute; right: 10px; height: 15px; width: 15px; cursor: pointer;"/>
         </div>
-        <input
-          type="text"
-          id="inp_Status"
-          style="width: 140px; height: 35px"
-          disabled="true"
-        />
+        <input type="text" id="inp_Status" style="width: 140px; height: 35px" disabled="true"/>
       </form>
     </dialog>
 
