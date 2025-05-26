@@ -3,80 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='../static/css/style.css')}}"
-    />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../static/assets/DevForgePNG.ico"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style.css')}}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/DevForgePNG.ico"/>
     <title>Document</title>
   </head>
   <body>
     <section class="selecao">
       <div>
-        <button
-          type="button"
-          id="btn_buscar"
-          class="botao"
-          style="
-            position: relative;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            height: 80px;
-            width: 150px;
-          "
-        >
-          Buscar
-        </button>
+        <button type="button" id="btn_buscar" class="botao" style="position: relative; position: absolute; top: 20px; right: 20px; height: 80px; width: 150px;">Buscar</button>
       </div>
     </section>
     <h1>Lista de Atestados</h1>
     <dialog id="modal" style="height: 120px; width: 400px">
-      <img
-        class="close_button"
-        id="close_modal"
-        src="../static/assets/close.png"
-        alt="Botão Fechar"
-      />
+      <img class="close_button" id="close_modal" src="../static/assets/close.png" alt="Botão Fechar"/>
       <div style="position: relative; display: flex; align-items: center">
         <label style="margin-left: 40px">RA:</label>
         <label style="margin-left: 110px">Status: </label>
       </div>
-      <form
-        style="
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          gap: 10px;
-        "
-      >
+      <form style="display: flex; flex-direction: row; align-items: center; gap: 10px;">
         <div style="position: relative; display: flex; align-items: center">
-          <input
-            type="text"
-            id="inp_RA"
-            style="padding-right: 30px; width: 150px"
-          />
-          <img
-            src="../static/assets/icone-loupe-gris.png"
-            style="
-              position: absolute;
-              right: 10px;
-              height: 15px;
-              width: 15px;
-              cursor: pointer;
-            "
-          />
+          <input type="text" id="inp_RA"style="padding-right: 30px; width: 150px"/>
+          <img src="../static/assets/icone-loupe-gris.png" style="position: absolute; right: 10px; height: 15px; width: 15px; cursor: pointer;"/>
         </div>
-        <input
-          type="text"
-          id="inp_Status"
-          style="width: 140px; height: 35px"
-          disabled="true"
-        />
+        <input type="text" id="inp_Status" style="width: 140px; height: 35px" disabled="true"/>
       </form>
     </dialog>
 

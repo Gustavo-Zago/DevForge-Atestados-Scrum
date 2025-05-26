@@ -3,15 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='../static/css/style.css')}}"
-    />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="../static/assets/DevForgePNG.ico"
-    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style.css')}}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../static/assets/DevForgePNG.ico"/>
     <title>DevForge</title>
   </head>
   <body>
@@ -37,12 +30,7 @@
     </main>
 
     <dialog id="modal" class="popUp_modal">
-      <img
-        class="close_button"
-        id="close_modal"
-        src="../static/assets/close.png"
-        alt="Botão Fechar"
-      />
+      <img class="close_button" id="close_modal" src="../static/assets/close.png" alt="Botão Fechar"/>
       <div class="popUp_Senha_Inputs">
         <label for="inp_senha">Digite a Senha: </label>
         <input type="password" id="inp_senha" />
