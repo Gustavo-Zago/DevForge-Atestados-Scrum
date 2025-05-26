@@ -324,7 +324,7 @@ def ler_txt():
         if atestado_atual:  # Garante que o último atestado seja salvo
             atestados.append(atestado_atual)
 
-        return render_template('espera.html', atestados=atestados,  datetime=datetime)
+        return render_template('espera.html', atestados=atestados, datetime=datetime)
 
     except FileNotFoundError:
         return render_template('espera.html', atestados= 'Ih deu ruim')
