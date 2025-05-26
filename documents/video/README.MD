@@ -1,6 +1,6 @@
 ## 🎥Vídeo do Sistema
 
-https://github.com/user-attachments/assets/05d01b84-4c48-4e95-b572-ab8b2c963a7f
+https://github.com/user-attachments/assets/8f6cb76a-f5da-4c7f-8d45-6244c00b1d1b
 
 > Módulos do Sitema:
 >
